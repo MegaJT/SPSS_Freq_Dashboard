@@ -1,0 +1,12 @@
+{
+
+  "variables": [
+    {"name": "QCITY", "type": "single", "label": "CITY"},
+    {"name": "QGENDER", "type": "single", "label": "GENDER"},
+    {     "name": "Q3",
+	      "type": "multi",
+	      "label": "Brand Usage - All Respondents",
+	      "sub_variables": ["A_Q9_1_1", "A_Q9_1_2", "A_Q9_1_3", "A_Q9_1_4", "A_Q9_1_5", "A_Q9_1_6", "A_Q9_1_7"]
+    }
+  ]
+}

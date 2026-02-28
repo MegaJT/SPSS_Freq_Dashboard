@@ -1,0 +1,690 @@
+================================================================================
+                    JSON CONFIGURATION GUIDE
+         Creating Configuration Files for SPSS Frequency Engine
+================================================================================
+
+This guide helps you create .json configuration files for the SPSS Frequency 
+Engine. These files define variables, filters, weights, and other settings 
+needed to generate frequency reports and dashboards.
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+
+1. Basic JSON Structure
+2. Variables Section
+   a. Single-Punch Questions
+   b. Multi-Punch Questions
+   c. Sub-Variable Labels (Custom Display Labels)
+3. Filter Sets Section
+   a. Simple Filters
+   b. Complex Filters
+   c. Filter Operators Reference
+4. Optional Features
+   a. Weighting Configuration
+5. Complete Examples
+6. Validation & Best Practices
+
+================================================================================
+1. BASIC JSON STRUCTURE
+================================================================================
+
+Every configuration file must have this top-level structure:
+
+{
+  "variables": [ ... ],      ← Required: Array of variable definitions
+  "filter_sets": { ... }     ← Required: Object containing filter definitions
+}
+
+Note: Do NOT include app-level settings like 'theme', 'output_format', 
+      'global_filter', or 'visualization' in the JSON file. These are 
+      selected via the UI at runtime.
+
+
+================================================================================
+2. VARIABLES SECTION
+================================================================================
+
+The "variables" array contains definitions for all questions/variables you want
+to analyze. Each variable must have 'name', 'type', and 'label' fields.
+
+Format:
+"variables": [
+  {
+    "name": "VARIABLE_NAME",
+    "type": "single" | "multi",
+    "label": "Display Label for Charts/Reports",
+    "sub_variables": [ ... ],           ← Required for multi-type ONLY
+    "sub_variable_labels": { ... }      ← Optional for multi-type
+  },
+  ...
+]
+
+================================================================================
+2a. SINGLE-PUNCH QUESTIONS
+================================================================================
+
+Single-punch variables represent questions where respondents select ONE answer.
+(e.g., Age Group, Region, Product Choice)
+
+Fields:
+  • name (required)    : Variable name in SPSS file (must match exactly)
+  • type (required)    : "single"
+  • label (required)   : Display label for charts and reports
+
+Example:
+
+{
+  "name": "QS6",
+  "type": "single",
+  "label": "Age Groups"
+}
+
+Another example:
+
+{
+  "name": "QS4_2",
+  "type": "single",
+  "label": "Place of Interview"
+}
+
+Note: The value labels are automatically read from the SPSS file. You only
+      need to define the variable name and display label in the JSON.
+
+================================================================================
+2b. MULTI-PUNCH QUESTIONS
+================================================================================
+
+Multi-punch variables represent questions where respondents can select 
+MULTIPLE answers. (e.g., "Which brands have you used?")
+
+In SPSS, multi-punch questions are typically stored as multiple binary 
+(0/1) columns - one for each answer option.
+
+Required Fields:
+  • name (required)           : Variable name for grouping (display purpose)
+  • type (required)           : "multi"
+  • label (required)          : Display label
+  • sub_variables (required)  : List of binary column names from SPSS
+  • sub_variable_labels (opt) : Custom labels for each sub-variable
+
+Example WITHOUT sub_variable_labels (uses SPSS labels):
+
+{
+  "name": "QS10",
+  "type": "multi",
+  "label": "Brand Usage - All Respondents",
+  "sub_variables": [
+    "A_QS10_1",
+    "A_QS10_2",
+    "A_QS10_3",
+    "A_QS10_4",
+    "A_QS10_5",
+    "A_QS10_6",
+    "A_QS10_7"
+  ]
+}
+
+Example WITH sub_variable_labels (custom display names):
+
+{
+  "name": "QS10",
+  "type": "multi",
+  "label": "Brand Usage - All Respondents",
+  "sub_variables": [
+    "A_QS10_1",
+    "A_QS10_2",
+    "A_QS10_3",
+    "A_QS10_4",
+    "A_QS10_5",
+    "A_QS10_6",
+    "A_QS10_7"
+  ],
+  "sub_variable_labels": {
+    "A_QS10_1": "Brand A",
+    "A_QS10_2": "Brand B",
+    "A_QS10_3": "Brand C",
+    "A_QS10_4": "Brand D",
+    "A_QS10_5": "Brand E",
+    "A_QS10_6": "Brand F",
+    "A_QS10_7": "Brand G"
+  }
+}
+
+How sub_variable_labels work:
+  1. If sub_variable_labels are provided → Use the custom labels in charts/reports
+  2. If sub_variable_labels are NOT provided → Use labels from SPSS file
+  3. Partial labels work too - only listed variables use custom labels, others 
+     fall back to SPSS labels
+
+Example: Household Durables with descriptive labels
+
+{
+  "name": "QS12",
+  "type": "multi",
+  "label": "Household Durables",
+  "sub_variables": [
+    "A_QS12_1_1",
+    "A_QS12_1_2",
+    "A_QS12_1_3",
+    "A_QS12_1_4",
+    "A_QS12_1_5",
+    "A_QS12_1_6",
+    "A_QS12_1_7",
+    "A_QS12_1_8",
+    "A_QS12_1_9",
+    "A_QS12_1_10"
+  ],
+  "sub_variable_labels": {
+    "A_QS12_1_1": "Television",
+    "A_QS12_1_2": "Air Conditioner",
+    "A_QS12_1_3": "Refrigerator",
+    "A_QS12_1_4": "Washing Machine",
+    "A_QS12_1_5": "Microwave Oven",
+    "A_QS12_1_6": "Dishwasher",
+    "A_QS12_1_7": "Water Heater",
+    "A_QS12_1_8": "Air Purifier",
+    "A_QS12_1_9": "Smart Home Devices",
+    "A_QS12_1_10": "Home Theater System"
+  }
+}
+
+================================================================================
+2c. SUB-VARIABLE LABELS BEST PRACTICES
+================================================================================
+
+When to use sub_variable_labels:
+  ✓ SPSS column names are technical (A_QS10_1) but you want user-friendly 
+    names (Brand A)
+  ✓ You want different labels in different JSON files for the same data
+  ✓ Labels are long/complex and hard to read in reports
+
+When NOT to use:
+  ✗ SPSS labels are already clear and appropriate
+  ✗ Labels rarely change between analyses
+
+Tips:
+  • Keep labels brief (20-40 characters)
+  • Use consistent naming across similar variables
+  • Match the SPSS variable names exactly in the dictionary keys
+  • Labels appear in charts, frequency tables, and export files
+
+
+================================================================================
+3. FILTER SETS SECTION
+================================================================================
+
+Filters allow you to analyze data for specific subsets of respondents.
+The "filter_sets" object contains named filters that users can apply in the UI.
+
+Format:
+"filter_sets": {
+  "Filter Name 1": {
+    "VARIABLE_NAME": { CONDITION }
+  },
+  "Filter Name 2": {
+    "VARIABLE_NAME": { CONDITION }
+  },
+  ...
+}
+
+Each filter can contain one or more variables with their conditions.
+
+================================================================================
+3a. SIMPLE FILTERS - SINGLE CONDITION
+================================================================================
+
+EQUAL TO (eq):
+  Description: Select respondents where variable equals a specific value
+  
+  "AGE 25-30": {
+    "AGE_GROUP": {
+      "eq": 3
+    }
+  }
+
+IN LIST (in):
+  Description: Select respondents where variable is in a list of values
+  
+  "AGE 18-35": {
+    "AGE_GROUP": {
+      "in": [2, 3, 4]
+    }
+  }
+
+NOT_MISSING:
+  Description: Select respondents with any valid (non-missing) value
+  
+  "HAS_BRAND_PREFERENCE": {
+    "BRAND_CHOICE": {
+      "not_missing": true
+    }
+  }
+
+BETWEEN:
+  Description: Select respondents within a numeric range (inclusive)
+  
+  "INCOME_30K_50K": {
+    "ANNUAL_INCOME": {
+      "between": [30000, 50000]
+    }
+  }
+
+================================================================================
+3b. COMPLEX FILTERS - MULTIPLE CONDITIONS
+================================================================================
+
+Multiple conditions in a single filter use AND logic (must satisfy ALL):
+
+Example: Age 25-35 AND Income > 50000
+
+"AFFLUENT_YOUNG_PROFESSIONALS": {
+  "AGE_GROUP": {
+    "in": [3, 4]
+  },
+  "INCOME_LEVEL": {
+    "gt": 4
+  }
+}
+
+Example: Used Brand A OR Brand B OR Brand C (select respondents who used ANY)
+
+"MAJOR_BRAND_USERS": {
+  "BRAND_USAGE": {
+    "any": ["A_QS10_1", "A_QS10_2", "A_QS10_3"]
+  }
+}
+
+Example: Selected at least 3 different brands
+
+"MULTI_BRAND_USERS": {
+  "BRAND_COUNT": {
+    "min_selected": 3
+  }
+}
+
+================================================================================
+3c. FILTER OPERATORS REFERENCE
+================================================================================
+
+Operator          | Use Case                              | Example
+------------------+---------------------------------------+-------------------
+eq                | Equals specific value                 | {"eq": 5}
+in                | In list of values                     | {"in": [1, 2, 3]}
+not_missing       | Has valid (non-null) value            | {"not_missing": true}
+between           | Within numeric range (inclusive)      | {"between": [10, 20]}
+any               | Multi-punch: selected ANY of these   | {"any": ["var1", "var2"]}
+all               | Multi-punch: selected ALL of these   | {"all": ["var1", "var2"]}
+min_selected      | Multi-punch: selected at least N     | {"min_selected": 3}
+
+Special Cases:
+  • For 'any', 'all': Provide list of sub_variable names from multi question
+  • For 'min_selected': Works with multi-punch variables
+  • Use 'not_missing' to exclude null/missing values
+
+================================================================================
+4. WEIGHTING CONFIGURATION (OPTIONAL)
+================================================================================
+
+The weighting feature allows you to apply survey weights to calculate weighted
+frequencies. Weighting configuration is defined in the JSON file and is OPTIONAL.
+
+If you don't need weighted analysis, you can omit the "weighting" section entirely.
+
+JSON Structure:
+
+"weighting": {
+  "enabled": true | false,
+  "weight_variable": "WEIGHT_VARIABLE_NAME"
+}
+
+Fields:
+  • enabled (required)      : Boolean - true to enable weighting, false to disable
+  • weight_variable (conditional): String - name of weight variable in SPSS file
+                               REQUIRED if enabled is true
+                               The variable must exist in your SPSS data file
+
+Examples:
+
+---
+Example 1: Weighting ENABLED with variable named "WEIGHT"
+
+"weighting": {
+  "enabled": true,
+  "weight_variable": "WEIGHT"
+}
+
+When enabled=true:
+  ✓ All frequencies use weighted calculations
+  ✓ Reports show both weighted and unweighted sample sizes
+  ✓ The specified weight_variable must exist in SPSS file
+
+---
+Example 2: Weighting DISABLED
+
+"weighting": {
+  "enabled": false,
+  "weight_variable": "WEIGHT"
+}
+
+When enabled=false:
+  ✓ All frequencies are unweighted
+  ✓ weight_variable field is ignored (but can be present for documentation)
+  ✓ Faster processing than weighted calculations
+
+---
+Example 3: No Weighting (omit section entirely)
+
+If your survey doesn't use weights, simply don't include the "weighting" field
+in your JSON configuration. Frequencies will be calculated unweighted.
+
+---
+
+Finding Your Weight Variable Name:
+
+1. Open your SPSS file
+2. Look in the Variables list/data dictionary
+3. Find the column with weights (often named WEIGHT, WGHT, WT, etc.)
+4. Copy the exact variable name into the JSON file
+5. Verify in launcher - it will show "Weighting: ENABLED (Variable: WEIGHT)"
+
+Weight Variable Requirements:
+
+  ✓ Must exist in the SPSS data file
+  ✓ Must contain numeric values > 0
+  ✓ Can contain missing values (will be handled automatically)
+  ✓ Common names: WEIGHT, WGHT, WT, DESIGN_WEIGHT, SAMPLING_WEIGHT
+
+Example with typical weight variable:
+
+{
+  "variables": [ ... ],
+  "filter_sets": { ... },
+  "weighting": {
+    "enabled": true,
+    "weight_variable": "WEIGHT"
+  }
+}
+
+Weighted Output Details:
+
+When weighting is enabled, frequency reports will show:
+
+  Base (Unweighted)      : Original sample size
+  Base (Weighted)        : Effective sample size after applying weights
+  Count (Unweighted)     : Raw number of respondents
+  Count (Weighted)       : Weighted frequency
+  Design Effect (DEFF)   : Measure of variance inflation due to weighting
+  Effective Sample Size  : Statistical effective sample size
+
+================================================================================
+
+
+================================================================================
+5. COMPLETE EXAMPLE - SKINCARE.JSON
+================================================================================
+
+Here's a complete, working example of a configuration file:
+
+{
+  "variables": [
+    {
+      "name": "QS4_2",
+      "type": "single",
+      "label": "Place of Interview"
+    },
+    {
+      "name": "QS6",
+      "type": "single",
+      "label": "Age Groups"
+    },
+    {
+      "name": "NCCS",
+      "type": "single",
+      "label": "NCCS"
+    },
+    {
+      "name": "QS10",
+      "type": "multi",
+      "label": "Brand Usage - All Respondents",
+      "sub_variables": [
+        "A_QS10_1",
+        "A_QS10_2",
+        "A_QS10_3",
+        "A_QS10_4",
+        "A_QS10_5",
+        "A_QS10_6",
+        "A_QS10_7"
+      ],
+      "sub_variable_labels": {
+        "A_QS10_1": "Brand A",
+        "A_QS10_2": "Brand B",
+        "A_QS10_3": "Brand C",
+        "A_QS10_4": "Brand D",
+        "A_QS10_5": "Brand E",
+        "A_QS10_6": "Brand F",
+        "A_QS10_7": "Brand G"
+      }
+    },
+    {
+      "name": "QS12",
+      "type": "multi",
+      "label": "Household Durables",
+      "sub_variables": [
+        "A_QS12_1_1",
+        "A_QS12_1_2",
+        "A_QS12_1_3",
+        "A_QS12_1_4",
+        "A_QS12_1_5",
+        "A_QS12_1_6",
+        "A_QS12_1_7",
+        "A_QS12_1_8",
+        "A_QS12_1_9",
+        "A_QS12_1_10"
+      ],
+      "sub_variable_labels": {
+        "A_QS12_1_1": "Television",
+        "A_QS12_1_2": "Air Conditioner",
+        "A_QS12_1_3": "Refrigerator",
+        "A_QS12_1_4": "Washing Machine",
+        "A_QS12_1_5": "Microwave Oven",
+        "A_QS12_1_6": "Dishwasher",
+        "A_QS12_1_7": "Water Heater",
+        "A_QS12_1_8": "Air Purifier",
+        "A_QS12_1_9": "Smart Home Devices",
+        "A_QS12_1_10": "Home Theater System"
+      }
+    },
+    {
+      "name": "QM3",
+      "type": "multi",
+      "label": "Online Source of Purchase",
+      "sub_variables": [
+        "A_QM3_2a_1",
+        "A_QM3_2a_2",
+        "A_QM3_2a_3",
+        "A_QM3_2a_4",
+        "A_QM3_2a_5",
+        "A_QM3_2a_6",
+        "A_QM3_2a_7",
+        "A_QM3_2a_8",
+        "A_QM3_2a_9"
+      ],
+      "sub_variable_labels": {
+        "A_QM3_2a_1": "Company Website",
+        "A_QM3_2a_2": "Amazon",
+        "A_QM3_2a_3": "Flipkart",
+        "A_QM3_2a_4": "Myntra",
+        "A_QM3_2a_5": "Nykaa",
+        "A_QM3_2a_6": "Other E-commerce",
+        "A_QM3_2a_7": "Social Media Shop",
+        "A_QM3_2a_8": "Direct Message/Chat",
+        "A_QM3_2a_9": "Mobile App"
+      }
+    }
+  ],
+  "filter_sets": {
+    "AGE 23-30": {
+      "QS6": {
+        "in": [2, 3]
+      }
+    },
+    "AGE 31-35": {
+      "QS6": {
+        "eq": 4
+      }
+    }
+  },
+  "weighting": {
+    "enabled": true,
+    "weight_variable": "WEIGHT"
+  }
+}
+
+================================================================================
+5. COMPLETE EXAMPLES - SKINCARE.JSON
+================================================================================
+
+OPTION 1: WITH WEIGHTING ENABLED (shown above)
+
+The complete example above includes weighting enabled. All frequencies will use 
+the WEIGHT variable for weighted calculations.
+
+OPTION 2: WITHOUT WEIGHTING
+
+If your survey doesn't use weights, simply omit the "weighting" section:
+
+{
+  "variables": [ ... ],
+  "filter_sets": { ... }
+}
+
+All frequencies will be calculated unweighted.
+
+OPTION 3: WEIGHTING DISABLED BUT DOCUMENTED
+
+If you want to document the available weight variable but disable it by default:
+
+{
+  "variables": [ ... ],
+  "filter_sets": { ... },
+  "weighting": {
+    "enabled": false,
+    "weight_variable": "WEIGHT"
+  }
+}
+
+Users can enable weighting in the UI if needed later.
+
+================================================================================
+6. VALIDATION & BEST PRACTICES
+================================================================================
+
+Before using your JSON file:
+
+CHECKLIST:
+  ☐ Validate JSON syntax using JSONLint or similar tool
+  ☐ Verify all variable names match SPSS file exactly (case-sensitive)
+  ☐ For multi-punch: ensure sub_variables list matches SPSS column names
+  ☐ For filters: verify variable names exist in SPSS
+  ☐ For filters: verify filter operators are correct (eq, in, between, etc)
+  ☐ Check that all required fields are present (name, type, label for variables)
+  ☐ For sub_variable_labels: verify keys match sub_variables exactly
+  ☐ If weighting is included: verify "enabled" is boolean (true/false)
+  ☐ If weighting enabled=true: verify weight_variable exists in SPSS file
+
+COMMON MISTAKES TO AVOID:
+
+1. JSON Parsing Errors:
+   ✗ Missing commas between array elements
+   ✗ Trailing commas in arrays/objects
+   ✗ Single quotes instead of double quotes
+   ✓ Use JSONLint to validate syntax
+
+2. Variable Naming:
+   ✗ SPSS variable named "age_group" but JSON says "AGE_GROUP"
+   ✗ Missing sub-variables in multi-punch question
+   ✓ Copy-paste exact names from SPSS file
+
+3. Filter Issues:
+   ✗ Filter condition on variable that doesn't exist
+   ✗ Using "eq" with a list (should use "in")
+   ✗ Typos in operator names
+   ✓ Use correct operators from the reference table
+
+4. Multi-punch Labels:
+   ✗ Mismatch between sub_variables list and label keys
+   ✗ Label keys with different case than sub_variables
+   ✓ Do a text search to find exact sub-variable names
+
+5. Weighting Issues:
+   ✗ Weighting enabled but weight_variable doesn't exist in SPSS
+   ✗ "enabled" field not boolean (should be true or false, not "true" or "false")
+   ✗ Weight variable name misspelled or has wrong case
+   ✗ Weighting section has wrong structure
+   ✓ Double-check weight variable name in SPSS by copying it to JSON
+   ✓ Start with enabled=false to test structure first
+   ✓ Use JSONLint to validate the weighting section syntax
+
+HELPFUL TIPS:
+
+• Start simple: Add variables without filters first, then add filters
+• Use descriptive filter names that users will understand
+• Keep variable labels to 50 characters or less for chart readability
+• For multi-punch, organize sub_variables in logical order
+• Test with a small SPSS file before using with large datasets
+• Keep a backup of working JSON files
+• Use version control or comments to track changes
+• Weighting is OPTIONAL - only add if your survey uses weights
+• If unsure about weighting, set enabled=false and you can always enable it later
+
+================================================================================
+7. FILE NAMING CONVENTIONS
+================================================================================
+
+Naming your JSON files:
+
+Format: {SURVEY_NAME}.json
+
+Examples:
+  • SKINCARE.json          (For skincare product survey)
+  • UBER_BHT.json          (For Uber BHT survey)
+  • MARKET_RESEARCH_2026.json
+  • BRAND_PERCEPTION.json
+
+Location: Place JSON files in the Data/ subdirectory of the application
+
+Allowed characters: Letters, numbers, underscore (_), hyphen (-)
+Avoid: Spaces, special characters, accents
+
+================================================================================
+8. GETTING HELP
+================================================================================
+
+If you encounter issues:
+
+1. Check JSON syntax validity:
+   - Use online JSONLint tool (https://jsonlint.com)
+   - Check for missing/extra commas and quotes
+
+2. Verify variable names:
+   - Open your SPSS file in SPSS Viewer or application
+   - Copy exact variable names to JSON
+   - Check capitalization (case-sensitive)
+
+3. Test filters:
+   - Ensure filter variables are in your SPSS file
+   - Try with simple "eq" operator first
+   - Then expand to "in" with multiple values
+
+4. Debug with the UI:
+   - Load the JSON file in the application
+   - Check validation messages for specific errors
+   - Variable not found = wrong name in JSON
+
+================================================================================
+END OF GUIDE
+================================================================================
+
+Last Updated: February 28, 2026
+For questions or suggestions, contact the development team.

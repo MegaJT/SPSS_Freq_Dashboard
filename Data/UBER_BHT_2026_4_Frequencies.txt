@@ -1,0 +1,71 @@
+======================================================================
+FREQUENCY REPORT
+Generated: 2026-02-28 09:38:05
+======================================================================
+
+1. CITY
+   Variable: QCITY | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 1325
+Valid Responses: 1325
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Johannesburg                                              467        35.2%
+Cape Town                                                 393        29.7%
+Durban                                                    263        19.8%
+Pretoria                                                  202        15.2%
+--------------------------------------------------------------------------------
+TOTAL                                                    1325       100.0%
+
+2. GENDER
+   Variable: QGENDER | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 1325
+Valid Responses: 1325
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Female                                                    690        52.1%
+Male                                                      635        47.9%
+--------------------------------------------------------------------------------
+TOTAL                                                    1325       100.0%
+
+3. Brand Usage - All Respondents
+   Variable: Q3 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 1325
+Base (selected at least one): 1325
+Percentages calculated on base of 1325
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Which of the following have you ever used?                935        70.6%
+  Please select as many as apply.   (Uber)
+Which of the following have you ever used?                889        67.1%
+  Please select as many as apply.   (Private
+  Vehicle (my or someone else’s car))
+Which of the following have you ever used?                844        63.7%
+  Please select as many as apply.   (Minibus or
+  taxi)
+Which of the following have you ever used?                775        58.5%
+  Please select as many as apply.   (Bolt)
+Which of the following have you ever used?                252        19.0%
+  Please select as many as apply.   (inDriver)
+Which of the following have you ever used?                170        12.8%
+  Please select as many as apply.   (Meter taxi or
+  cab)
+Which of the following have you ever used?                 19         1.4%
+  Please select as many as apply.   (None of the
+  above)
+--------------------------------------------------------------------------------
+
+======================================================================
+End of Report - 3 variable(s) processed
+======================================================================
