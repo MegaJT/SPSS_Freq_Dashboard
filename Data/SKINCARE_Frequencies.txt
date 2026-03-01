@@ -1,9 +1,375 @@
 ======================================================================
 FREQUENCY REPORT
-Generated: 2026-02-28 13:18:25
+Generated: 2026-03-01 12:55:52
 ======================================================================
 
-1. Place of Interview
+WARNINGS
+----------------------------------------------------------------------
+⚠ No responses found for 'QM4'. Skipped.
+⚠ No responses found for 'I_2_T_QC4'. Skipped.
+⚠ No responses found for 'QC_QM11'. Skipped.
+
+1. SbjNum
+   Variable: SbjNum | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+230924658.0                                                 1         1.7%
+230959713.0                                                 1         1.7%
+230963130.0                                                 1         1.7%
+230963131.0                                                 1         1.7%
+230963154.0                                                 1         1.7%
+230968731.0                                                 1         1.7%
+231000842.0                                                 1         1.7%
+231001305.0                                                 1         1.7%
+231001767.0                                                 1         1.7%
+231038484.0                                                 1         1.7%
+231038853.0                                                 1         1.7%
+231061521.0                                                 1         1.7%
+231062974.0                                                 1         1.7%
+231066804.0                                                 1         1.7%
+231073120.0                                                 1         1.7%
+231076941.0                                                 1         1.7%
+231099160.0                                                 1         1.7%
+231100043.0                                                 1         1.7%
+231100832.0                                                 1         1.7%
+231122654.0                                                 1         1.7%
+231124980.0                                                 1         1.7%
+231126927.0                                                 1         1.7%
+231129569.0                                                 1         1.7%
+231145788.0                                                 1         1.7%
+231148126.0                                                 1         1.7%
+231148374.0                                                 1         1.7%
+231149111.0                                                 1         1.7%
+231149229.0                                                 1         1.7%
+231149603.0                                                 1         1.7%
+231151215.0                                                 1         1.7%
+231154490.0                                                 1         1.7%
+231168074.0                                                 1         1.7%
+231170077.0                                                 1         1.7%
+231171710.0                                                 1         1.7%
+231190781.0                                                 1         1.7%
+231191680.0                                                 1         1.7%
+231192269.0                                                 1         1.7%
+231192672.0                                                 1         1.7%
+231193211.0                                                 1         1.7%
+231193239.0                                                 1         1.7%
+231194252.0                                                 1         1.7%
+231194889.0                                                 1         1.7%
+231195700.0                                                 1         1.7%
+231196606.0                                                 1         1.7%
+231197482.0                                                 1         1.7%
+231197966.0                                                 1         1.7%
+231200060.0                                                 1         1.7%
+231236123.0                                                 1         1.7%
+231236385.0                                                 1         1.7%
+231236906.0                                                 1         1.7%
+231237493.0                                                 1         1.7%
+231238335.0                                                 1         1.7%
+231239442.0                                                 1         1.7%
+231240730.0                                                 1         1.7%
+231241261.0                                                 1         1.7%
+231243868.0                                                 1         1.7%
+231245802.0                                                 1         1.7%
+231248144.0                                                 1         1.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+2. Filter
+   Variable: Filter | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+-1.0                                                       58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+3. Complete
+   Variable: Complete | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+1.0                                                        58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+4. StopQ
+   Variable: StopQ | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+75.0                                                       58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+5. ParentID
+   Variable: ParentID | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+6. Latitude
+   Variable: Latitude | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 56
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+19.1152745                                                  2         3.4%
+19.1218606                                                  2         3.4%
+19.1208222                                                  1         1.7%
+19.1259497                                                  1         1.7%
+19.1219027                                                  1         1.7%
+19.0473928                                                  1         1.7%
+19.0475573                                                  1         1.7%
+19.1218587                                                  1         1.7%
+19.1205537                                                  1         1.7%
+19.120591                                                   1         1.7%
+19.1220254                                                  1         1.7%
+19.1219201                                                  1         1.7%
+19.1206764                                                  1         1.7%
+19.1218667                                                  1         1.7%
+19.1220278                                                  1         1.7%
+19.1220227                                                  1         1.7%
+19.121851667                                                1         1.7%
+19.1278921                                                  1         1.7%
+19.1145582                                                  1         1.7%
+19.1220252                                                  1         1.7%
+19.1837685                                                  1         1.7%
+19.1219947                                                  1         1.7%
+19.1219041                                                  1         1.7%
+19.1219257                                                  1         1.7%
+19.1218629                                                  1         1.7%
+19.1219805                                                  1         1.7%
+19.1218586                                                  1         1.7%
+19.1218666                                                  1         1.7%
+19.119185                                                   1         1.7%
+19.1217799                                                  1         1.7%
+19.1217521                                                  1         1.7%
+19.120882                                                   1         1.7%
+19.1029031                                                  1         1.7%
+19.1218579                                                  1         1.7%
+19.1218595                                                  1         1.7%
+19.1218602                                                  1         1.7%
+19.2533486                                                  1         1.7%
+19.1218626                                                  1         1.7%
+19.1218664                                                  1         1.7%
+19.1994456                                                  1         1.7%
+19.1994399                                                  1         1.7%
+19.1994457                                                  1         1.7%
+19.0447717                                                  1         1.7%
+19.1218692                                                  1         1.7%
+19.1219148                                                  1         1.7%
+19.1175192                                                  1         1.7%
+19.1218622                                                  1         1.7%
+19.1218641                                                  1         1.7%
+19.1218569                                                  1         1.7%
+18.9884853                                                  1         1.7%
+19.1218625                                                  1         1.7%
+19.1218676                                                  1         1.7%
+19.246956667                                                1         1.7%
+19.1218685                                                  1         1.7%
+Missing                                                     2         3.4%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+7. Longitude
+   Variable: Longitude | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 56
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+72.8556222                                                  2         3.4%
+72.8547492                                                  2         3.4%
+72.8550926                                                  2         3.4%
+72.8547724                                                  1         1.7%
+72.8517025                                                  1         1.7%
+72.8548031                                                  1         1.7%
+72.8977341                                                  1         1.7%
+72.8975678                                                  1         1.7%
+72.8551119                                                  1         1.7%
+72.8545468                                                  1         1.7%
+72.8545011                                                  1         1.7%
+72.85475                                                    1         1.7%
+72.8549822                                                  1         1.7%
+72.8543645                                                  1         1.7%
+72.8551075                                                  1         1.7%
+72.8550966                                                  1         1.7%
+72.841016667                                                1         1.7%
+72.8519489                                                  1         1.7%
+72.8503211                                                  1         1.7%
+72.8547423                                                  1         1.7%
+72.8557942                                                  1         1.7%
+72.8551116                                                  1         1.7%
+72.8549536                                                  1         1.7%
+72.8549879                                                  1         1.7%
+72.8551043                                                  1         1.7%
+72.8546157                                                  1         1.7%
+72.8550876                                                  1         1.7%
+72.8551078                                                  1         1.7%
+72.84659                                                    1         1.7%
+72.8407695                                                  1         1.7%
+72.8408039                                                  1         1.7%
+72.8399802                                                  1         1.7%
+72.8374986                                                  1         1.7%
+72.8550981                                                  1         1.7%
+72.8551015                                                  1         1.7%
+72.8551069                                                  1         1.7%
+72.8572512                                                  1         1.7%
+72.8550957                                                  1         1.7%
+72.8551053                                                  1         1.7%
+72.8550918                                                  1         1.7%
+72.8441613                                                  1         1.7%
+72.8441715                                                  1         1.7%
+72.8441679                                                  1         1.7%
+72.8742442                                                  1         1.7%
+72.8550862                                                  1         1.7%
+72.854803                                                   1         1.7%
+72.8469596                                                  1         1.7%
+72.8551067                                                  1         1.7%
+72.8551089                                                  1         1.7%
+72.8345615                                                  1         1.7%
+72.8550761                                                  1         1.7%
+72.855103                                                   1         1.7%
+72.85806                                                    1         1.7%
+Missing                                                     2         3.4%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+8. UTCDiff
+   Variable: UTCDiff | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+5.5                                                        58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+9. QAScore
+   Variable: QAScore | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+10. Cancel
+   Variable: Cancel | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+-1.0                                                       58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+11. A2. Consent  Do you agree to participate in this survey?
+   Variable: A2 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Yes                                                        58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+12. QS1. capture Capture Gender
+   Variable: QS1 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Female                                                     58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+13. QS2. Would you be comfortable answering questions and providing feedback on skincare products in English?
+   Variable: QS2 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Yes                                                        58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+14. QS3. What is your city of residence?
+   Variable: QS3 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Mumbai                                                     58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+15. Place of Interview
    Variable: QS4_2 | Type: SINGLE
    Weighting: DISABLED
    Filter: NONE (All respondents)
@@ -28,7 +394,32 @@ Ghatkopar East                                              1         1.7%
 --------------------------------------------------------------------------------
 TOTAL                                                      58       100.0%
 
-2. Age Groups
+16. What is your age in completed years?
+   Variable: QS5 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+25.0                                                       15        25.9%
+35.0                                                       13        22.4%
+34.0                                                        6        10.3%
+23.0                                                        6        10.3%
+33.0                                                        5         8.6%
+24.0                                                        3         5.2%
+32.0                                                        3         5.2%
+30.0                                                        2         3.4%
+31.0                                                        2         3.4%
+28.0                                                        1         1.7%
+29.0                                                        1         1.7%
+26.0                                                        1         1.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+17. Age Groups
    Variable: QS6 | Type: SINGLE
    Weighting: DISABLED
    Filter: NONE (All respondents)
@@ -44,7 +435,209 @@ Value                                                   Count   Percentage
 --------------------------------------------------------------------------------
 TOTAL                                                      58       100.0%
 
-3. NCCS
+18. QS7.  Have you been interviewed for skincare category by a market research/survey agency in the last 3 months?
+   Variable: QS7 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+No                                                         58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+19. QS8.  In which industries or professions do you, or any of your immediate family members, work? Please select all that apply.  (Advertising/Marketing)
+   Variable: A_QS8 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+QS8.  In which industries or professions do you,           58       100.0%
+  or any of your immediate family members, work?
+  Please select all that apply.  (None of the
+  above)
+QS8.  In which industries or professions do you,            0         0.0%
+  or any of your immediate family members, work?
+  Please select all that apply.
+  (Advertising/Marketing)
+QS8.  In which industries or professions do you,            0         0.0%
+  or any of your immediate family members, work?
+  Please select all that apply.  (Market Research
+  or consulting)
+QS8.  In which industries or professions do you,            0         0.0%
+  or any of your immediate family members, work?
+  Please select all that apply.
+  (Manufacturer/distributer/retailer of skincare /
+  personal care products)
+--------------------------------------------------------------------------------
+
+20. Cleanser
+   Variable: T_QS9 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Moisturizer                                                54        93.1%
+Sunscreen/ Sunstick                                        49        84.5%
+Cleanser                                                   33        56.9%
+Serum/Actives                                              18        31.0%
+Toner                                                      11        19.0%
+--------------------------------------------------------------------------------
+
+21. (Moisturizer)
+   Variable: A_QS9_USAGE | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+ (Moisturizer)                                             58       100.0%
+ (Sunscreen)                                               58       100.0%
+ (Toner)                                                   46        79.3%
+--------------------------------------------------------------------------------
+
+22. Place of Purchase  QS10. Where do you mostly purchase skincare products from? (Online Apps / Websites)
+   Variable: A_QS10 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Place of Purchase  QS10. Where do you mostly               58       100.0%
+  purchase skincare products from? (Online Apps /
+  Websites)
+Place of Purchase  QS10. Where do you mostly               43        74.1%
+  purchase skincare products from? (Brand
+  websites)
+Place of Purchase  QS10. Where do you mostly               13        22.4%
+  purchase skincare products from? (Mall counters)
+Place of Purchase  QS10. Where do you mostly                9        15.5%
+  purchase skincare products from? (Social Media
+  such as Facebook, Instagram)
+Place of Purchase  QS10. Where do you mostly                9        15.5%
+  purchase skincare products from? (Beauty salons
+  / spas)
+Place of Purchase  QS10. Where do you mostly                7        12.1%
+  purchase skincare products from? (Pharmacy /
+  Chemists / wellness stores)
+Place of Purchase  QS10. Where do you mostly                4         6.9%
+  purchase skincare products from? (Dermatology
+  Clinics / Skin Clinics)
+--------------------------------------------------------------------------------
+
+23. Monthly Spends  QS11. On average, how much do you spend monthly on buying skincare products?
+   Variable: QS11 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+1000-2000 INR                                              40        69.0%
+2001-3000 INR                                              14        24.1%
+Above 3000 INR                                              4         6.9%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+24. Do you regularly use premium skincare products? By premium products, we mean you spend a minimum of 600-800/- Rupees on a single product pack of 80gm/100ml.
+   Variable: QS11_2 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Yes                                                        58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+25. Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Electricity connection)
+   Variable: A_QS12_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+ Household Durables Ownership  QS12.1. Which of            58       100.0%
+  the following items are currently owned by your
+  household? (Electricity connection)
+ Household Durables Ownership  QS12.1. Which of            58       100.0%
+  the following items are currently owned by your
+  household? (Ceiling fan)
+ Household Durables Ownership  QS12.1. Which of            58       100.0%
+  the following items are currently owned by your
+  household? (Colour Television)
+ Household Durables Ownership  QS12.1. Which of            58       100.0%
+  the following items are currently owned by your
+  household? (Refrigerator)
+ Household Durables Ownership  QS12.1. Which of            58       100.0%
+  the following items are currently owned by your
+  household? (Washing machine)
+ Household Durables Ownership  QS12.1. Which of            57        98.3%
+  the following items are currently owned by your
+  household? (Two-wheeler)
+ Household Durables Ownership  QS12.1. Which of            57        98.3%
+  the following items are currently owned by your
+  household? (Personal computer / Laptop)
+ Household Durables Ownership  QS12.1. Which of            56        96.6%
+  the following items are currently owned by your
+  household? (Internet connection at home)
+ Household Durables Ownership  QS12.1. Which of            55        94.8%
+  the following items are currently owned by your
+  household? (Air conditioner)
+ Household Durables Ownership  QS12.1. Which of            24        41.4%
+  the following items are currently owned by your
+  household? (Four-wheeler (car / SUV))
+--------------------------------------------------------------------------------
+
+26. CWE Education  QS12.2. What is the highest level of education Chief Wage Earner has completed? By CWE we mean the person who contributes the most in households’ monthly expenses.
+   Variable: QS12 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 48
+Percentages calculated on base of 48
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+QS12.3                                                     48       100.0%
+CWE Education  QS12.2. What is the highest level            0         0.0%
+  of education Chief Wage Earner has completed? By
+  CWE we mean the person who contributes the most
+  in households’ monthly expenses.
+--------------------------------------------------------------------------------
+
+27. NCCS
    Variable: NCCS | Type: SINGLE
    Weighting: DISABLED
    Filter: NONE (All respondents)
@@ -59,8 +652,27 @@ A2                                                         10        17.2%
 --------------------------------------------------------------------------------
 TOTAL                                                      58       100.0%
 
-4. Brand Usage - All Respondents
-   Variable: QS10 | Type: MULTI
+28. QM11.1.  Please tell me what best describes your current working status the best
+   Variable: QM11 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 23
+Percentages calculated on base of 23
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+QM11.3 What best describes your current marital            23       100.0%
+  status?
+QM11.1.  Please tell me what best describes your            9        39.1%
+  current working status the best
+Respondent Education  QM11.2. What is the                   0         0.0%
+  highest level of education you have completed?
+--------------------------------------------------------------------------------
+
+29. Top Factors  Q.M1.1a. When buying skincare products, which of the below factors that matter most to you? Please select as many as applicable (Ingredient list)
+   Variable: A_QM1_1a | Type: MULTI
    Weighting: DISABLED
    Filter: NONE (All respondents)
 --------------------------------------------------------------------------------
@@ -70,17 +682,255 @@ Percentages calculated on base of 58
 
 Option                                                  Count   Percentage
 --------------------------------------------------------------------------------
-Brand A                                                    58       100.0%
-Brand B                                                    43        74.1%
-Brand F                                                    13        22.4%
-Brand C                                                     9        15.5%
-Brand D                                                     9        15.5%
-Brand E                                                     7        12.1%
-Brand G                                                     4         6.9%
+Top Factors  Q.M1.1a. When buying skincare                 46        79.3%
+  products, which of the below factors that matter
+  most to you? Please select as many as applicable
+  (Skin sensitivity concerns)
+Top Factors  Q.M1.1a. When buying skincare                 43        74.1%
+  products, which of the below factors that matter
+  most to you? Please select as many as applicable
+  (Brand reputation)
+Top Factors  Q.M1.1a. When buying skincare                 41        70.7%
+  products, which of the below factors that matter
+  most to you? Please select as many as applicable
+  (Long-term skin health / prevention)
+Top Factors  Q.M1.1a. When buying skincare                 39        67.2%
+  products, which of the below factors that matter
+  most to you? Please select as many as applicable
+  (Reviews / influencers)
+Top Factors  Q.M1.1a. When buying skincare                 38        65.5%
+  products, which of the below factors that matter
+  most to you? Please select as many as applicable
+  (Ingredient list)
+Top Factors  Q.M1.1a. When buying skincare                 32        55.2%
+  products, which of the below factors that matter
+  most to you? Please select as many as applicable
+  (Price)
+Top Factors  Q.M1.1a. When buying skincare                 29        50.0%
+  products, which of the below factors that matter
+  most to you? Please select as many as applicable
+  (Barrier repair / long-term health)
+Top Factors  Q.M1.1a. When buying skincare                 23        39.7%
+  products, which of the below factors that matter
+  most to you? Please select as many as applicable
+  (Dermatologist recommendation)
+Top Factors  Q.M1.1a. When buying skincare                 17        29.3%
+  products, which of the below factors that matter
+  most to you? Please select as many as applicable
+  (Claims on pack)
 --------------------------------------------------------------------------------
 
-5. Household Durables
-   Variable: QS12 | Type: MULTI
+30. Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on.
+   Variable: QM1_1b_O1 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Skin sensitivity concerns                                  15        25.9%
+Ingredient list                                            12        20.7%
+Brand reputation                                            9        15.5%
+Dermatologist recommendation                                9        15.5%
+Long-term skin health / prevention                          7        12.1%
+Reviews / influencers                                       4         6.9%
+Barrier repair / long-term health                           1         1.7%
+Price                                                       1         1.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+31. Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on.
+   Variable: QM1_1b_O2 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Skin sensitivity concerns                                  12        20.7%
+Long-term skin health / prevention                          9        15.5%
+Brand reputation                                            9        15.5%
+Ingredient list                                             6        10.3%
+Barrier repair / long-term health                           6        10.3%
+Dermatologist recommendation                                5         8.6%
+Price                                                       5         8.6%
+Reviews / influencers                                       4         6.9%
+Claims on pack                                              2         3.4%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+32. Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on.
+   Variable: QM1_1b_O3 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 55
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Price                                                      12        20.7%
+Long-term skin health / prevention                          9        15.5%
+Skin sensitivity concerns                                   9        15.5%
+Brand reputation                                            8        13.8%
+Reviews / influencers                                       7        12.1%
+Barrier repair / long-term health                           5         8.6%
+Dermatologist recommendation                                4         6.9%
+Claims on pack                                              1         1.7%
+Missing                                                     3         5.2%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+33. Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on.
+   Variable: QM1_1b_O4 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+34. Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on.
+   Variable: QM1_1b_O5 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+35. Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on.
+   Variable: QM1_1b_O6 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+36. Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on.
+   Variable: QM1_1b_O7 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+37. Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on.
+   Variable: QM1_1b_O8 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+38. Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on.
+   Variable: QM1_1b_O9 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+39. QM2.1 What best describes your skin care approach / routine?
+   Variable: QM2_1 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+I follow both Morning & Night routines with                41        70.7%
+  equal emphasis
+I follow Morning Skincare Routine: focusing on              9        15.5%
+  protecting skin
+I follow Night Skincare Routine: focusing on                8        13.8%
+  repairing /reviving skin
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+40. I prefer gentle products over aggressive activities.
+   Variable: T_QM2_2 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 11
+Percentages calculated on base of 11
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+I experiment with new skincare brands regularly             8        72.7%
+I worry about damaging my skin barrier (the                 3        27.3%
+  protective skin layer that keeps skin hydrated
+  and shields from external factors).
+I prefer gentle products over aggressive                    1         9.1%
+  activities.
+I am willing to pay more for “safe”                         1         9.1%
+  formulations.
+I like brands that explain why specific                     1         9.1%
+  ingredients are used.
+I prefer brands that focus on strengthening skin            0         0.0%
+  over time rather than giving quick fixes
+--------------------------------------------------------------------------------
+
+41. Moisturiser
+   Variable: T_QM3_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 39
+Percentages calculated on base of 39
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Moisturiser                                                27        69.2%
+Sunscreen                                                  26        66.7%
+Toner                                                      15        38.5%
+--------------------------------------------------------------------------------
+
+42. Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Nykaa)
+   Variable: A_QM3_2a | Type: MULTI
    Weighting: DISABLED
    Filter: NONE (All respondents)
 --------------------------------------------------------------------------------
@@ -90,20 +940,168 @@ Percentages calculated on base of 58
 
 Option                                                  Count   Percentage
 --------------------------------------------------------------------------------
-Television                                                 58       100.0%
-Air Conditioner                                            58       100.0%
-Washing Machine                                            58       100.0%
-Microwave Oven                                             58       100.0%
-Dishwasher                                                 58       100.0%
-Refrigerator                                               57        98.3%
-Water Heater                                               57        98.3%
-Air Purifier                                               56        96.6%
-Home Theater System                                        55        94.8%
-Smart Home Devices                                         24        41.4%
+Online Sources of purchase  Q.M3.2a. You                   51        87.9%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Nykaa)
+Online Sources of purchase  Q.M3.2a. You                   48        82.8%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Amazon)
+Online Sources of purchase  Q.M3.2a. You                   27        46.6%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Myntra)
+Online Sources of purchase  Q.M3.2a. You                   26        44.8%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Flipkart)
+Online Sources of purchase  Q.M3.2a. You                   20        34.5%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Purplle)
+Online Sources of purchase  Q.M3.2a. You                   20        34.5%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Quick/last minute delivery options (such as
+  BigBasket, Zepto, BlinkIt, Instama
+Online Sources of purchase  Q.M3.2a. You                   11        19.0%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Instagram)
+Online Sources of purchase  Q.M3.2a. You                   10        17.2%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Ajio)
+Online Sources of purchase  Q.M3.2a. You                    8        13.8%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from? (Tira
+  Beauty)
+Online Sources of purchase  Q.M3.2a. You                    6        10.3%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Others (Specify) ___________)
+Online Sources of purchase  Q.M3.2a. You                    4         6.9%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Sephora India)
+Online Sources of purchase  Q.M3.2a. You                    4         6.9%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (NewU)
+Online Sources of purchase  Q.M3.2a. You                    3         5.2%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (FirstCry)
+Online Sources of purchase  Q.M3.2a. You                    3         5.2%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Facebook)
+Online Sources of purchase  Q.M3.2a. You                    1         1.7%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Health & Glow)
+Online Sources of purchase  Q.M3.2a. You                    0         0.0%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (Maccaron)
+Online Sources of purchase  Q.M3.2a. You                    0         0.0%
+  mentioned that you buy skincare products online.
+  Which of the following apps/websites do you
+  regularly purchase skincare products from?
+  (WhatsApp business orders)
 --------------------------------------------------------------------------------
 
-6. Online Source of Purchase
-   Variable: QM3 | Type: MULTI
+43. Q.M3.2b. And which ONE of these is your Go-To/preferred option for buying skincare products online?
+   Variable: QM3_2b | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Nykaa                                                      38        65.5%
+Amazon                                                      6        10.3%
+Myntra                                                      3         5.2%
+Flipkart                                                    3         5.2%
+{0}                                                         2         3.4%
+Purplle                                                     2         3.4%
+Quick/last minute delivery options (such as                 2         3.4%
+  BigBasket, Zepto, BlinkIt, Instamart, Dunzo etc)
+Facebook                                                    1         1.7%
+Tira Beauty                                                 1         1.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+44. (Moisturizer) Trial vs Loyalty  Q.M3.3 Which of the following statements best describes your behaviour when it comes to trying and buying skincare brands in @_@ITERNAME@_@ ?
+   Variable: I_1_QM3_3 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+I usually stick to one or two brands.                      32        55.2%
+I am always trying something new                           17        29.3%
+I rotate between a few brands.                              9        15.5%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+45. (Sunscreen) Trial vs Loyalty  Q.M3.3 Which of the following statements best describes your behaviour when it comes to trying and buying skincare brands in @_@ITERNAME@_@ ?
+   Variable: I_2_QM3_3 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+I usually stick to one or two brands.                      30        51.7%
+I rotate between a few brands.                             20        34.5%
+I am always trying something new                            8        13.8%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+46. (Toner) Trial vs Loyalty  Q.M3.3 Which of the following statements best describes your behaviour when it comes to trying and buying skincare brands in @_@ITERNAME@_@ ?
+   Variable: I_3_QM3_3 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 46
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+I usually stick to one or two brands.                      18        31.0%
+I rotate between a few brands.                             17        29.3%
+I am always trying something new                           11        19.0%
+Missing                                                    12        20.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+47. Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Akind)
+   Variable: A_QM4_2 | Type: MULTI
    Weighting: DISABLED
    Filter: NONE (All respondents)
 --------------------------------------------------------------------------------
@@ -113,17 +1111,1594 @@ Percentages calculated on base of 58
 
 Option                                                  Count   Percentage
 --------------------------------------------------------------------------------
-Company Website                                            51        87.9%
-Amazon                                                     48        82.8%
-Myntra                                                     27        46.6%
-Social Media Shop                                          26        44.8%
-Flipkart                                                   20        34.5%
-Other E-commerce                                            8        13.8%
-Nykaa                                                       4         6.9%
-Mobile App                                                  4         6.9%
-Direct Message/Chat                                         1         1.7%
+Spont (next mentions):  Q.M4.2  And which other            36        62.1%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Other Specify)
+Spont (next mentions):  Q.M4.2  And which other            22        37.9%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Dot & Key)
+Spont (next mentions):  Q.M4.2  And which other            17        29.3%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Cetaphil)
+Spont (next mentions):  Q.M4.2  And which other            13        22.4%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Minimalist)
+Spont (next mentions):  Q.M4.2  And which other             9        15.5%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Hyphen)
+Spont (next mentions):  Q.M4.2  And which other             6        10.3%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (The Derma Co.)
+Spont (next mentions):  Q.M4.2  And which other             5         8.6%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Dr Sheth’s)
+Spont (next mentions):  Q.M4.2  And which other             4         6.9%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Neutrogena)
+Spont (next mentions):  Q.M4.2  And which other             3         5.2%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (The Ordinary)
+Spont (next mentions):  Q.M4.2  And which other             2         3.4%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Beauty of
+  Joseon)
+Spont (next mentions):  Q.M4.2  And which other             2         3.4%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Clinique)
+Spont (next mentions):  Q.M4.2  And which other             2         3.4%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Re’equil)
+Spont (next mentions):  Q.M4.2  And which other             1         1.7%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Akind)
+Spont (next mentions):  Q.M4.2  And which other             1         1.7%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (COSRX)
+Spont (next mentions):  Q.M4.2  And which other             1         1.7%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Innisfree)
+Spont (next mentions):  Q.M4.2  And which other             1         1.7%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Laneige)
+Spont (next mentions):  Q.M4.2  And which other             0         0.0%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (D’you In My
+  Defence)
+Spont (next mentions):  Q.M4.2  And which other             0         0.0%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Klairs)
+Spont (next mentions):  Q.M4.2  And which other             0         0.0%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (La Roche-Posay)
+Spont (next mentions):  Q.M4.2  And which other             0         0.0%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Paula's Choice)
+Spont (next mentions):  Q.M4.2  And which other             0         0.0%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (Other Specify)
+Spont (next mentions):  Q.M4.2  And which other             0         0.0%
+  PREMIUM SKINCARE brands can you think of? Please
+  mention all that you can recall (None)
 --------------------------------------------------------------------------------
+
+48. (Akind)
+   Variable: A_TOM_SPONT | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+ ({0})                                                     36        62.1%
+ (Dot & Key)                                               35        60.3%
+ (Cetaphil)                                                25        43.1%
+ ({0})                                                     23        39.7%
+ (Minimalist)                                              16        27.6%
+ (Hyphen)                                                  13        22.4%
+ (The Derma Co.)                                            9        15.5%
+ (Neutrogena)                                               6        10.3%
+ (Dr Sheth’s)                                               5         8.6%
+ (Clinique)                                                 4         6.9%
+ (The Ordinary)                                             3         5.2%
+ (Beauty of Joseon)                                         2         3.4%
+ (Re’equil)                                                 2         3.4%
+ (Akind)                                                    1         1.7%
+ (COSRX)                                                    1         1.7%
+ (Innisfree)                                                1         1.7%
+ (Laneige)                                                  1         1.7%
+ (D’you In My Defence)                                      0         0.0%
+ (Klairs)                                                   0         0.0%
+ (La Roche-Posay)                                           0         0.0%
+ (Paula's Choice)                                           0         0.0%
+--------------------------------------------------------------------------------
+
+49. Akind
+   Variable: T_QM4_3 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+The Derma Co.                                              42        72.4%
+Neutrogena                                                 41        70.7%
+Dr Sheth’s                                                 40        69.0%
+The Ordinary                                               38        65.5%
+Minimalist                                                 35        60.3%
+Cetaphil                                                   33        56.9%
+Clinique                                                   33        56.9%
+Dot & Key                                                  22        37.9%
+Hyphen                                                     21        36.2%
+Laneige                                                    21        36.2%
+Re’equil                                                   18        31.0%
+Klairs                                                     17        29.3%
+Akind                                                      14        24.1%
+Beauty of Joseon                                           12        20.7%
+COSRX                                                       9        15.5%
+Paula's Choice                                              8        13.8%
+La Roche-Posay                                              7        12.1%
+D’you In My Defence                                         5         8.6%
+Innisfree                                                   4         6.9%
+--------------------------------------------------------------------------------
+
+50. (Akind)
+   Variable: A_TOT_AWR | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+ (Cetaphil)                                                58       100.0%
+ (Dot & Key)                                               57        98.3%
+ (Minimalist)                                              51        87.9%
+ (The Derma Co.)                                           51        87.9%
+ (Neutrogena)                                              47        81.0%
+ (Dr Sheth’s)                                              45        77.6%
+ (The Ordinary)                                            41        70.7%
+ (Clinique)                                                37        63.8%
+ ({0})                                                     36        62.1%
+ (Hyphen)                                                  34        58.6%
+ ({0})                                                     23        39.7%
+ (Laneige)                                                 22        37.9%
+ (Re’equil)                                                20        34.5%
+ (Klairs)                                                  17        29.3%
+ (Akind)                                                   15        25.9%
+ (Beauty of Joseon)                                        14        24.1%
+ (COSRX)                                                   10        17.2%
+ (Paula's Choice)                                           8        13.8%
+ (La Roche-Posay)                                           7        12.1%
+ (D’you In My Defence)                                      5         8.6%
+ (Innisfree)                                                5         8.6%
+--------------------------------------------------------------------------------
+
+51. P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Akind)
+   Variable: A_QM4_4 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+P3M Usage  Q.M4.4.  Which of these brands have             33        56.9%
+  you personally used in the past 3 months?
+  (Cetaphil)
+P3M Usage  Q.M4.4.  Which of these brands have             33        56.9%
+  you personally used in the past 3 months? (Dot &
+  Key)
+P3M Usage  Q.M4.4.  Which of these brands have             20        34.5%
+  you personally used in the past 3 months? ({0})
+P3M Usage  Q.M4.4.  Which of these brands have             16        27.6%
+  you personally used in the past 3 months? (The
+  Derma Co.)
+P3M Usage  Q.M4.4.  Which of these brands have             14        24.1%
+  you personally used in the past 3 months?
+  (Minimalist)
+P3M Usage  Q.M4.4.  Which of these brands have             13        22.4%
+  you personally used in the past 3 months? ({0})
+P3M Usage  Q.M4.4.  Which of these brands have             12        20.7%
+  you personally used in the past 3 months?
+  (Hyphen)
+P3M Usage  Q.M4.4.  Which of these brands have              9        15.5%
+  you personally used in the past 3 months? (Dr
+  Sheth’s)
+P3M Usage  Q.M4.4.  Which of these brands have              8        13.8%
+  you personally used in the past 3 months?
+  (Neutrogena)
+P3M Usage  Q.M4.4.  Which of these brands have              5         8.6%
+  you personally used in the past 3 months?
+  (Clinique)
+P3M Usage  Q.M4.4.  Which of these brands have              3         5.2%
+  you personally used in the past 3 months?
+  (Beauty of Joseon)
+P3M Usage  Q.M4.4.  Which of these brands have              3         5.2%
+  you personally used in the past 3 months?
+  (Laneige)
+P3M Usage  Q.M4.4.  Which of these brands have              2         3.4%
+  you personally used in the past 3 months?
+  (Re’equil)
+P3M Usage  Q.M4.4.  Which of these brands have              1         1.7%
+  you personally used in the past 3 months?
+  (Akind)
+P3M Usage  Q.M4.4.  Which of these brands have              1         1.7%
+  you personally used in the past 3 months?
+  (COSRX)
+P3M Usage  Q.M4.4.  Which of these brands have              1         1.7%
+  you personally used in the past 3 months? (The
+  Ordinary)
+P3M Usage  Q.M4.4.  Which of these brands have              0         0.0%
+  you personally used in the past 3 months? (D’you
+  In My Defence)
+P3M Usage  Q.M4.4.  Which of these brands have              0         0.0%
+  you personally used in the past 3 months?
+  (Innisfree)
+P3M Usage  Q.M4.4.  Which of these brands have              0         0.0%
+  you personally used in the past 3 months?
+  (Klairs)
+P3M Usage  Q.M4.4.  Which of these brands have              0         0.0%
+  you personally used in the past 3 months? (La
+  Roche-Posay)
+P3M Usage  Q.M4.4.  Which of these brands have              0         0.0%
+  you personally used in the past 3 months?
+  (Paula's Choice)
+--------------------------------------------------------------------------------
+
+52. Consideration  QM4.5 Which of these brands would you consider buying in future? (Akind)
+   Variable: A_QM4_5 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Consideration  QM4.5 Which of these brands would           21        36.2%
+  you consider buying in future? (Dot & Key)
+Consideration  QM4.5 Which of these brands would           19        32.8%
+  you consider buying in future? (Cetaphil)
+Consideration  QM4.5 Which of these brands would           14        24.1%
+  you consider buying in future? ({0})
+Consideration  QM4.5 Which of these brands would           11        19.0%
+  you consider buying in future? ({0})
+Consideration  QM4.5 Which of these brands would            8        13.8%
+  you consider buying in future? (The Derma Co.)
+Consideration  QM4.5 Which of these brands would            7        12.1%
+  you consider buying in future? (Minimalist)
+Consideration  QM4.5 Which of these brands would            6        10.3%
+  you consider buying in future? (Hyphen)
+Consideration  QM4.5 Which of these brands would            5         8.6%
+  you consider buying in future? (Dr Sheth’s)
+Consideration  QM4.5 Which of these brands would            2         3.4%
+  you consider buying in future? (Beauty of
+  Joseon)
+Consideration  QM4.5 Which of these brands would            2         3.4%
+  you consider buying in future? (Clinique)
+Consideration  QM4.5 Which of these brands would            2         3.4%
+  you consider buying in future? (Laneige)
+Consideration  QM4.5 Which of these brands would            1         1.7%
+  you consider buying in future? (COSRX)
+Consideration  QM4.5 Which of these brands would            1         1.7%
+  you consider buying in future? (Neutrogena)
+Consideration  QM4.5 Which of these brands would            0         0.0%
+  you consider buying in future? (Akind)
+Consideration  QM4.5 Which of these brands would            0         0.0%
+  you consider buying in future? (D’you In My
+  Defence)
+Consideration  QM4.5 Which of these brands would            0         0.0%
+  you consider buying in future? (Innisfree)
+Consideration  QM4.5 Which of these brands would            0         0.0%
+  you consider buying in future? (Klairs)
+Consideration  QM4.5 Which of these brands would            0         0.0%
+  you consider buying in future? (La Roche-Posay)
+Consideration  QM4.5 Which of these brands would            0         0.0%
+  you consider buying in future? (Paula's Choice)
+Consideration  QM4.5 Which of these brands would            0         0.0%
+  you consider buying in future? (Re’equil)
+Consideration  QM4.5 Which of these brands would            0         0.0%
+  you consider buying in future? (The Ordinary)
+--------------------------------------------------------------------------------
+
+53. (Akind)
+   Variable: A_QM52_BRANDS | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+ (Cetaphil)                                                58       100.0%
+ (Dot & Key)                                               57        98.3%
+ (Minimalist)                                              51        87.9%
+ (Hyphen)                                                  34        58.6%
+ (Akind)                                                   15        25.9%
+ (Beauty of Joseon)                                        14        24.1%
+ (COSRX)                                                   10        17.2%
+ (Paula's Choice)                                           8        13.8%
+ (Innisfree)                                                5         8.6%
+ (None)                                                     0         0.0%
+--------------------------------------------------------------------------------
+
+54. Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)
+   Variable: T_QM5_1_1_A_QM5_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Q.M5.1  Here is a list of statements that                  38        65.5%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Cetaphil)
+Q.M5.1  Here is a list of statements that                  27        46.6%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Dot & Key)
+Q.M5.1  Here is a list of statements that                  11        19.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Minimalist)
+Q.M5.1  Here is a list of statements that                   5         8.6%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Hyphen)
+Q.M5.1  Here is a list of statements that                   3         5.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (None)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Akind)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Beauty of
+  Joseon)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (COSRX)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Innisfree)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Paula's
+  Choice)
+--------------------------------------------------------------------------------
+
+55. Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)
+   Variable: T_QM5_1_2_A_QM5_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Q.M5.1  Here is a list of statements that                  32        55.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Cetaphil)
+Q.M5.1  Here is a list of statements that                  27        46.6%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Dot & Key)
+Q.M5.1  Here is a list of statements that                  12        20.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Minimalist)
+Q.M5.1  Here is a list of statements that                   6        10.3%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Hyphen)
+Q.M5.1  Here is a list of statements that                   3         5.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Beauty of
+  Joseon)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Akind)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (COSRX)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (None)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Innisfree)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Paula's
+  Choice)
+--------------------------------------------------------------------------------
+
+56. Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)
+   Variable: T_QM5_1_3_A_QM5_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Q.M5.1  Here is a list of statements that                  32        55.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Cetaphil)
+Q.M5.1  Here is a list of statements that                  22        37.9%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Dot & Key)
+Q.M5.1  Here is a list of statements that                  13        22.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Minimalist)
+Q.M5.1  Here is a list of statements that                  10        17.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Hyphen)
+Q.M5.1  Here is a list of statements that                   6        10.3%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (None)
+Q.M5.1  Here is a list of statements that                   3         5.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Akind)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Beauty of
+  Joseon)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (COSRX)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Innisfree)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Paula's
+  Choice)
+--------------------------------------------------------------------------------
+
+57. Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)
+   Variable: T_QM5_1_4_A_QM5_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Q.M5.1  Here is a list of statements that                  21        36.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (None)
+Q.M5.1  Here is a list of statements that                  20        34.5%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Cetaphil)
+Q.M5.1  Here is a list of statements that                  16        27.6%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Minimalist)
+Q.M5.1  Here is a list of statements that                  11        19.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Dot & Key)
+Q.M5.1  Here is a list of statements that                   6        10.3%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Hyphen)
+Q.M5.1  Here is a list of statements that                   4         6.9%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Beauty of
+  Joseon)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Akind)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (COSRX)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Paula's
+  Choice)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Innisfree)
+--------------------------------------------------------------------------------
+
+58. Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)
+   Variable: T_QM5_1_5_A_QM5_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Q.M5.1  Here is a list of statements that                  38        65.5%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Cetaphil)
+Q.M5.1  Here is a list of statements that                  23        39.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Dot & Key)
+Q.M5.1  Here is a list of statements that                  22        37.9%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Minimalist)
+Q.M5.1  Here is a list of statements that                  10        17.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Hyphen)
+Q.M5.1  Here is a list of statements that                   4         6.9%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Beauty of
+  Joseon)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Akind)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (COSRX)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Paula's
+  Choice)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (None)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Innisfree)
+--------------------------------------------------------------------------------
+
+59. Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)
+   Variable: T_QM5_1_6_A_QM5_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Q.M5.1  Here is a list of statements that                  29        50.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Cetaphil)
+Q.M5.1  Here is a list of statements that                  29        50.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Dot & Key)
+Q.M5.1  Here is a list of statements that                  12        20.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Minimalist)
+Q.M5.1  Here is a list of statements that                   7        12.1%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Hyphen)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Beauty of
+  Joseon)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (COSRX)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Akind)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (None)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Innisfree)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Paula's
+  Choice)
+--------------------------------------------------------------------------------
+
+60. Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)
+   Variable: T_QM5_1_7_A_QM5_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Q.M5.1  Here is a list of statements that                  33        56.9%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Cetaphil)
+Q.M5.1  Here is a list of statements that                  30        51.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Dot & Key)
+Q.M5.1  Here is a list of statements that                   9        15.5%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Minimalist)
+Q.M5.1  Here is a list of statements that                   5         8.6%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Hyphen)
+Q.M5.1  Here is a list of statements that                   3         5.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Beauty of
+  Joseon)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (None)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Akind)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (COSRX)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Innisfree)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Paula's
+  Choice)
+--------------------------------------------------------------------------------
+
+61. Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)
+   Variable: T_QM5_1_8_A_QM5_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Q.M5.1  Here is a list of statements that                  41        70.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Cetaphil)
+Q.M5.1  Here is a list of statements that                  28        48.3%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Dot & Key)
+Q.M5.1  Here is a list of statements that                  14        24.1%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Minimalist)
+Q.M5.1  Here is a list of statements that                   8        13.8%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Hyphen)
+Q.M5.1  Here is a list of statements that                   5         8.6%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Beauty of
+  Joseon)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Akind)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (None)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (COSRX)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Innisfree)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Paula's
+  Choice)
+--------------------------------------------------------------------------------
+
+62. Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)
+   Variable: T_QM5_1_9_A_QM5_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Q.M5.1  Here is a list of statements that                  40        69.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Cetaphil)
+Q.M5.1  Here is a list of statements that                  31        53.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Dot & Key)
+Q.M5.1  Here is a list of statements that                  14        24.1%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Minimalist)
+Q.M5.1  Here is a list of statements that                   7        12.1%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Hyphen)
+Q.M5.1  Here is a list of statements that                   4         6.9%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Beauty of
+  Joseon)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Akind)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (COSRX)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Innisfree)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Paula's
+  Choice)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (None)
+--------------------------------------------------------------------------------
+
+63. Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)
+   Variable: T_QM5_1_10_A_QM5_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Q.M5.1  Here is a list of statements that                  37        63.8%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Cetaphil)
+Q.M5.1  Here is a list of statements that                  20        34.5%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Minimalist)
+Q.M5.1  Here is a list of statements that                  17        29.3%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Dot & Key)
+Q.M5.1  Here is a list of statements that                  10        17.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Hyphen)
+Q.M5.1  Here is a list of statements that                   4         6.9%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (COSRX)
+Q.M5.1  Here is a list of statements that                   4         6.9%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (None)
+Q.M5.1  Here is a list of statements that                   3         5.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Beauty of
+  Joseon)
+Q.M5.1  Here is a list of statements that                   2         3.4%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Akind)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Innisfree)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Paula's
+  Choice)
+--------------------------------------------------------------------------------
+
+64. Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)
+   Variable: T_QM5_1_11_A_QM5_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 58
+Percentages calculated on base of 58
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Q.M5.1  Here is a list of statements that                  44        75.9%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (None)
+Q.M5.1  Here is a list of statements that                   6        10.3%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Minimalist)
+Q.M5.1  Here is a list of statements that                   5         8.6%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Cetaphil)
+Q.M5.1  Here is a list of statements that                   3         5.2%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Dot & Key)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Akind)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Hyphen)
+Q.M5.1  Here is a list of statements that                   1         1.7%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Paula's
+  Choice)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Beauty of
+  Joseon)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (COSRX)
+Q.M5.1  Here is a list of statements that                   0         0.0%
+  product users may associate with PREMIUM
+  skincare brands. Please associate each statement
+  - you may associate one, many brands or none. .
+  There is no right or wrong answer. (Innisfree)
+--------------------------------------------------------------------------------
+
+65. Gentle on skin
+   Variable: T_QM5_2 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 3
+Percentages calculated on base of 3
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Minimal/ no nonsense                                        2        66.7%
+Supports skin barrier                                       1        33.3%
+Trustworthy                                                 1        33.3%
+Safe for daily use                                          1        33.3%
+Gentle on skin                                              0         0.0%
+Ingredient-led                                              0         0.0%
+Results Driven                                              0         0.0%
+Science-backed / dermatologically tested                    0         0.0%
+--------------------------------------------------------------------------------
+
+66. (Iteration_1)
+   Variable: I_1_CONCEPT_SHOWN | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+K4 (Beauty begins at the Skin barrier)                     32        55.2%
+T2 (Barrier first Beauty)                                  26        44.8%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+67. (Iteration_1) Clear and easy to understand
+   Variable: I_1_T_QC4 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 1
+Percentages calculated on base of 1
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+(Iteration_1) Believable for AKIND                          1       100.0%
+(Iteration_1) Clear and easy to understand                  0         0.0%
+(Iteration_1) Relevant to my skincare needs                 0         0.0%
+(Iteration_1) Unique & different compared to                0         0.0%
+  other brands
+(Iteration_1) Makes me interested in the brand/             0         0.0%
+  Find it appealing
+(Iteration_1) Feels like a natural evolution of             0         0.0%
+  what AKIND already stands for.
+--------------------------------------------------------------------------------
+
+68. (Iteration_1) Positioning Elasticity / Stretch Judgment  QC5  Which if the following best describes thus brand description {0} for AKIND?
+   Variable: I_1_QC5 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Feels like a natural evolution of the brand                37        63.8%
+Feels like a stretch but still believable                  18        31.0%
+Feels aspirational but slightly forced                      3         5.2%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+69. (Iteration_1) Purchase Intention SHOW SCREEN   QC6.  How likely are you to actively consider AKIND when you next shop for premium skincare? Please indicate on a scale where 1 means Will Definitely NOT Consider Buying and 4 means Will Definitely Consider Bu
+   Variable: I_1_QC6 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Will probably buy                                          32        55.2%
+Definitely consider buying                                 21        36.2%
+Definitely not consider buying                              4         6.9%
+Will probably NOT buy                                       1         1.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+70. (Iteration_1) QC7.  Overall, Which of the following describes how much you are willing to pay for the AKIND brand ?. I will buy even if
+   Variable: I_1_QC7 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 53
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+It costs a little more than regular skincare               35        60.3%
+  brand.
+It cost only little more than the cheapest                 11        19.0%
+  brand.
+It costs a lot more than regular skincare brands            5         8.6%
+It cost only as much as the cheapest brand.                 2         3.4%
+Missing                                                     5         8.6%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+71. (Iteration_2)
+   Variable: I_2_CONCEPT_SHOWN | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+T2 (Barrier first Beauty)                                  32        55.2%
+K4 (Beauty begins at the Skin barrier)                     26        44.8%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+72. (Iteration_2) Positioning Elasticity / Stretch Judgment  QC5  Which if the following best describes thus brand description {0} for AKIND?
+   Variable: I_2_QC5 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Feels like a natural evolution of the brand                45        77.6%
+Feels like a stretch but still believable                  13        22.4%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+73. (Iteration_2) Purchase Intention SHOW SCREEN   QC6.  How likely are you to actively consider AKIND when you next shop for premium skincare? Please indicate on a scale where 1 means Will Definitely NOT Consider Buying and 4 means Will Definitely Consider Bu
+   Variable: I_2_QC6 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Definitely consider buying                                 30        51.7%
+Will probably buy                                          27        46.6%
+Will probably NOT buy                                       1         1.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+74. (Iteration_2) QC7.  Overall, Which of the following describes how much you are willing to pay for the AKIND brand ?. I will buy even if
+   Variable: I_2_QC7 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 57
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+It costs a little more than regular skincare               37        63.8%
+  brand.
+It cost only little more than the cheapest                 10        17.2%
+  brand.
+It costs a lot more than regular skincare brands            7        12.1%
+It cost only as much as the cheapest brand.                 3         5.2%
+Missing                                                     1         1.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+75. Direct Comparison  QM7.1  Thinking about both the brand descriptions in totality, which of the two do you prefer more?  PREFERENCE T2 (Barrier first Beauty)        K4 (Beauty begins at the Skin barrier)
+   Variable: QM7 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 58
+Base (selected at least one): 17
+Percentages calculated on base of 17
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Direct Comparison  QM7.1  Thinking about both              16        94.1%
+  the brand descriptions in totality, which of the
+  two do you prefer more?  PREFERENCE T2 (Barrier
+  first Beauty)        K4 (Beauty begins at the
+  Skin barrier)
+Product Brand fit  QM7.2  Thinking about AKIND’s           12        70.6%
+  products overall, which brand description fits
+  them better?   T2K4
+--------------------------------------------------------------------------------
+
+76. (Moisturizer) Fit with Brand (For key product categories)  QM8.1a  Please rate the extent to which each product type fits with the key message AKIND is communicating in this brand description, where 1 is Does not fit at all & 4 is Fits extremely well  Plea
+   Variable: I_1_QM8_1a | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+4 = Fits extremely well                                    21        36.2%
+3 = Fits                                                   20        34.5%
+2 = Fits Somewhat                                          16        27.6%
+1 = Does not fit at all                                     1         1.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+77. (Sunscreen) Fit with Brand (For key product categories)  QM8.1a  Please rate the extent to which each product type fits with the key message AKIND is communicating in this brand description, where 1 is Does not fit at all & 4 is Fits extremely well  Please
+   Variable: I_2_QM8_1a | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+3 = Fits                                                   29        50.0%
+2 = Fits Somewhat                                          19        32.8%
+4 = Fits extremely well                                     9        15.5%
+1 = Does not fit at all                                     1         1.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+78. (Toner) Fit with Brand (For key product categories)  QM8.1a  Please rate the extent to which each product type fits with the key message AKIND is communicating in this brand description, where 1 is Does not fit at all & 4 is Fits extremely well  Please rat
+   Variable: I_3_QM8_1a | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+3 = Fits                                                   23        39.7%
+2 = Fits Somewhat                                          20        34.5%
+4 = Fits extremely well                                    13        22.4%
+1 = Does not fit at all                                     2         3.4%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+79. (Moisturizer) Purchase Intention (For key product categories)  SHOW SCREEN  QM8.1b   Keeping the brand description in mind , how likely are you to actively consider AKIND @_@ITERNAME@_@ when you next shop for skincare?
+   Variable: I_1_QM8_1b | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+3 = Will Probably buy                                      33        56.9%
+4 = Definitely consider buying                             23        39.7%
+2 = Will probably NOT buy                                   2         3.4%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+80. (Sunscreen) Purchase Intention (For key product categories)  SHOW SCREEN  QM8.1b   Keeping the brand description in mind , how likely are you to actively consider AKIND @_@ITERNAME@_@ when you next shop for skincare?
+   Variable: I_2_QM8_1b | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+3 = Will Probably buy                                      33        56.9%
+4 = Definitely consider buying                             21        36.2%
+2 = Will probably NOT buy                                   4         6.9%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+81. (Toner) Purchase Intention (For key product categories)  SHOW SCREEN  QM8.1b   Keeping the brand description in mind , how likely are you to actively consider AKIND @_@ITERNAME@_@ when you next shop for skincare?
+   Variable: I_3_QM8_1b | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 46
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+3 = Will Probably buy                                      31        53.4%
+4 = Definitely consider buying                              9        15.5%
+2 = Will probably NOT buy                                   6        10.3%
+Missing                                                    12        20.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+82. CAPTURE GPS
+   Variable: GPS_CAPTURE_LA | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+19.1152745                                                  2         3.4%
+19.1218595                                                  2         3.4%
+19.120828                                                   1         1.7%
+19.1289211                                                  1         1.7%
+19.1259046                                                  1         1.7%
+19.1218793                                                  1         1.7%
+19.0474063                                                  1         1.7%
+19.0475927                                                  1         1.7%
+19.1218638                                                  1         1.7%
+19.120591                                                   1         1.7%
+19.1205863                                                  1         1.7%
+19.1220234                                                  1         1.7%
+19.1219224                                                  1         1.7%
+19.1206646                                                  1         1.7%
+19.1218659                                                  1         1.7%
+19.12203                                                    1         1.7%
+19.1218624                                                  1         1.7%
+19.1218653                                                  1         1.7%
+19.1217361                                                  1         1.7%
+19.1278957                                                  1         1.7%
+19.1145427                                                  1         1.7%
+19.1220194                                                  1         1.7%
+19.1837685                                                  1         1.7%
+19.1219859                                                  1         1.7%
+19.1219082                                                  1         1.7%
+19.1219186                                                  1         1.7%
+19.1218586                                                  1         1.7%
+19.1220275                                                  1         1.7%
+19.1218541                                                  1         1.7%
+19.1841193                                                  1         1.7%
+19.1217521                                                  1         1.7%
+19.120882                                                   1         1.7%
+19.1208659                                                  1         1.7%
+19.10301461                                                 1         1.7%
+19.1218602                                                  1         1.7%
+19.121864                                                   1         1.7%
+19.2533567                                                  1         1.7%
+19.1218658                                                  1         1.7%
+19.1218664                                                  1         1.7%
+19.1219157                                                  1         1.7%
+19.1994399                                                  1         1.7%
+19.1995172                                                  1         1.7%
+19.1993855                                                  1         1.7%
+19.0448633333333                                            1         1.7%
+19.1218592                                                  1         1.7%
+19.1218733                                                  1         1.7%
+19.1174596                                                  1         1.7%
+19.1218641                                                  1         1.7%
+19.1218569                                                  1         1.7%
+19.1218571                                                  1         1.7%
+18.9885405                                                  1         1.7%
+18.9884251                                                  1         1.7%
+19.1218589                                                  1         1.7%
+19.1218688                                                  1         1.7%
+19.2435862                                                  1         1.7%
+19.1218798                                                  1         1.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+83. CAPTURE GPS
+   Variable: GPS_CAPTURE_LO | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+72.8556222                                                  2         3.4%
+72.8551015                                                  2         3.4%
+72.8547712                                                  1         1.7%
+72.8582215                                                  1         1.7%
+72.8515886                                                  1         1.7%
+72.855057                                                   1         1.7%
+72.8977275                                                  1         1.7%
+72.8975665                                                  1         1.7%
+72.855104                                                   1         1.7%
+72.8545011                                                  1         1.7%
+72.8545051                                                  1         1.7%
+72.8547473                                                  1         1.7%
+72.8549802                                                  1         1.7%
+72.85436                                                    1         1.7%
+72.8551062                                                  1         1.7%
+72.8547517                                                  1         1.7%
+72.8551052                                                  1         1.7%
+72.8550977                                                  1         1.7%
+72.8408922                                                  1         1.7%
+72.8519625                                                  1         1.7%
+72.850303                                                   1         1.7%
+72.8547065                                                  1         1.7%
+72.8557942                                                  1         1.7%
+72.8551114                                                  1         1.7%
+72.854929                                                   1         1.7%
+72.8549809                                                  1         1.7%
+72.8550876                                                  1         1.7%
+72.8545899                                                  1         1.7%
+72.8551116                                                  1         1.7%
+72.8551113                                                  1         1.7%
+72.8486376                                                  1         1.7%
+72.8408039                                                  1         1.7%
+72.8399802                                                  1         1.7%
+72.8399837                                                  1         1.7%
+72.83737842                                                 1         1.7%
+72.8551069                                                  1         1.7%
+72.8550993                                                  1         1.7%
+72.8571539                                                  1         1.7%
+72.8550921                                                  1         1.7%
+72.8550918                                                  1         1.7%
+72.8547747                                                  1         1.7%
+72.8441715                                                  1         1.7%
+72.8421839                                                  1         1.7%
+72.8421015                                                  1         1.7%
+72.874175                                                   1         1.7%
+72.8550897                                                  1         1.7%
+72.8550634                                                  1         1.7%
+72.8469475                                                  1         1.7%
+72.8551067                                                  1         1.7%
+72.8551089                                                  1         1.7%
+72.8550995                                                  1         1.7%
+72.8345668                                                  1         1.7%
+72.8344816                                                  1         1.7%
+72.8550981                                                  1         1.7%
+72.8576113                                                  1         1.7%
+72.8550321                                                  1         1.7%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+84. Q.AC.1 Have you been accompained by the Field Supervisor/ Field Executive/ Research Team Member/Other
+   Variable: QAC1 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 58
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+No                                                         48        82.8%
+Yes                                                        10        17.2%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+85. Age
+   Variable: QC_QS5 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+86. Monthly Spends
+   Variable: QC_QS11 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+87. Premium User Yes/No
+   Variable: QC_QS11_2 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+88. Can you confirm whether the interviewer showed you the brand logos and brand concepts before asking questions on them?
+   Variable: QC_TBC1 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+89. Was your interview conducted using a tablet or a mobile phone?
+   Variable: QC_TBC2 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+90. Was the PBC conducted for this interview?
+   Variable: QC_PBC1 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
+
+91. If Yes, who conducted the PBC?
+   Variable: QC_PBC2 | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 58
+Valid Responses: 0
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Missing                                                    58       100.0%
+--------------------------------------------------------------------------------
+TOTAL                                                      58       100.0%
 
 ======================================================================
-End of Report - 6 variable(s) processed
+End of Report - 91 variable(s) processed
 ======================================================================

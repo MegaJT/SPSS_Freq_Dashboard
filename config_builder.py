@@ -40,22 +40,79 @@ def parse_arguments():
 # SPSS metadata reader
 # ─────────────────────────────────────────────
 
+# All SPSS format codes that indicate a date, time, or datetime variable.
+# original_variable_types values always start with one of these prefixes
+# (followed by digits for width, e.g. "DATE11", "ADATE10", "DATETIME23.6").
+_SPSS_DATE_TIME_PREFIXES = (
+    "DATE",      # dd-mmm-yyyy
+    "ADATE",     # mm/dd/yyyy  (American)
+    "EDATE",     # dd.mm.yyyy  (European)
+    "JDATE",     # Julian      yyyyddd
+    "SDATE",     # Sortable    yyyy/mm/dd
+    "QYR",       # Quarter-Year
+    "MOYR",      # Month-Year
+    "WKYR",      # Week-Year
+    "WKDAY",     # Day of week
+    "MONTH",     # Month name
+    "DATETIME",  # dd-mmm-yyyy hh:mm:ss
+    "DTIME",     # dd hh:mm:ss
+    "TIME",      # hh:mm:ss
+    "MTIME",     # mm:ss
+)
+
+
+def _is_datetime_format(fmt_str):
+    """Return True if the SPSS original_variable_types string is a date/time format."""
+    if not fmt_str:
+        return False
+    upper = fmt_str.upper().strip()
+    return any(upper.startswith(prefix) for prefix in _SPSS_DATE_TIME_PREFIXES)
+
+
 def read_spss_meta(spss_path):
-    """Return (column_names, column_labels, value_labels_map)"""
+    """
+    Return (column_names, column_labels, value_labels_map, excluded_vars).
+
+    excluded_vars is a dict  {col_name: reason}  for variables that were
+    filtered out (string or datetime) so the UI can show a summary.
+    """
     _, meta = pyreadstat.read_sav(spss_path, metadataonly=True)
+
+    readstat_types  = meta.readstat_variable_types   # {col: 'double'|'string'}
+    original_types  = meta.original_variable_types   # {col: 'F8.2'|'A10'|'DATE11'|...}
+
+    excluded = {}
+    clean_names = []
+
+    for col in meta.column_names:
+        rtype = readstat_types.get(col, "")
+        otype = original_types.get(col, "")
+
+        if rtype == "string":
+            excluded[col] = "string variable"
+        elif _is_datetime_format(otype):
+            excluded[col] = f"date/time variable ({otype})"
+        else:
+            clean_names.append(col)
+
     return (
-        meta.column_names,
+        clean_names,
         meta.column_names_to_labels,
         meta.variable_value_labels,
+        excluded,
     )
 
 
-def auto_detect_variables(column_names, column_labels):
+def auto_detect_variables(column_names, column_labels, value_labels_map=None):
     """
     Heuristically group variables:
     - Columns whose name ends with _1, _2 … and share a common prefix
       are treated as sub-variables of a multi-punch parent.
     - Everything else is single-punch.
+
+    value_labels_map: {col_name: {value: label}} from pyreadstat metadata.
+    Single-punch variables get their SPSS value_labels stored in the dict
+    so users can edit/reorder them in the UI.
 
     Returns a list of variable dicts ready for the UI store.
     """
@@ -107,9 +164,17 @@ def auto_detect_variables(column_names, column_labels):
                     "sub_variable_labels": {
                         c: column_labels.get(c, c) for c in sub_names
                     },
+                    "value_labels": {},  # not used for multi
                     "included": True,
                 })
         elif col not in used_as_sub:
+            # Store SPSS value labels (as string keys for JSON serialisation).
+            # These become both the display labels and the display order.
+            spss_val_labels = {}
+            if value_labels_map and col in value_labels_map:
+                spss_val_labels = {
+                    str(k): v for k, v in value_labels_map[col].items()
+                }
             variables.append({
                 "id": col,
                 "name": col,
@@ -117,6 +182,7 @@ def auto_detect_variables(column_names, column_labels):
                 "type": "single",
                 "sub_variables": [],
                 "sub_variable_labels": {},
+                "value_labels": spss_val_labels,
                 "included": True,
             })
 
@@ -146,6 +212,9 @@ def load_existing_config(meta_path, detected_vars):
             var["sub_variable_labels"] = ev.get(
                 "sub_variable_labels", var["sub_variable_labels"]
             )
+            # Load custom value_labels from JSON if present; otherwise keep SPSS-derived ones
+            if "value_labels" in ev:
+                var["value_labels"] = ev["value_labels"]
             var["included"] = True
         else:
             var["included"] = False
@@ -158,100 +227,191 @@ def load_existing_config(meta_path, detected_vars):
 # Layout helpers
 # ─────────────────────────────────────────────
 
+def _make_answer_option_rows(var, idx):
+    """Build editable answer option rows for a variable.
+    For single: editable value label text.
+    For multi: editable sub-variable label text.
+    Returns a list of Div rows or empty list.
+    """
+    rows = []
+    is_multi = var["type"] == "multi"
+
+    if is_multi:
+        for sub_idx, sv in enumerate(var["sub_variables"]):
+            sv_label = var["sub_variable_labels"].get(sv, sv)
+            rows.append(
+                html.Div(
+                    [
+                        html.Span(
+                            sv,
+                            style={
+                                "fontFamily": "monospace",
+                                "fontSize": "11px",
+                                "color": "#94A3B8",
+                                "minWidth": "130px",
+                                "display": "inline-block",
+                            },
+                        ),
+                        dcc.Input(
+                            id={"type": "sub-label", "var_idx": idx, "sub_idx": sub_idx},
+                            value=sv_label,
+                            debounce=True,
+                            placeholder=sv,
+                            style={
+                                "flex": "1",
+                                "padding": "4px 8px",
+                                "border": "1px solid #E2E8F0",
+                                "borderRadius": "4px",
+                                "fontSize": "12px",
+                                "fontFamily": "'DM Sans', sans-serif",
+                                "background": "#FAFAFA",
+                                "color": "#1E293B",
+                                "marginLeft": "8px",
+                            },
+                        ),
+                    ],
+                    style={"display": "flex", "alignItems": "center", "marginBottom": "4px"},
+                )
+            )
+    else:
+        # Single-punch: value_labels is {str_code: label}
+        for val_code, val_label in var.get("value_labels", {}).items():
+            rows.append(
+                html.Div(
+                    [
+                        html.Span(
+                            val_code,
+                            style={
+                                "fontFamily": "monospace",
+                                "fontSize": "11px",
+                                "color": "#94A3B8",
+                                "minWidth": "40px",
+                                "display": "inline-block",
+                            },
+                        ),
+                        dcc.Input(
+                            id={"type": "val-label", "var_idx": idx, "val_code": val_code},
+                            value=val_label,
+                            debounce=True,
+                            placeholder=val_code,
+                            style={
+                                "flex": "1",
+                                "padding": "4px 8px",
+                                "border": "1px solid #E2E8F0",
+                                "borderRadius": "4px",
+                                "fontSize": "12px",
+                                "fontFamily": "'DM Sans', sans-serif",
+                                "background": "#FAFAFA",
+                                "color": "#1E293B",
+                                "marginLeft": "8px",
+                            },
+                        ),
+                    ],
+                    style={"display": "flex", "alignItems": "center", "marginBottom": "4px"},
+                )
+            )
+
+    return rows
+
+
 def make_variable_card(var, idx):
-    """Render one variable row."""
-    var_id = var["id"]
+    """Render one variable row with editable title and answer options."""
     is_multi = var["type"] == "multi"
     badge_color = "#7C3AED" if is_multi else "#0369A1"
     badge_text = "MULTI" if is_multi else "SINGLE"
     included = var.get("included", True)
 
-    # Sub-variable pills for multi
-    sub_pills = []
-    if is_multi:
-        for sv in var["sub_variables"]:
-            sv_label = var["sub_variable_labels"].get(sv, sv)
-            sub_pills.append(
-                html.Span(
-                    f"{sv} — {sv_label}",
-                    style={
-                        "display": "inline-block",
-                        "background": "#EDE9FE",
-                        "color": "#5B21B6",
-                        "borderRadius": "4px",
-                        "padding": "2px 8px",
-                        "fontSize": "11px",
-                        "marginRight": "4px",
-                        "marginBottom": "4px",
-                    },
-                )
-            )
+    answer_rows = _make_answer_option_rows(var, idx)
 
     return html.Div(
         [
-            # Left: checkbox + type badge
+            # ── Top row: checkbox / badge / var name / editable title ──
             html.Div(
                 [
-                    dcc.Checklist(
-                        id={"type": "var-include", "index": idx},
-                        options=[{"label": "", "value": "included"}],
-                        value=["included"] if included else [],
-                        style={"display": "inline-block", "marginRight": "8px"},
+                    # Left cluster: checkbox + badge + var name
+                    html.Div(
+                        [
+                            dcc.Checklist(
+                                id={"type": "var-include", "index": idx},
+                                options=[{"label": "", "value": "included"}],
+                                value=["included"] if included else [],
+                                style={"display": "inline-block", "marginRight": "8px"},
+                            ),
+                            html.Span(
+                                badge_text,
+                                style={
+                                    "background": badge_color,
+                                    "color": "white",
+                                    "borderRadius": "4px",
+                                    "padding": "2px 8px",
+                                    "fontSize": "11px",
+                                    "fontWeight": "600",
+                                    "letterSpacing": "0.05em",
+                                    "marginRight": "10px",
+                                    "verticalAlign": "middle",
+                                },
+                            ),
+                            html.Span(
+                                var["name"],
+                                style={
+                                    "fontFamily": "monospace",
+                                    "fontSize": "12px",
+                                    "color": "#64748B",
+                                    "marginRight": "10px",
+                                },
+                            ),
+                        ],
+                        style={"display": "flex", "alignItems": "center", "minWidth": "260px"},
                     ),
-                    html.Span(
-                        badge_text,
+                    # Right: editable question title
+                    html.Div(
+                        dcc.Input(
+                            id={"type": "var-label", "index": idx},
+                            value=var["label"],
+                            debounce=True,
+                            placeholder="Question label…",
+                            style={
+                                "width": "100%",
+                                "padding": "6px 10px",
+                                "border": "1px solid #CBD5E1",
+                                "borderRadius": "6px",
+                                "fontSize": "13px",
+                                "fontFamily": "'DM Sans', sans-serif",
+                                "background": "#FAFAFA",
+                                "color": "#1E293B",
+                                "outline": "none",
+                            },
+                        ),
+                        style={"flex": "1", "marginLeft": "10px"},
+                    ),
+                ],
+                style={"display": "flex", "alignItems": "center"},
+            ),
+            # ── Answer options section ──────────────────────────────────
+            html.Div(
+                [
+                    html.Div(
+                        "Answer options" if not is_multi else "Sub-variables",
                         style={
-                            "background": badge_color,
-                            "color": "white",
-                            "borderRadius": "4px",
-                            "padding": "2px 8px",
-                            "fontSize": "11px",
+                            "fontSize": "10px",
                             "fontWeight": "600",
-                            "letterSpacing": "0.05em",
-                            "marginRight": "10px",
-                            "verticalAlign": "middle",
+                            "color": "#94A3B8",
+                            "letterSpacing": "0.06em",
+                            "textTransform": "uppercase",
+                            "marginBottom": "6px",
+                            "marginTop": "2px",
                         },
                     ),
-                    html.Span(
-                        var["name"],
-                        style={
-                            "fontFamily": "monospace",
-                            "fontSize": "12px",
-                            "color": "#64748B",
-                            "marginRight": "10px",
-                        },
-                    ),
+                    html.Div(answer_rows),
                 ],
                 style={
-                    "display": "flex",
-                    "alignItems": "center",
-                    "minWidth": "260px",
+                    "marginTop": "10px",
+                    "marginLeft": "30px",
+                    "paddingLeft": "12px",
+                    "borderLeft": f"3px solid {'#EDE9FE' if is_multi else '#DBEAFE'}",
                 },
-            ),
-            # Middle: editable label
-            html.Div(
-                [
-                    dcc.Input(
-                        id={"type": "var-label", "index": idx},
-                        value=var["label"],
-                        debounce=True,
-                        style={
-                            "width": "100%",
-                            "padding": "6px 10px",
-                            "border": "1px solid #CBD5E1",
-                            "borderRadius": "6px",
-                            "fontSize": "13px",
-                            "fontFamily": "'DM Sans', sans-serif",
-                            "background": "#FAFAFA",
-                            "color": "#1E293B",
-                            "outline": "none",
-                        },
-                    ),
-                    html.Div(sub_pills, style={"marginTop": "6px"}) if sub_pills else None,
-                ],
-                style={"flex": "1", "marginLeft": "10px"},
-            ),
-            # Hidden store for variable metadata
+            ) if answer_rows else None,
+            # Hidden store for variable metadata (sub_variables list for multi)
             dcc.Store(
                 id={"type": "var-meta", "index": idx},
                 data={
@@ -259,12 +419,11 @@ def make_variable_card(var, idx):
                     "type": var["type"],
                     "sub_variables": var["sub_variables"],
                     "sub_variable_labels": var["sub_variable_labels"],
+                    "value_labels": var.get("value_labels", {}),
                 },
             ),
         ],
         style={
-            "display": "flex",
-            "alignItems": "flex-start",
             "padding": "12px 16px",
             "borderBottom": "1px solid #F1F5F9",
             "background": "white" if included else "#F8FAFC",
@@ -341,8 +500,14 @@ def make_filter_card(name, conditions, idx):
 # ─────────────────────────────────────────────
 
 def create_app(spss_path, meta_path=None):
-    column_names, column_labels, value_labels_map = read_spss_meta(spss_path)
-    detected = auto_detect_variables(column_names, column_labels)
+    column_names, column_labels, value_labels_map, excluded_vars = read_spss_meta(spss_path)
+    detected = auto_detect_variables(column_names, column_labels, value_labels_map)
+
+    # Log excluded variables to console
+    if excluded_vars:
+        print(f"\n  Excluded {len(excluded_vars)} variable(s) from config builder:")
+        for col, reason in excluded_vars.items():
+            print(f"    x {col}  ({reason})")
 
     initial_filters = {}
     if meta_path and os.path.exists(meta_path):
@@ -350,12 +515,21 @@ def create_app(spss_path, meta_path=None):
 
     spss_name = os.path.splitext(os.path.basename(spss_path))[0]
 
-    # Default save path: same folder as SPSS, named <SPSSNAME>.json
     default_save_path = os.path.join(
         os.path.dirname(spss_path), f"{spss_name}.json"
     )
     if meta_path:
         default_save_path = meta_path
+
+    total_in_spss = len(column_names) + len(excluded_vars)
+    excluded_note = (
+        f"  ·  {len(excluded_vars)} string/date variable(s) hidden"
+        if excluded_vars else ""
+    )
+    header_subtitle = (
+        f"{total_in_spss} variables in SPSS  ·  "
+        f"{len(column_names)} numeric shown{excluded_note}"
+    )
 
     app = Dash(
         __name__,
@@ -394,7 +568,7 @@ def create_app(spss_path, meta_path=None):
                                 style={"display": "flex", "alignItems": "center"},
                             ),
                             html.Span(
-                                f"{len(column_names)} variables detected from SPSS",
+                                header_subtitle,
                                 style={"fontSize": "12px", "color": "#94A3B8"},
                             ),
                         ],
@@ -428,22 +602,40 @@ def create_app(spss_path, meta_path=None):
                         [
                             html.Div(
                                 [
-                                    html.H2(
-                                        "Variables",
-                                        style={
-                                            "fontSize": "15px",
-                                            "fontWeight": "600",
-                                            "color": "#1E293B",
-                                            "margin": "0",
-                                        },
+                                    html.Div(
+                                        [
+                                            html.H2(
+                                                "Variables",
+                                                style={
+                                                    "fontSize": "15px",
+                                                    "fontWeight": "600",
+                                                    "color": "#1E293B",
+                                                    "margin": "0 0 2px 0",
+                                                },
+                                            ),
+                                            html.Span(
+                                                "Check to include · Edit label in the text box",
+                                                style={"fontSize": "11px", "color": "#94A3B8"},
+                                            ),
+                                        ],
                                     ),
-                                    html.Span(
-                                        "Check to include · Edit label in the text box",
-                                        style={"fontSize": "11px", "color": "#94A3B8"},
+                                    # Global select / deselect
+                                    html.Div(
+                                        [
+                                            dcc.Checklist(
+                                                id="global-select-all",
+                                                options=[{"label": " Select all", "value": "all"}],
+                                                value=["all"],  # all selected by default
+                                                style={"display": "inline-flex", "alignItems": "center"},
+                                                inputStyle={"marginRight": "5px", "cursor": "pointer"},
+                                                labelStyle={"fontSize": "12px", "color": "#475569", "cursor": "pointer", "fontWeight": "500"},
+                                            ),
+                                        ],
+                                        style={"display": "flex", "alignItems": "center"},
                                     ),
                                 ],
                                 style={
-                                    "padding": "16px",
+                                    "padding": "12px 16px",
                                     "borderBottom": "2px solid #E2E8F0",
                                     "display": "flex",
                                     "justifyContent": "space-between",
@@ -748,22 +940,78 @@ def create_app(spss_path, meta_path=None):
 
     @app.callback(
         Output("store-variables", "data"),
+        Output("global-select-all", "value"),
         Input({"type": "var-include", "index": ALL}, "value"),
         Input({"type": "var-label", "index": ALL}, "value"),
+        Input({"type": "sub-label", "var_idx": ALL, "sub_idx": ALL}, "value"),
+        Input({"type": "val-label", "var_idx": ALL, "val_code": ALL}, "value"),
         State({"type": "var-meta", "index": ALL}, "data"),
         State("store-variables", "data"),
         prevent_initial_call=True,
     )
-    def sync_variable_store(include_vals, label_vals, meta_vals, current):
-        """Keep store-variables in sync with UI edits."""
+    def sync_variable_store(include_vals, label_vals, sub_label_vals, val_label_vals, meta_vals, current):
+        """Keep store-variables in sync with all UI edits."""
         if not current:
-            return no_update
+            return no_update, no_update
+
         updated = list(current)
+
+        # ── individual checkbox / label edits ────────────────────────────
         for i, (inc, lbl, meta) in enumerate(zip(include_vals, label_vals, meta_vals)):
             if i < len(updated):
-                updated[i]["included"] = bool(inc)  # inc is [] or ["included"] from dcc.Checklist
-                updated[i]["label"] = lbl or updated[i]["label"]
-        return updated
+                updated[i]["included"] = bool(inc)  # [] or ["included"]
+                if lbl:
+                    updated[i]["label"] = lbl
+
+        # ── multi-punch sub-variable labels ──────────────────────────────
+        for item in ctx.inputs_list[2]:
+            v_idx = item["id"]["var_idx"]
+            s_idx = item["id"]["sub_idx"]
+            new_lbl = item.get("value")
+            if new_lbl is None:
+                continue
+            if v_idx < len(updated):
+                sv_list = updated[v_idx].get("sub_variables", [])
+                if s_idx < len(sv_list):
+                    sv_key = sv_list[s_idx]
+                    updated[v_idx]["sub_variable_labels"][sv_key] = new_lbl
+
+        # ── single-punch value labels ─────────────────────────────────────
+        for item in ctx.inputs_list[3]:
+            v_idx = item["id"]["var_idx"]
+            val_code = item["id"]["val_code"]
+            new_lbl = item.get("value")
+            if new_lbl is None:
+                continue
+            if v_idx < len(updated):
+                if "value_labels" not in updated[v_idx]:
+                    updated[v_idx]["value_labels"] = {}
+                updated[v_idx]["value_labels"][val_code] = new_lbl
+
+        # ── mirror global checkbox: all=checked, none=unchecked, mixed=leave ──
+        all_included = all(v.get("included", True) for v in updated)
+        none_included = not any(v.get("included", True) for v in updated)
+        if all_included:
+            new_global = ["all"]
+        elif none_included:
+            new_global = []
+        else:
+            new_global = no_update
+
+        return updated, new_global
+
+    @app.callback(
+        Output({"type": "var-include", "index": ALL}, "value"),
+        Input("global-select-all", "value"),
+        State("store-variables", "data"),
+        prevent_initial_call=True,
+    )
+    def apply_global_select(global_sel, current):
+        """Push global select/deselect into every individual checkbox."""
+        if not current:
+            return no_update
+        target = ["included"] if bool(global_sel) else []
+        return [target] * len(current)
 
     @app.callback(
         Output("store-filters", "data"),
@@ -870,6 +1118,11 @@ def create_app(spss_path, meta_path=None):
             if v["type"] == "multi":
                 entry["sub_variables"] = v["sub_variables"]
                 entry["sub_variable_labels"] = v["sub_variable_labels"]
+            elif v["type"] == "single":
+                # Only write value_labels if the variable has them
+                vl = v.get("value_labels", {})
+                if vl:
+                    entry["value_labels"] = vl
             config_vars.append(entry)
 
         config = {"variables": config_vars}
@@ -904,9 +1157,12 @@ def create_app(spss_path, meta_path=None):
 # ─────────────────────────────────────────────
 
 def _parse_filter_value(operator, raw):
-    """Convert raw text input into the correct Python value for the operator."""
+    """Convert raw text input into the operator dict the filter_engine expects.
+    e.g. eq + "1"  →  {"eq": 1}
+         in + "1,2" →  {"in": [1, 2]}
+    """
     if operator == "not_missing":
-        return True
+        return {"not_missing": True}
 
     if not raw or not raw.strip():
         raise ValueError(f"A value is required for operator '{operator}'.")
@@ -915,12 +1171,13 @@ def _parse_filter_value(operator, raw):
 
     if operator == "eq":
         try:
-            return int(raw)
+            val = int(raw)
         except ValueError:
             try:
-                return float(raw)
+                val = float(raw)
             except ValueError:
-                return raw
+                val = raw
+        return {"eq": val}
 
     if operator == "in":
         parts = [p.strip() for p in raw.split(",") if p.strip()]
@@ -935,7 +1192,7 @@ def _parse_filter_value(operator, raw):
                     result.append(p)
         if not result:
             raise ValueError("'in' requires at least one value.")
-        return result
+        return {"in": result}
 
     if operator == "between":
         parts = [p.strip() for p in raw.split(",") if p.strip()]
@@ -947,9 +1204,9 @@ def _parse_filter_value(operator, raw):
                 result.append(int(p))
             except ValueError:
                 result.append(float(p))
-        return result
+        return {"between": result}
 
-    return raw
+    return {operator: raw}
 
 
 # ─────────────────────────────────────────────

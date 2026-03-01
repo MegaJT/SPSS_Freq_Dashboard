@@ -63,7 +63,7 @@ class ChartVisualizer:
             },
             'paper_bgcolor': '#FFFFFF',
             'plot_bgcolor': '#F7FAFC',
-            'margin': {'l': 250, 'r': 40, 't': 80, 'b': 60},
+            'margin': {'l': 250, 'r': 40, 't': 20, 'b': 60},
             'hovermode': 'closest',
             'hoverlabel': {
                 'bgcolor': 'white',
@@ -147,15 +147,13 @@ class ChartVisualizer:
         return self._create_horizontal_bar(labels, values, percentages, result['var_label'], weighted)
     
     def _create_horizontal_bar(self, labels, values, percentages, title, weighted=False):
-        """Create horizontal bar chart with wrapped labels"""
-        
-        # Sort by value descending
-        sorted_data = sorted(zip(labels, values, percentages), key=lambda x: x[1], reverse=True)
-        labels_sorted = [x[0] for x in sorted_data]
-        values_sorted = [x[1] for x in sorted_data]
-        percentages_sorted = [x[2] for x in sorted_data]
-        
-        # Wrap long labels (use <br> for line breaks in Plotly)
+        """Create horizontal bar chart. Order is determined by the caller."""
+
+        labels_sorted = list(labels)
+        values_sorted = list(values)
+        percentages_sorted = list(percentages)
+
+        # Wrap long labels
         wrapped_labels = self._wrap_labels(labels_sorted, max_width=30)
         
         # Create custom colors with gradient
@@ -194,12 +192,7 @@ class ChartVisualizer:
         
         fig.update_layout(
             **self.base_layout,
-            title={
-                'text': f"<b>{title}</b>",
-                'x': 0.5,
-                'xanchor': 'center',
-                'font': {'size': 18, 'color': '#1A202C'}
-            },
+            title=None,
             xaxis={
                 'title': 'Count',
                 'showgrid': True,
@@ -245,12 +238,7 @@ class ChartVisualizer:
         
         fig.update_layout(
             **self.base_layout,
-            title={
-                'text': f"<b>{title}</b>",
-                'x': 0.5,
-                'xanchor': 'center',
-                'font': {'size': 18, 'color': '#1A202C'}
-            },
+            title=None,
             height=500,
             showlegend=True,
             legend={

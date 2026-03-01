@@ -1,9 +1,84 @@
 {
   "variables": [
     {
+      "name": "SbjNum",
+      "type": "single",
+      "label": "SbjNum"
+    },
+    {
+      "name": "Filter",
+      "type": "single",
+      "label": "Filter"
+    },
+    {
+      "name": "Complete",
+      "type": "single",
+      "label": "Complete"
+    },
+    {
+      "name": "StopQ",
+      "type": "single",
+      "label": "StopQ"
+    },
+    {
+      "name": "ParentID",
+      "type": "single",
+      "label": "ParentID"
+    },
+    {
+      "name": "Latitude",
+      "type": "single",
+      "label": "Latitude"
+    },
+    {
+      "name": "Longitude",
+      "type": "single",
+      "label": "Longitude"
+    },
+    {
+      "name": "UTCDiff",
+      "type": "single",
+      "label": "UTCDiff"
+    },
+    {
+      "name": "QAScore",
+      "type": "single",
+      "label": "QAScore"
+    },
+    {
+      "name": "Cancel",
+      "type": "single",
+      "label": "Cancel"
+    },
+    {
+      "name": "A2",
+      "type": "single",
+      "label": "A2. Consent  Do you agree to participate in this survey?"
+    },
+    {
+      "name": "QS1",
+      "type": "single",
+      "label": "QS1. capture Capture Gender"
+    },
+    {
+      "name": "QS2",
+      "type": "single",
+      "label": "QS2. Would you be comfortable answering questions and providing feedback on skincare products in English?"
+    },
+    {
+      "name": "QS3",
+      "type": "single",
+      "label": "QS3. What is your city of residence?"
+    },
+    {
       "name": "QS4_2",
       "type": "single",
       "label": "Place of Interview"
+    },
+    {
+      "name": "QS5",
+      "type": "single",
+      "label": "What is your age in completed years?"
     },
     {
       "name": "QS6",
@@ -11,14 +86,65 @@
       "label": "Age Groups"
     },
     {
-      "name": "NCCS",
+      "name": "QS7",
       "type": "single",
-      "label": "NCCS"
+      "label": "QS7.  Have you been interviewed for skincare category by a market research/survey agency in the last 3 months?"
     },
     {
-      "name": "QS10",
+      "name": "A_QS8",
       "type": "multi",
-      "label": "Brand Usage - All Respondents",
+      "label": "QS8.  In which industries or professions do you, or any of your immediate family members, work? Please select all that apply.  (Advertising/Marketing)",
+      "sub_variables": [
+        "A_QS8_1",
+        "A_QS8_2",
+        "A_QS8_3",
+        "A_QS8_4"
+      ],
+      "sub_variable_labels": {
+        "A_QS8_1": "QS8.  In which industries or professions do you, or any of your immediate family members, work? Please select all that apply.  (Advertising/Marketing)",
+        "A_QS8_2": "QS8.  In which industries or professions do you, or any of your immediate family members, work? Please select all that apply.  (Market Research or consulting)",
+        "A_QS8_3": "QS8.  In which industries or professions do you, or any of your immediate family members, work? Please select all that apply.  (Manufacturer/distributer/retailer of skincare / personal care products)",
+        "A_QS8_4": "QS8.  In which industries or professions do you, or any of your immediate family members, work? Please select all that apply.  (None of the above)"
+      }
+    },
+    {
+      "name": "T_QS9",
+      "type": "multi",
+      "label": "Cleanser",
+      "sub_variables": [
+        "T_QS9_1",
+        "T_QS9_2",
+        "T_QS9_3",
+        "T_QS9_4",
+        "T_QS9_5"
+      ],
+      "sub_variable_labels": {
+        "T_QS9_1": "Cleanser",
+        "T_QS9_2": "Toner",
+        "T_QS9_3": "Moisturizer",
+        "T_QS9_4": "Sunscreen/ Sunstick",
+        "T_QS9_5": "Serum/Actives"
+      }
+    },
+    {
+      "name": "A_QS9_USAGE",
+      "type": "multi",
+      "label": "(Moisturizer)",
+      "sub_variables": [
+        "A_QS9_USAGE_1",
+        "A_QS9_USAGE_2",
+        "A_QS9_USAGE_3"
+      ],
+      "sub_variable_labels": {
+        "A_QS9_USAGE_1": " (Moisturizer)",
+        "A_QS9_USAGE_2": " (Sunscreen)",
+        "A_QS9_USAGE_3": " (Toner)"
+      }
+    },
+    {
+      "name": "A_QS10",
+      "type": "multi",
+      "label": "Place of Purchase  QS10. Where do you mostly purchase skincare products from? (Online Apps / Websites)",
       "sub_variables": [
         "A_QS10_1",
         "A_QS10_2",
@@ -29,19 +155,29 @@
         "A_QS10_7"
       ],
       "sub_variable_labels": {
-        "A_QS10_1": "Brand A",
-        "A_QS10_2": "Brand B",
-        "A_QS10_3": "Brand C",
-        "A_QS10_4": "Brand D",
-        "A_QS10_5": "Brand E",
-        "A_QS10_6": "Brand F",
-        "A_QS10_7": "Brand G"
+        "A_QS10_1": "Place of Purchase  QS10. Where do you mostly purchase skincare products from? (Online Apps / Websites)",
+        "A_QS10_2": "Place of Purchase  QS10. Where do you mostly purchase skincare products from? (Brand websites)",
+        "A_QS10_3": "Place of Purchase  QS10. Where do you mostly purchase skincare products from? (Social Media such as Facebook, Instagram)",
+        "A_QS10_4": "Place of Purchase  QS10. Where do you mostly purchase skincare products from? (Beauty salons / spas)",
+        "A_QS10_5": "Place of Purchase  QS10. Where do you mostly purchase skincare products from? (Pharmacy / Chemists / wellness stores)",
+        "A_QS10_6": "Place of Purchase  QS10. Where do you mostly purchase skincare products from? (Mall counters)",
+        "A_QS10_7": "Place of Purchase  QS10. Where do you mostly purchase skincare products from? (Dermatology Clinics / Skin Clinics)"
       }
     },
     {
-      "name": "QS12",
+      "name": "QS11",
+      "type": "single",
+      "label": "Monthly Spends  QS11. On average, how much do you spend monthly on buying skincare products?"
+    },
+    {
+      "name": "QS11_2",
+      "type": "single",
+      "label": "Do you regularly use premium skincare products? By premium products, we mean you spend a minimum of 600-800/- Rupees on a single product pack of 80gm/100ml."
+    },
+    {
+      "name": "A_QS12_1",
       "type": "multi",
-      "label": "Household Durables",
+      "label": "Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Electricity connection)",
       "sub_variables": [
         "A_QS12_1_1",
         "A_QS12_1_2",
@@ -55,22 +191,168 @@
         "A_QS12_1_10"
       ],
       "sub_variable_labels": {
-        "A_QS12_1_1": "Television",
-        "A_QS12_1_2": "Air Conditioner",
-        "A_QS12_1_3": "Refrigerator",
-        "A_QS12_1_4": "Washing Machine",
-        "A_QS12_1_5": "Microwave Oven",
-        "A_QS12_1_6": "Dishwasher",
-        "A_QS12_1_7": "Water Heater",
-        "A_QS12_1_8": "Air Purifier",
-        "A_QS12_1_9": "Smart Home Devices",
-        "A_QS12_1_10": "Home Theater System"
+        "A_QS12_1_1": " Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Electricity connection)",
+        "A_QS12_1_2": " Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Ceiling fan)",
+        "A_QS12_1_3": " Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Two-wheeler)",
+        "A_QS12_1_4": " Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Colour Television)",
+        "A_QS12_1_5": " Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Refrigerator)",
+        "A_QS12_1_6": " Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Washing machine)",
+        "A_QS12_1_7": " Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Personal computer / Laptop)",
+        "A_QS12_1_8": " Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Internet connection at home)",
+        "A_QS12_1_9": " Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Four-wheeler (car / SUV))",
+        "A_QS12_1_10": " Household Durables Ownership  QS12.1. Which of the following items are currently owned by your household? (Air conditioner)"
       }
     },
     {
-      "name": "QM3",
+      "name": "QS12",
       "type": "multi",
-      "label": "Online Source of Purchase",
+      "label": "CWE Education  QS12.2. What is the highest level of education Chief Wage Earner has completed? By CWE we mean the person who contributes the most in households’ monthly expenses.",
+      "sub_variables": [
+        "QS12_2",
+        "QS12_3"
+      ],
+      "sub_variable_labels": {
+        "QS12_2": "CWE Education  QS12.2. What is the highest level of education Chief Wage Earner has completed? By CWE we mean the person who contributes the most in households’ monthly expenses.",
+        "QS12_3": "QS12.3"
+      }
+    },
+    {
+      "name": "NCCS",
+      "type": "single",
+      "label": "NCCS"
+    },
+    {
+      "name": "QM11",
+      "type": "multi",
+      "label": "QM11.1.  Please tell me what best describes your current working status the best",
+      "sub_variables": [
+        "QM11_1",
+        "QM11_2",
+        "QM11_3"
+      ],
+      "sub_variable_labels": {
+        "QM11_1": "QM11.1.  Please tell me what best describes your current working status the best",
+        "QM11_2": "Respondent Education  QM11.2. What is the highest level of education you have completed?",
+        "QM11_3": "QM11.3 What best describes your current marital status?"
+      }
+    },
+    {
+      "name": "A_QM1_1a",
+      "type": "multi",
+      "label": "Top Factors  Q.M1.1a. When buying skincare products, which of the below factors that matter most to you? Please select as many as applicable (Ingredient list)",
+      "sub_variables": [
+        "A_QM1_1a_1",
+        "A_QM1_1a_2",
+        "A_QM1_1a_3",
+        "A_QM1_1a_4",
+        "A_QM1_1a_5",
+        "A_QM1_1a_6",
+        "A_QM1_1a_7",
+        "A_QM1_1a_8",
+        "A_QM1_1a_9"
+      ],
+      "sub_variable_labels": {
+        "A_QM1_1a_1": "Top Factors  Q.M1.1a. When buying skincare products, which of the below factors that matter most to you? Please select as many as applicable (Ingredient list)",
+        "A_QM1_1a_2": "Top Factors  Q.M1.1a. When buying skincare products, which of the below factors that matter most to you? Please select as many as applicable (Dermatologist recommendation)",
+        "A_QM1_1a_3": "Top Factors  Q.M1.1a. When buying skincare products, which of the below factors that matter most to you? Please select as many as applicable (Brand reputation)",
+        "A_QM1_1a_4": "Top Factors  Q.M1.1a. When buying skincare products, which of the below factors that matter most to you? Please select as many as applicable (Price)",
+        "A_QM1_1a_5": "Top Factors  Q.M1.1a. When buying skincare products, which of the below factors that matter most to you? Please select as many as applicable (Reviews / influencers)",
+        "A_QM1_1a_6": "Top Factors  Q.M1.1a. When buying skincare products, which of the below factors that matter most to you? Please select as many as applicable (Skin sensitivity concerns)",
+        "A_QM1_1a_7": "Top Factors  Q.M1.1a. When buying skincare products, which of the below factors that matter most to you? Please select as many as applicable (Barrier repair / long-term health)",
+        "A_QM1_1a_8": "Top Factors  Q.M1.1a. When buying skincare products, which of the below factors that matter most to you? Please select as many as applicable (Long-term skin health / prevention)",
+        "A_QM1_1a_9": "Top Factors  Q.M1.1a. When buying skincare products, which of the below factors that matter most to you? Please select as many as applicable (Claims on pack)"
+      }
+    },
+    {
+      "name": "QM1_1b_O1",
+      "type": "single",
+      "label": "Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on."
+    },
+    {
+      "name": "QM1_1b_O2",
+      "type": "single",
+      "label": "Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on."
+    },
+    {
+      "name": "QM1_1b_O3",
+      "type": "single",
+      "label": "Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on."
+    },
+    {
+      "name": "QM1_1b_O4",
+      "type": "single",
+      "label": "Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on."
+    },
+    {
+      "name": "QM1_1b_O5",
+      "type": "single",
+      "label": "Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on."
+    },
+    {
+      "name": "QM1_1b_O6",
+      "type": "single",
+      "label": "Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on."
+    },
+    {
+      "name": "QM1_1b_O7",
+      "type": "single",
+      "label": "Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on."
+    },
+    {
+      "name": "QM1_1b_O8",
+      "type": "single",
+      "label": "Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on."
+    },
+    {
+      "name": "QM1_1b_O9",
+      "type": "single",
+      "label": "Ranks  Now please rank the TOP 3 important factors, where Rank 1 = Most important, 2 = second most important and so on."
+    },
+    {
+      "name": "QM2_1",
+      "type": "single",
+      "label": "QM2.1 What best describes your skin care approach / routine?"
+    },
+    {
+      "name": "T_QM2_2",
+      "type": "multi",
+      "label": "I prefer gentle products over aggressive activities.",
+      "sub_variables": [
+        "T_QM2_2_1",
+        "T_QM2_2_2",
+        "T_QM2_2_3",
+        "T_QM2_2_4",
+        "T_QM2_2_5",
+        "T_QM2_2_6"
+      ],
+      "sub_variable_labels": {
+        "T_QM2_2_1": "I prefer gentle products over aggressive activities.",
+        "T_QM2_2_2": "I worry about damaging my skin barrier (the protective skin layer that keeps skin hydrated and shields from external factors).",
+        "T_QM2_2_3": "I am willing to pay more for “safe” formulations.",
+        "T_QM2_2_4": "I like brands that explain why specific ingredients are used.",
+        "T_QM2_2_5": "I experiment with new skincare brands regularly",
+        "T_QM2_2_6": "I prefer brands that focus on strengthening skin over time rather than giving quick fixes"
+      }
+    },
+    {
+      "name": "T_QM3_1",
+      "type": "multi",
+      "label": "Moisturiser",
+      "sub_variables": [
+        "T_QM3_1_1",
+        "T_QM3_1_2",
+        "T_QM3_1_3"
+      ],
+      "sub_variable_labels": {
+        "T_QM3_1_1": "Moisturiser",
+        "T_QM3_1_2": "Sunscreen",
+        "T_QM3_1_3": "Toner"
+      }
+    },
+    {
+      "name": "A_QM3_2a",
+      "type": "multi",
+      "label": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Nykaa)",
       "sub_variables": [
         "A_QM3_2a_1",
         "A_QM3_2a_2",
@@ -80,31 +362,933 @@
         "A_QM3_2a_6",
         "A_QM3_2a_7",
         "A_QM3_2a_8",
-        "A_QM3_2a_9"
+        "A_QM3_2a_9",
+        "A_QM3_2a_10",
+        "A_QM3_2a_11",
+        "A_QM3_2a_12",
+        "A_QM3_2a_13",
+        "A_QM3_2a_14",
+        "A_QM3_2a_15",
+        "A_QM3_2a_16",
+        "A_QM3_2a_17"
       ],
       "sub_variable_labels": {
-        "A_QM3_2a_1": "Company Website",
-        "A_QM3_2a_2": "Amazon",
-        "A_QM3_2a_3": "Flipkart",
-        "A_QM3_2a_4": "Myntra",
-        "A_QM3_2a_5": "Nykaa",
-        "A_QM3_2a_6": "Other E-commerce",
-        "A_QM3_2a_7": "Social Media Shop",
-        "A_QM3_2a_8": "Direct Message/Chat",
-        "A_QM3_2a_9": "Mobile App"
-      }
-    }
-  ],
-  "filter_sets": {
-    "AGE 23-30": {
-      "QS6": {
-        "in": [2, 3]
+        "A_QM3_2a_1": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Nykaa)",
+        "A_QM3_2a_2": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Amazon)",
+        "A_QM3_2a_3": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Purplle)",
+        "A_QM3_2a_4": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Myntra)",
+        "A_QM3_2a_5": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Sephora India)",
+        "A_QM3_2a_6": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Tira Beauty)",
+        "A_QM3_2a_7": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Flipkart)",
+        "A_QM3_2a_8": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Health & Glow)",
+        "A_QM3_2a_9": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (NewU)",
+        "A_QM3_2a_10": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Maccaron)",
+        "A_QM3_2a_11": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (FirstCry)",
+        "A_QM3_2a_12": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Ajio)",
+        "A_QM3_2a_13": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Instagram)",
+        "A_QM3_2a_14": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Facebook)",
+        "A_QM3_2a_15": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Quick/last minute delivery options (such as BigBasket, Zepto, BlinkIt, Instama",
+        "A_QM3_2a_16": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (WhatsApp business orders)",
+        "A_QM3_2a_17": "Online Sources of purchase  Q.M3.2a. You mentioned that you buy skincare products online. Which of the following apps/websites do you regularly purchase skincare products from? (Others (Specify) ___________)"
       }
     },
-    "AGE 31-35": {
-      "QS6": {
-        "eq": 4
+    {
+      "name": "QM3_2b",
+      "type": "single",
+      "label": "Q.M3.2b. And which ONE of these is your Go-To/preferred option for buying skincare products online?"
+    },
+    {
+      "name": "I_1_QM3_3",
+      "type": "single",
+      "label": "(Moisturizer) Trial vs Loyalty  Q.M3.3 Which of the following statements best describes your behaviour when it comes to trying and buying skincare brands in @_@ITERNAME@_@ ?"
+    },
+    {
+      "name": "I_2_QM3_3",
+      "type": "single",
+      "label": "(Sunscreen) Trial vs Loyalty  Q.M3.3 Which of the following statements best describes your behaviour when it comes to trying and buying skincare brands in @_@ITERNAME@_@ ?"
+    },
+    {
+      "name": "I_3_QM3_3",
+      "type": "single",
+      "label": "(Toner) Trial vs Loyalty  Q.M3.3 Which of the following statements best describes your behaviour when it comes to trying and buying skincare brands in @_@ITERNAME@_@ ?"
+    },
+    {
+      "name": "QM4",
+      "type": "multi",
+      "label": "Unaided Recall / ToM  Q.M4.1 When you think of PREMIUM SKINCARE brands, which ONE brand comes to your mind FIRST?",
+      "sub_variables": [
+        "QM4_1",
+        "QM4_6"
+      ],
+      "sub_variable_labels": {
+        "QM4_1": "Unaided Recall / ToM  Q.M4.1 When you think of PREMIUM SKINCARE brands, which ONE brand comes to your mind FIRST?",
+        "QM4_6": "Recommendation  Q.M4.6 Which ONE brand would you recommend the MOST to your friends/family?"
       }
+    },
+    {
+      "name": "A_QM4_2",
+      "type": "multi",
+      "label": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Akind)",
+      "sub_variables": [
+        "A_QM4_2_1",
+        "A_QM4_2_2",
+        "A_QM4_2_3",
+        "A_QM4_2_4",
+        "A_QM4_2_5",
+        "A_QM4_2_6",
+        "A_QM4_2_7",
+        "A_QM4_2_8",
+        "A_QM4_2_9",
+        "A_QM4_2_10",
+        "A_QM4_2_11",
+        "A_QM4_2_12",
+        "A_QM4_2_13",
+        "A_QM4_2_14",
+        "A_QM4_2_15",
+        "A_QM4_2_16",
+        "A_QM4_2_17",
+        "A_QM4_2_18",
+        "A_QM4_2_19",
+        "A_QM4_2_97",
+        "A_QM4_2_98",
+        "A_QM4_2_99"
+      ],
+      "sub_variable_labels": {
+        "A_QM4_2_1": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Akind)",
+        "A_QM4_2_2": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Beauty of Joseon)",
+        "A_QM4_2_3": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Cetaphil)",
+        "A_QM4_2_4": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Clinique)",
+        "A_QM4_2_5": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (COSRX)",
+        "A_QM4_2_6": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (D’you In My Defence)",
+        "A_QM4_2_7": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Dot & Key)",
+        "A_QM4_2_8": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Dr Sheth’s)",
+        "A_QM4_2_9": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Hyphen)",
+        "A_QM4_2_10": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Innisfree)",
+        "A_QM4_2_11": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Klairs)",
+        "A_QM4_2_12": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (La Roche-Posay)",
+        "A_QM4_2_13": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Laneige)",
+        "A_QM4_2_14": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Minimalist)",
+        "A_QM4_2_15": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Neutrogena)",
+        "A_QM4_2_16": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Paula's Choice)",
+        "A_QM4_2_17": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Re’equil)",
+        "A_QM4_2_18": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (The Derma Co.)",
+        "A_QM4_2_19": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (The Ordinary)",
+        "A_QM4_2_97": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Other Specify)",
+        "A_QM4_2_98": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (Other Specify)",
+        "A_QM4_2_99": "Spont (next mentions):  Q.M4.2  And which other PREMIUM SKINCARE brands can you think of? Please mention all that you can recall (None)"
+      }
+    },
+    {
+      "name": "A_TOM_SPONT",
+      "type": "multi",
+      "label": "(Akind)",
+      "sub_variables": [
+        "A_TOM_SPONT_1",
+        "A_TOM_SPONT_2",
+        "A_TOM_SPONT_3",
+        "A_TOM_SPONT_4",
+        "A_TOM_SPONT_5",
+        "A_TOM_SPONT_6",
+        "A_TOM_SPONT_7",
+        "A_TOM_SPONT_8",
+        "A_TOM_SPONT_9",
+        "A_TOM_SPONT_10",
+        "A_TOM_SPONT_11",
+        "A_TOM_SPONT_12",
+        "A_TOM_SPONT_13",
+        "A_TOM_SPONT_14",
+        "A_TOM_SPONT_15",
+        "A_TOM_SPONT_16",
+        "A_TOM_SPONT_17",
+        "A_TOM_SPONT_18",
+        "A_TOM_SPONT_19",
+        "A_TOM_SPONT_20",
+        "A_TOM_SPONT_21"
+      ],
+      "sub_variable_labels": {
+        "A_TOM_SPONT_1": " (Akind)",
+        "A_TOM_SPONT_2": " (Beauty of Joseon)",
+        "A_TOM_SPONT_3": " (Cetaphil)",
+        "A_TOM_SPONT_4": " (Clinique)",
+        "A_TOM_SPONT_5": " (COSRX)",
+        "A_TOM_SPONT_6": " (D’you In My Defence)",
+        "A_TOM_SPONT_7": " (Dot & Key)",
+        "A_TOM_SPONT_8": " (Dr Sheth’s)",
+        "A_TOM_SPONT_9": " (Hyphen)",
+        "A_TOM_SPONT_10": " (Innisfree)",
+        "A_TOM_SPONT_11": " (Klairs)",
+        "A_TOM_SPONT_12": " (La Roche-Posay)",
+        "A_TOM_SPONT_13": " (Laneige)",
+        "A_TOM_SPONT_14": " (Minimalist)",
+        "A_TOM_SPONT_15": " (Neutrogena)",
+        "A_TOM_SPONT_16": " (Paula's Choice)",
+        "A_TOM_SPONT_17": " (Re’equil)",
+        "A_TOM_SPONT_18": " (The Derma Co.)",
+        "A_TOM_SPONT_19": " (The Ordinary)",
+        "A_TOM_SPONT_20": " ({0})",
+        "A_TOM_SPONT_21": " ({0})"
+      }
+    },
+    {
+      "name": "T_QM4_3",
+      "type": "multi",
+      "label": "Akind",
+      "sub_variables": [
+        "T_QM4_3_1",
+        "T_QM4_3_2",
+        "T_QM4_3_3",
+        "T_QM4_3_4",
+        "T_QM4_3_5",
+        "T_QM4_3_6",
+        "T_QM4_3_7",
+        "T_QM4_3_8",
+        "T_QM4_3_9",
+        "T_QM4_3_10",
+        "T_QM4_3_11",
+        "T_QM4_3_12",
+        "T_QM4_3_13",
+        "T_QM4_3_14",
+        "T_QM4_3_15",
+        "T_QM4_3_16",
+        "T_QM4_3_17",
+        "T_QM4_3_18",
+        "T_QM4_3_19"
+      ],
+      "sub_variable_labels": {
+        "T_QM4_3_1": "Akind",
+        "T_QM4_3_2": "Beauty of Joseon",
+        "T_QM4_3_3": "Cetaphil",
+        "T_QM4_3_4": "Clinique",
+        "T_QM4_3_5": "COSRX",
+        "T_QM4_3_6": "D’you In My Defence",
+        "T_QM4_3_7": "Dot & Key",
+        "T_QM4_3_8": "Dr Sheth’s",
+        "T_QM4_3_9": "Hyphen",
+        "T_QM4_3_10": "Innisfree",
+        "T_QM4_3_11": "Klairs",
+        "T_QM4_3_12": "La Roche-Posay",
+        "T_QM4_3_13": "Laneige",
+        "T_QM4_3_14": "Minimalist",
+        "T_QM4_3_15": "Neutrogena",
+        "T_QM4_3_16": "Paula's Choice",
+        "T_QM4_3_17": "Re’equil",
+        "T_QM4_3_18": "The Derma Co.",
+        "T_QM4_3_19": "The Ordinary"
+      }
+    },
+    {
+      "name": "A_TOT_AWR",
+      "type": "multi",
+      "label": "(Akind)",
+      "sub_variables": [
+        "A_TOT_AWR_1",
+        "A_TOT_AWR_2",
+        "A_TOT_AWR_3",
+        "A_TOT_AWR_4",
+        "A_TOT_AWR_5",
+        "A_TOT_AWR_6",
+        "A_TOT_AWR_7",
+        "A_TOT_AWR_8",
+        "A_TOT_AWR_9",
+        "A_TOT_AWR_10",
+        "A_TOT_AWR_11",
+        "A_TOT_AWR_12",
+        "A_TOT_AWR_13",
+        "A_TOT_AWR_14",
+        "A_TOT_AWR_15",
+        "A_TOT_AWR_16",
+        "A_TOT_AWR_17",
+        "A_TOT_AWR_18",
+        "A_TOT_AWR_19",
+        "A_TOT_AWR_97",
+        "A_TOT_AWR_98"
+      ],
+      "sub_variable_labels": {
+        "A_TOT_AWR_1": " (Akind)",
+        "A_TOT_AWR_2": " (Beauty of Joseon)",
+        "A_TOT_AWR_3": " (Cetaphil)",
+        "A_TOT_AWR_4": " (Clinique)",
+        "A_TOT_AWR_5": " (COSRX)",
+        "A_TOT_AWR_6": " (D’you In My Defence)",
+        "A_TOT_AWR_7": " (Dot & Key)",
+        "A_TOT_AWR_8": " (Dr Sheth’s)",
+        "A_TOT_AWR_9": " (Hyphen)",
+        "A_TOT_AWR_10": " (Innisfree)",
+        "A_TOT_AWR_11": " (Klairs)",
+        "A_TOT_AWR_12": " (La Roche-Posay)",
+        "A_TOT_AWR_13": " (Laneige)",
+        "A_TOT_AWR_14": " (Minimalist)",
+        "A_TOT_AWR_15": " (Neutrogena)",
+        "A_TOT_AWR_16": " (Paula's Choice)",
+        "A_TOT_AWR_17": " (Re’equil)",
+        "A_TOT_AWR_18": " (The Derma Co.)",
+        "A_TOT_AWR_19": " (The Ordinary)",
+        "A_TOT_AWR_97": " ({0})",
+        "A_TOT_AWR_98": " ({0})"
+      }
+    },
+    {
+      "name": "A_QM4_4",
+      "type": "multi",
+      "label": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Akind)",
+      "sub_variables": [
+        "A_QM4_4_1",
+        "A_QM4_4_2",
+        "A_QM4_4_3",
+        "A_QM4_4_4",
+        "A_QM4_4_5",
+        "A_QM4_4_6",
+        "A_QM4_4_7",
+        "A_QM4_4_8",
+        "A_QM4_4_9",
+        "A_QM4_4_10",
+        "A_QM4_4_11",
+        "A_QM4_4_12",
+        "A_QM4_4_13",
+        "A_QM4_4_14",
+        "A_QM4_4_15",
+        "A_QM4_4_16",
+        "A_QM4_4_17",
+        "A_QM4_4_18",
+        "A_QM4_4_19",
+        "A_QM4_4_97",
+        "A_QM4_4_98"
+      ],
+      "sub_variable_labels": {
+        "A_QM4_4_1": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Akind)",
+        "A_QM4_4_2": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Beauty of Joseon)",
+        "A_QM4_4_3": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Cetaphil)",
+        "A_QM4_4_4": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Clinique)",
+        "A_QM4_4_5": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (COSRX)",
+        "A_QM4_4_6": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (D’you In My Defence)",
+        "A_QM4_4_7": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Dot & Key)",
+        "A_QM4_4_8": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Dr Sheth’s)",
+        "A_QM4_4_9": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Hyphen)",
+        "A_QM4_4_10": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Innisfree)",
+        "A_QM4_4_11": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Klairs)",
+        "A_QM4_4_12": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (La Roche-Posay)",
+        "A_QM4_4_13": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Laneige)",
+        "A_QM4_4_14": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Minimalist)",
+        "A_QM4_4_15": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Neutrogena)",
+        "A_QM4_4_16": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Paula's Choice)",
+        "A_QM4_4_17": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (Re’equil)",
+        "A_QM4_4_18": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (The Derma Co.)",
+        "A_QM4_4_19": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? (The Ordinary)",
+        "A_QM4_4_97": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? ({0})",
+        "A_QM4_4_98": "P3M Usage  Q.M4.4.  Which of these brands have you personally used in the past 3 months? ({0})"
+      }
+    },
+    {
+      "name": "A_QM4_5",
+      "type": "multi",
+      "label": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Akind)",
+      "sub_variables": [
+        "A_QM4_5_1",
+        "A_QM4_5_2",
+        "A_QM4_5_3",
+        "A_QM4_5_4",
+        "A_QM4_5_5",
+        "A_QM4_5_6",
+        "A_QM4_5_7",
+        "A_QM4_5_8",
+        "A_QM4_5_9",
+        "A_QM4_5_10",
+        "A_QM4_5_11",
+        "A_QM4_5_12",
+        "A_QM4_5_13",
+        "A_QM4_5_14",
+        "A_QM4_5_15",
+        "A_QM4_5_16",
+        "A_QM4_5_17",
+        "A_QM4_5_18",
+        "A_QM4_5_19",
+        "A_QM4_5_97",
+        "A_QM4_5_98"
+      ],
+      "sub_variable_labels": {
+        "A_QM4_5_1": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Akind)",
+        "A_QM4_5_2": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Beauty of Joseon)",
+        "A_QM4_5_3": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Cetaphil)",
+        "A_QM4_5_4": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Clinique)",
+        "A_QM4_5_5": "Consideration  QM4.5 Which of these brands would you consider buying in future? (COSRX)",
+        "A_QM4_5_6": "Consideration  QM4.5 Which of these brands would you consider buying in future? (D’you In My Defence)",
+        "A_QM4_5_7": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Dot & Key)",
+        "A_QM4_5_8": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Dr Sheth’s)",
+        "A_QM4_5_9": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Hyphen)",
+        "A_QM4_5_10": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Innisfree)",
+        "A_QM4_5_11": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Klairs)",
+        "A_QM4_5_12": "Consideration  QM4.5 Which of these brands would you consider buying in future? (La Roche-Posay)",
+        "A_QM4_5_13": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Laneige)",
+        "A_QM4_5_14": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Minimalist)",
+        "A_QM4_5_15": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Neutrogena)",
+        "A_QM4_5_16": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Paula's Choice)",
+        "A_QM4_5_17": "Consideration  QM4.5 Which of these brands would you consider buying in future? (Re’equil)",
+        "A_QM4_5_18": "Consideration  QM4.5 Which of these brands would you consider buying in future? (The Derma Co.)",
+        "A_QM4_5_19": "Consideration  QM4.5 Which of these brands would you consider buying in future? (The Ordinary)",
+        "A_QM4_5_97": "Consideration  QM4.5 Which of these brands would you consider buying in future? ({0})",
+        "A_QM4_5_98": "Consideration  QM4.5 Which of these brands would you consider buying in future? ({0})"
+      }
+    },
+    {
+      "name": "A_QM52_BRANDS",
+      "type": "multi",
+      "label": "(Akind)",
+      "sub_variables": [
+        "A_QM52_BRANDS_1",
+        "A_QM52_BRANDS_2",
+        "A_QM52_BRANDS_3",
+        "A_QM52_BRANDS_5",
+        "A_QM52_BRANDS_7",
+        "A_QM52_BRANDS_9",
+        "A_QM52_BRANDS_10",
+        "A_QM52_BRANDS_14",
+        "A_QM52_BRANDS_16",
+        "A_QM52_BRANDS_99"
+      ],
+      "sub_variable_labels": {
+        "A_QM52_BRANDS_1": " (Akind)",
+        "A_QM52_BRANDS_2": " (Beauty of Joseon)",
+        "A_QM52_BRANDS_3": " (Cetaphil)",
+        "A_QM52_BRANDS_5": " (COSRX)",
+        "A_QM52_BRANDS_7": " (Dot & Key)",
+        "A_QM52_BRANDS_9": " (Hyphen)",
+        "A_QM52_BRANDS_10": " (Innisfree)",
+        "A_QM52_BRANDS_14": " (Minimalist)",
+        "A_QM52_BRANDS_16": " (Paula's Choice)",
+        "A_QM52_BRANDS_99": " (None)"
+      }
+    },
+    {
+      "name": "T_QM5_1_1_A_QM5_1",
+      "type": "multi",
+      "label": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+      "sub_variables": [
+        "T_QM5_1_1_A_QM5_1_1",
+        "T_QM5_1_1_A_QM5_1_2",
+        "T_QM5_1_1_A_QM5_1_3",
+        "T_QM5_1_1_A_QM5_1_5",
+        "T_QM5_1_1_A_QM5_1_7",
+        "T_QM5_1_1_A_QM5_1_9",
+        "T_QM5_1_1_A_QM5_1_10",
+        "T_QM5_1_1_A_QM5_1_14",
+        "T_QM5_1_1_A_QM5_1_16",
+        "T_QM5_1_1_A_QM5_1_99"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_1_1_A_QM5_1_1": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+        "T_QM5_1_1_A_QM5_1_2": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Beauty of Joseon)",
+        "T_QM5_1_1_A_QM5_1_3": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Cetaphil)",
+        "T_QM5_1_1_A_QM5_1_5": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (COSRX)",
+        "T_QM5_1_1_A_QM5_1_7": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Dot & Key)",
+        "T_QM5_1_1_A_QM5_1_9": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Hyphen)",
+        "T_QM5_1_1_A_QM5_1_10": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Innisfree)",
+        "T_QM5_1_1_A_QM5_1_14": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Minimalist)",
+        "T_QM5_1_1_A_QM5_1_16": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Paula's Choice)",
+        "T_QM5_1_1_A_QM5_1_99": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (None)"
+      }
+    },
+    {
+      "name": "T_QM5_1_2_A_QM5_1",
+      "type": "multi",
+      "label": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+      "sub_variables": [
+        "T_QM5_1_2_A_QM5_1_1",
+        "T_QM5_1_2_A_QM5_1_2",
+        "T_QM5_1_2_A_QM5_1_3",
+        "T_QM5_1_2_A_QM5_1_5",
+        "T_QM5_1_2_A_QM5_1_7",
+        "T_QM5_1_2_A_QM5_1_9",
+        "T_QM5_1_2_A_QM5_1_10",
+        "T_QM5_1_2_A_QM5_1_14",
+        "T_QM5_1_2_A_QM5_1_16",
+        "T_QM5_1_2_A_QM5_1_99"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_1_2_A_QM5_1_1": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+        "T_QM5_1_2_A_QM5_1_2": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Beauty of Joseon)",
+        "T_QM5_1_2_A_QM5_1_3": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Cetaphil)",
+        "T_QM5_1_2_A_QM5_1_5": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (COSRX)",
+        "T_QM5_1_2_A_QM5_1_7": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Dot & Key)",
+        "T_QM5_1_2_A_QM5_1_9": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Hyphen)",
+        "T_QM5_1_2_A_QM5_1_10": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Innisfree)",
+        "T_QM5_1_2_A_QM5_1_14": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Minimalist)",
+        "T_QM5_1_2_A_QM5_1_16": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Paula's Choice)",
+        "T_QM5_1_2_A_QM5_1_99": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (None)"
+      }
+    },
+    {
+      "name": "T_QM5_1_3_A_QM5_1",
+      "type": "multi",
+      "label": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+      "sub_variables": [
+        "T_QM5_1_3_A_QM5_1_1",
+        "T_QM5_1_3_A_QM5_1_2",
+        "T_QM5_1_3_A_QM5_1_3",
+        "T_QM5_1_3_A_QM5_1_5",
+        "T_QM5_1_3_A_QM5_1_7",
+        "T_QM5_1_3_A_QM5_1_9",
+        "T_QM5_1_3_A_QM5_1_10",
+        "T_QM5_1_3_A_QM5_1_14",
+        "T_QM5_1_3_A_QM5_1_16",
+        "T_QM5_1_3_A_QM5_1_99"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_1_3_A_QM5_1_1": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+        "T_QM5_1_3_A_QM5_1_2": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Beauty of Joseon)",
+        "T_QM5_1_3_A_QM5_1_3": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Cetaphil)",
+        "T_QM5_1_3_A_QM5_1_5": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (COSRX)",
+        "T_QM5_1_3_A_QM5_1_7": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Dot & Key)",
+        "T_QM5_1_3_A_QM5_1_9": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Hyphen)",
+        "T_QM5_1_3_A_QM5_1_10": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Innisfree)",
+        "T_QM5_1_3_A_QM5_1_14": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Minimalist)",
+        "T_QM5_1_3_A_QM5_1_16": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Paula's Choice)",
+        "T_QM5_1_3_A_QM5_1_99": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (None)"
+      }
+    },
+    {
+      "name": "T_QM5_1_4_A_QM5_1",
+      "type": "multi",
+      "label": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+      "sub_variables": [
+        "T_QM5_1_4_A_QM5_1_1",
+        "T_QM5_1_4_A_QM5_1_2",
+        "T_QM5_1_4_A_QM5_1_3",
+        "T_QM5_1_4_A_QM5_1_5",
+        "T_QM5_1_4_A_QM5_1_7",
+        "T_QM5_1_4_A_QM5_1_9",
+        "T_QM5_1_4_A_QM5_1_10",
+        "T_QM5_1_4_A_QM5_1_14",
+        "T_QM5_1_4_A_QM5_1_16",
+        "T_QM5_1_4_A_QM5_1_99"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_1_4_A_QM5_1_1": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+        "T_QM5_1_4_A_QM5_1_2": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Beauty of Joseon)",
+        "T_QM5_1_4_A_QM5_1_3": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Cetaphil)",
+        "T_QM5_1_4_A_QM5_1_5": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (COSRX)",
+        "T_QM5_1_4_A_QM5_1_7": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Dot & Key)",
+        "T_QM5_1_4_A_QM5_1_9": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Hyphen)",
+        "T_QM5_1_4_A_QM5_1_10": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Innisfree)",
+        "T_QM5_1_4_A_QM5_1_14": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Minimalist)",
+        "T_QM5_1_4_A_QM5_1_16": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Paula's Choice)",
+        "T_QM5_1_4_A_QM5_1_99": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (None)"
+      }
+    },
+    {
+      "name": "T_QM5_1_5_A_QM5_1",
+      "type": "multi",
+      "label": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+      "sub_variables": [
+        "T_QM5_1_5_A_QM5_1_1",
+        "T_QM5_1_5_A_QM5_1_2",
+        "T_QM5_1_5_A_QM5_1_3",
+        "T_QM5_1_5_A_QM5_1_5",
+        "T_QM5_1_5_A_QM5_1_7",
+        "T_QM5_1_5_A_QM5_1_9",
+        "T_QM5_1_5_A_QM5_1_10",
+        "T_QM5_1_5_A_QM5_1_14",
+        "T_QM5_1_5_A_QM5_1_16",
+        "T_QM5_1_5_A_QM5_1_99"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_1_5_A_QM5_1_1": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+        "T_QM5_1_5_A_QM5_1_2": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Beauty of Joseon)",
+        "T_QM5_1_5_A_QM5_1_3": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Cetaphil)",
+        "T_QM5_1_5_A_QM5_1_5": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (COSRX)",
+        "T_QM5_1_5_A_QM5_1_7": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Dot & Key)",
+        "T_QM5_1_5_A_QM5_1_9": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Hyphen)",
+        "T_QM5_1_5_A_QM5_1_10": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Innisfree)",
+        "T_QM5_1_5_A_QM5_1_14": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Minimalist)",
+        "T_QM5_1_5_A_QM5_1_16": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Paula's Choice)",
+        "T_QM5_1_5_A_QM5_1_99": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (None)"
+      }
+    },
+    {
+      "name": "T_QM5_1_6_A_QM5_1",
+      "type": "multi",
+      "label": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+      "sub_variables": [
+        "T_QM5_1_6_A_QM5_1_1",
+        "T_QM5_1_6_A_QM5_1_2",
+        "T_QM5_1_6_A_QM5_1_3",
+        "T_QM5_1_6_A_QM5_1_5",
+        "T_QM5_1_6_A_QM5_1_7",
+        "T_QM5_1_6_A_QM5_1_9",
+        "T_QM5_1_6_A_QM5_1_10",
+        "T_QM5_1_6_A_QM5_1_14",
+        "T_QM5_1_6_A_QM5_1_16",
+        "T_QM5_1_6_A_QM5_1_99"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_1_6_A_QM5_1_1": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+        "T_QM5_1_6_A_QM5_1_2": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Beauty of Joseon)",
+        "T_QM5_1_6_A_QM5_1_3": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Cetaphil)",
+        "T_QM5_1_6_A_QM5_1_5": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (COSRX)",
+        "T_QM5_1_6_A_QM5_1_7": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Dot & Key)",
+        "T_QM5_1_6_A_QM5_1_9": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Hyphen)",
+        "T_QM5_1_6_A_QM5_1_10": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Innisfree)",
+        "T_QM5_1_6_A_QM5_1_14": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Minimalist)",
+        "T_QM5_1_6_A_QM5_1_16": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Paula's Choice)",
+        "T_QM5_1_6_A_QM5_1_99": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (None)"
+      }
+    },
+    {
+      "name": "T_QM5_1_7_A_QM5_1",
+      "type": "multi",
+      "label": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+      "sub_variables": [
+        "T_QM5_1_7_A_QM5_1_1",
+        "T_QM5_1_7_A_QM5_1_2",
+        "T_QM5_1_7_A_QM5_1_3",
+        "T_QM5_1_7_A_QM5_1_5",
+        "T_QM5_1_7_A_QM5_1_7",
+        "T_QM5_1_7_A_QM5_1_9",
+        "T_QM5_1_7_A_QM5_1_10",
+        "T_QM5_1_7_A_QM5_1_14",
+        "T_QM5_1_7_A_QM5_1_16",
+        "T_QM5_1_7_A_QM5_1_99"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_1_7_A_QM5_1_1": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+        "T_QM5_1_7_A_QM5_1_2": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Beauty of Joseon)",
+        "T_QM5_1_7_A_QM5_1_3": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Cetaphil)",
+        "T_QM5_1_7_A_QM5_1_5": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (COSRX)",
+        "T_QM5_1_7_A_QM5_1_7": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Dot & Key)",
+        "T_QM5_1_7_A_QM5_1_9": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Hyphen)",
+        "T_QM5_1_7_A_QM5_1_10": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Innisfree)",
+        "T_QM5_1_7_A_QM5_1_14": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Minimalist)",
+        "T_QM5_1_7_A_QM5_1_16": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Paula's Choice)",
+        "T_QM5_1_7_A_QM5_1_99": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (None)"
+      }
+    },
+    {
+      "name": "T_QM5_1_8_A_QM5_1",
+      "type": "multi",
+      "label": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+      "sub_variables": [
+        "T_QM5_1_8_A_QM5_1_1",
+        "T_QM5_1_8_A_QM5_1_2",
+        "T_QM5_1_8_A_QM5_1_3",
+        "T_QM5_1_8_A_QM5_1_5",
+        "T_QM5_1_8_A_QM5_1_7",
+        "T_QM5_1_8_A_QM5_1_9",
+        "T_QM5_1_8_A_QM5_1_10",
+        "T_QM5_1_8_A_QM5_1_14",
+        "T_QM5_1_8_A_QM5_1_16",
+        "T_QM5_1_8_A_QM5_1_99"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_1_8_A_QM5_1_1": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+        "T_QM5_1_8_A_QM5_1_2": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Beauty of Joseon)",
+        "T_QM5_1_8_A_QM5_1_3": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Cetaphil)",
+        "T_QM5_1_8_A_QM5_1_5": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (COSRX)",
+        "T_QM5_1_8_A_QM5_1_7": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Dot & Key)",
+        "T_QM5_1_8_A_QM5_1_9": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Hyphen)",
+        "T_QM5_1_8_A_QM5_1_10": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Innisfree)",
+        "T_QM5_1_8_A_QM5_1_14": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Minimalist)",
+        "T_QM5_1_8_A_QM5_1_16": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Paula's Choice)",
+        "T_QM5_1_8_A_QM5_1_99": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (None)"
+      }
+    },
+    {
+      "name": "T_QM5_1_9_A_QM5_1",
+      "type": "multi",
+      "label": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+      "sub_variables": [
+        "T_QM5_1_9_A_QM5_1_1",
+        "T_QM5_1_9_A_QM5_1_2",
+        "T_QM5_1_9_A_QM5_1_3",
+        "T_QM5_1_9_A_QM5_1_5",
+        "T_QM5_1_9_A_QM5_1_7",
+        "T_QM5_1_9_A_QM5_1_9",
+        "T_QM5_1_9_A_QM5_1_10",
+        "T_QM5_1_9_A_QM5_1_14",
+        "T_QM5_1_9_A_QM5_1_16",
+        "T_QM5_1_9_A_QM5_1_99"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_1_9_A_QM5_1_1": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+        "T_QM5_1_9_A_QM5_1_2": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Beauty of Joseon)",
+        "T_QM5_1_9_A_QM5_1_3": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Cetaphil)",
+        "T_QM5_1_9_A_QM5_1_5": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (COSRX)",
+        "T_QM5_1_9_A_QM5_1_7": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Dot & Key)",
+        "T_QM5_1_9_A_QM5_1_9": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Hyphen)",
+        "T_QM5_1_9_A_QM5_1_10": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Innisfree)",
+        "T_QM5_1_9_A_QM5_1_14": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Minimalist)",
+        "T_QM5_1_9_A_QM5_1_16": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Paula's Choice)",
+        "T_QM5_1_9_A_QM5_1_99": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (None)"
+      }
+    },
+    {
+      "name": "T_QM5_1_10_A_QM5_1",
+      "type": "multi",
+      "label": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+      "sub_variables": [
+        "T_QM5_1_10_A_QM5_1_1",
+        "T_QM5_1_10_A_QM5_1_2",
+        "T_QM5_1_10_A_QM5_1_3",
+        "T_QM5_1_10_A_QM5_1_5",
+        "T_QM5_1_10_A_QM5_1_7",
+        "T_QM5_1_10_A_QM5_1_9",
+        "T_QM5_1_10_A_QM5_1_10",
+        "T_QM5_1_10_A_QM5_1_14",
+        "T_QM5_1_10_A_QM5_1_16",
+        "T_QM5_1_10_A_QM5_1_99"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_1_10_A_QM5_1_1": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+        "T_QM5_1_10_A_QM5_1_2": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Beauty of Joseon)",
+        "T_QM5_1_10_A_QM5_1_3": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Cetaphil)",
+        "T_QM5_1_10_A_QM5_1_5": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (COSRX)",
+        "T_QM5_1_10_A_QM5_1_7": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Dot & Key)",
+        "T_QM5_1_10_A_QM5_1_9": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Hyphen)",
+        "T_QM5_1_10_A_QM5_1_10": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Innisfree)",
+        "T_QM5_1_10_A_QM5_1_14": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Minimalist)",
+        "T_QM5_1_10_A_QM5_1_16": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Paula's Choice)",
+        "T_QM5_1_10_A_QM5_1_99": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (None)"
+      }
+    },
+    {
+      "name": "T_QM5_1_11_A_QM5_1",
+      "type": "multi",
+      "label": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+      "sub_variables": [
+        "T_QM5_1_11_A_QM5_1_1",
+        "T_QM5_1_11_A_QM5_1_2",
+        "T_QM5_1_11_A_QM5_1_3",
+        "T_QM5_1_11_A_QM5_1_5",
+        "T_QM5_1_11_A_QM5_1_7",
+        "T_QM5_1_11_A_QM5_1_9",
+        "T_QM5_1_11_A_QM5_1_10",
+        "T_QM5_1_11_A_QM5_1_14",
+        "T_QM5_1_11_A_QM5_1_16",
+        "T_QM5_1_11_A_QM5_1_99"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_1_11_A_QM5_1_1": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Akind)",
+        "T_QM5_1_11_A_QM5_1_2": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Beauty of Joseon)",
+        "T_QM5_1_11_A_QM5_1_3": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Cetaphil)",
+        "T_QM5_1_11_A_QM5_1_5": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (COSRX)",
+        "T_QM5_1_11_A_QM5_1_7": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Dot & Key)",
+        "T_QM5_1_11_A_QM5_1_9": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Hyphen)",
+        "T_QM5_1_11_A_QM5_1_10": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Innisfree)",
+        "T_QM5_1_11_A_QM5_1_14": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Minimalist)",
+        "T_QM5_1_11_A_QM5_1_16": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (Paula's Choice)",
+        "T_QM5_1_11_A_QM5_1_99": "Q.M5.1  Here is a list of statements that product users may associate with PREMIUM skincare brands. Please associate each statement - you may associate one, many brands or none. . There is no right or wrong answer. (None)"
+      }
+    },
+    {
+      "name": "T_QM5_2",
+      "type": "multi",
+      "label": "Gentle on skin",
+      "sub_variables": [
+        "T_QM5_2_1",
+        "T_QM5_2_2",
+        "T_QM5_2_3",
+        "T_QM5_2_4",
+        "T_QM5_2_5",
+        "T_QM5_2_6",
+        "T_QM5_2_7",
+        "T_QM5_2_8"
+      ],
+      "sub_variable_labels": {
+        "T_QM5_2_1": "Gentle on skin",
+        "T_QM5_2_2": "Supports skin barrier",
+        "T_QM5_2_3": "Ingredient-led",
+        "T_QM5_2_4": "Minimal/ no nonsense",
+        "T_QM5_2_5": "Results Driven",
+        "T_QM5_2_6": "Trustworthy",
+        "T_QM5_2_7": "Safe for daily use",
+        "T_QM5_2_8": "Science-backed / dermatologically tested"
+      }
+    },
+    {
+      "name": "I_1_CONCEPT_SHOWN",
+      "type": "single",
+      "label": "(Iteration_1)"
+    },
+    {
+      "name": "I_1_T_QC4",
+      "type": "multi",
+      "label": "(Iteration_1) Clear and easy to understand",
+      "sub_variables": [
+        "I_1_T_QC4_1",
+        "I_1_T_QC4_2",
+        "I_1_T_QC4_3",
+        "I_1_T_QC4_4",
+        "I_1_T_QC4_5",
+        "I_1_T_QC4_6"
+      ],
+      "sub_variable_labels": {
+        "I_1_T_QC4_1": "(Iteration_1) Clear and easy to understand",
+        "I_1_T_QC4_2": "(Iteration_1) Relevant to my skincare needs",
+        "I_1_T_QC4_3": "(Iteration_1) Believable for AKIND",
+        "I_1_T_QC4_4": "(Iteration_1) Unique & different compared to other brands",
+        "I_1_T_QC4_5": "(Iteration_1) Makes me interested in the brand/ Find it appealing",
+        "I_1_T_QC4_6": "(Iteration_1) Feels like a natural evolution of what AKIND already stands for."
+      }
+    },
+    {
+      "name": "I_1_QC5",
+      "type": "single",
+      "label": "(Iteration_1) Positioning Elasticity / Stretch Judgment  QC5  Which if the following best describes thus brand description {0} for AKIND?"
+    },
+    {
+      "name": "I_1_QC6",
+      "type": "single",
+      "label": "(Iteration_1) Purchase Intention SHOW SCREEN   QC6.  How likely are you to actively consider AKIND when you next shop for premium skincare? Please indicate on a scale where 1 means Will Definitely NOT Consider Buying and 4 means Will Definitely Consider Bu"
+    },
+    {
+      "name": "I_1_QC7",
+      "type": "single",
+      "label": "(Iteration_1) QC7.  Overall, Which of the following describes how much you are willing to pay for the AKIND brand ?. I will buy even if"
+    },
+    {
+      "name": "I_2_CONCEPT_SHOWN",
+      "type": "single",
+      "label": "(Iteration_2)"
+    },
+    {
+      "name": "I_2_T_QC4",
+      "type": "multi",
+      "label": "(Iteration_2) Clear and easy to understand",
+      "sub_variables": [
+        "I_2_T_QC4_1",
+        "I_2_T_QC4_2",
+        "I_2_T_QC4_3",
+        "I_2_T_QC4_4",
+        "I_2_T_QC4_5",
+        "I_2_T_QC4_6"
+      ],
+      "sub_variable_labels": {
+        "I_2_T_QC4_1": "(Iteration_2) Clear and easy to understand",
+        "I_2_T_QC4_2": "(Iteration_2) Relevant to my skincare needs",
+        "I_2_T_QC4_3": "(Iteration_2) Believable for AKIND",
+        "I_2_T_QC4_4": "(Iteration_2) Unique & different compared to other brands",
+        "I_2_T_QC4_5": "(Iteration_2) Makes me interested in the brand/ Find it appealing",
+        "I_2_T_QC4_6": "(Iteration_2) Feels like a natural evolution of what AKIND already stands for."
+      }
+    },
+    {
+      "name": "I_2_QC5",
+      "type": "single",
+      "label": "(Iteration_2) Positioning Elasticity / Stretch Judgment  QC5  Which if the following best describes thus brand description {0} for AKIND?"
+    },
+    {
+      "name": "I_2_QC6",
+      "type": "single",
+      "label": "(Iteration_2) Purchase Intention SHOW SCREEN   QC6.  How likely are you to actively consider AKIND when you next shop for premium skincare? Please indicate on a scale where 1 means Will Definitely NOT Consider Buying and 4 means Will Definitely Consider Bu"
+    },
+    {
+      "name": "I_2_QC7",
+      "type": "single",
+      "label": "(Iteration_2) QC7.  Overall, Which of the following describes how much you are willing to pay for the AKIND brand ?. I will buy even if"
+    },
+    {
+      "name": "QM7",
+      "type": "multi",
+      "label": "Direct Comparison  QM7.1  Thinking about both the brand descriptions in totality, which of the two do you prefer more?  PREFERENCE T2 (Barrier first Beauty)        K4 (Beauty begins at the Skin barrier)",
+      "sub_variables": [
+        "QM7_1",
+        "QM7_2"
+      ],
+      "sub_variable_labels": {
+        "QM7_1": "Direct Comparison  QM7.1  Thinking about both the brand descriptions in totality, which of the two do you prefer more?  PREFERENCE T2 (Barrier first Beauty)        K4 (Beauty begins at the Skin barrier)",
+        "QM7_2": "Product Brand fit  QM7.2  Thinking about AKIND’s products overall, which brand description fits them better?   T2K4"
+      }
+    },
+    {
+      "name": "I_1_QM8_1a",
+      "type": "single",
+      "label": "(Moisturizer) Fit with Brand (For key product categories)  QM8.1a  Please rate the extent to which each product type fits with the key message AKIND is communicating in this brand description, where 1 is Does not fit at all & 4 is Fits extremely well  Plea"
+    },
+    {
+      "name": "I_2_QM8_1a",
+      "type": "single",
+      "label": "(Sunscreen) Fit with Brand (For key product categories)  QM8.1a  Please rate the extent to which each product type fits with the key message AKIND is communicating in this brand description, where 1 is Does not fit at all & 4 is Fits extremely well  Please"
+    },
+    {
+      "name": "I_3_QM8_1a",
+      "type": "single",
+      "label": "(Toner) Fit with Brand (For key product categories)  QM8.1a  Please rate the extent to which each product type fits with the key message AKIND is communicating in this brand description, where 1 is Does not fit at all & 4 is Fits extremely well  Please rat"
+    },
+    {
+      "name": "I_1_QM8_1b",
+      "type": "single",
+      "label": "(Moisturizer) Purchase Intention (For key product categories)  SHOW SCREEN  QM8.1b   Keeping the brand description in mind , how likely are you to actively consider AKIND @_@ITERNAME@_@ when you next shop for skincare?"
+    },
+    {
+      "name": "I_2_QM8_1b",
+      "type": "single",
+      "label": "(Sunscreen) Purchase Intention (For key product categories)  SHOW SCREEN  QM8.1b   Keeping the brand description in mind , how likely are you to actively consider AKIND @_@ITERNAME@_@ when you next shop for skincare?"
+    },
+    {
+      "name": "I_3_QM8_1b",
+      "type": "single",
+      "label": "(Toner) Purchase Intention (For key product categories)  SHOW SCREEN  QM8.1b   Keeping the brand description in mind , how likely are you to actively consider AKIND @_@ITERNAME@_@ when you next shop for skincare?"
+    },
+    {
+      "name": "GPS_CAPTURE_LA",
+      "type": "single",
+      "label": "CAPTURE GPS"
+    },
+    {
+      "name": "GPS_CAPTURE_LO",
+      "type": "single",
+      "label": "CAPTURE GPS"
+    },
+    {
+      "name": "QAC1",
+      "type": "single",
+      "label": "Q.AC.1 Have you been accompained by the Field Supervisor/ Field Executive/ Research Team Member/Other"
+    },
+    {
+      "name": "QC_QS5",
+      "type": "single",
+      "label": "Age"
+    },
+    {
+      "name": "QC_QS11",
+      "type": "single",
+      "label": "Monthly Spends"
+    },
+    {
+      "name": "QC_QM11",
+      "type": "multi",
+      "label": "Respondent Working status",
+      "sub_variables": [
+        "QC_QM11_1",
+        "QC_QM11_2"
+      ],
+      "sub_variable_labels": {
+        "QC_QM11_1": "Respondent Working status",
+        "QC_QM11_2": "Respondent Education"
+      }
+    },
+    {
+      "name": "QC_QS11_2",
+      "type": "single",
+      "label": "Premium User Yes/No"
+    },
+    {
+      "name": "QC_TBC1",
+      "type": "single",
+      "label": "Can you confirm whether the interviewer showed you the brand logos and brand concepts before asking questions on them?"
+    },
+    {
+      "name": "QC_TBC2",
+      "type": "single",
+      "label": "Was your interview conducted using a tablet or a mobile phone?"
+    },
+    {
+      "name": "QC_PBC1",
+      "type": "single",
+      "label": "Was the PBC conducted for this interview?"
+    },
+    {
+      "name": "QC_PBC2",
+      "type": "single",
+      "label": "If Yes, who conducted the PBC?"
     }
-  }
+  ]
 }

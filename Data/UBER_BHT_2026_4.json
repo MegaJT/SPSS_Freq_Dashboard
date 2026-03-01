@@ -1,0 +1,167 @@
+{
+  "variables": [
+    {
+      "name": "HROTATION",
+      "type": "single",
+      "label": "whether the answers in the upcoming question will be straight or reversed? (Random generated )",
+      "value_labels": {
+        "1.0": "Straight",
+        "2.0": "Reversed"
+      }
+    },
+    {
+      "name": "QCITY",
+      "type": "single",
+      "label": "CITY",
+      "value_labels": {
+        "1.0": "Johannesburg",
+        "2.0": "Cape Town",
+        "3.0": "Pretoria",
+        "4.0": "Durban"
+      }
+    },
+    {
+      "name": "QJBURG_SP",
+      "type": "single",
+      "label": "Sampling Point",
+      "value_labels": {
+        "1.0": "1-LENZ PUBLIC SEC SCHOOL",
+        "2.0": "2-JISWA SERVICE CENTRE FOR THE AGED",
+        "3.0": "3-LENASIA CIVIC CENTRE",
+        "4.0": "4-PROTEA CITY HAL",
+        "5.0": "5-TENT AT NEAR PROTEA GLEN POLICE STATION) 4092",
+        "6.0": "6-BASA HIGH SCHOOL",
+        "7.0": "7-TLADI ADMINISTRATIVE OFFICE 1068",
+        "8.0": "8-TIHOLOHELO SCHOOL 1954",
+        "9.0": "9-MATUBENG SCHOOL",
+        "10.0": "10-LEIHLO PRIMARY SCHOOL 354",
+        "11.0": "11-TENT -PIMVILLE GOLF COURSE FLATS 131",
+        "12.0": "12-PIMVILLE PRIMARY SCHOOL",
+        "13.0": "13-THE REFORMED PRESBYTERIAN CHURCH IN SOUTHE",
+        "14.0": "14-LOFENTSE SECONDARY SCHOO",
+        "15.0": "15-DIEPKLOOF MULTIPURPOSE HALL",
+        "16.0": "16-JOHANNESBURG CENTRAL TEACHER DEVELOPMENT",
+        "17.0": "17-ELKA SPORTS CLU",
+        "18.0": "18-REUTLWILE JUNIOR SECONDARY SCHOOL",
+        "19.0": "19-ISAACSON PRIMARY SCHOOL",
+        "20.0": "20-THESELE SECONDARY SCHOOL",
+        "21.0": "21-JABULANI CIVIC CENTRE",
+        "22.0": "22-MORRIS ISAACSON HIGH SCHOOL",
+        "23.0": "23-SALVATION ARMY JABAVU BRIDGMAN CRECHE",
+        "24.0": "24-SYDNEY MASEKO ADULT LEARNING CENTRE",
+        "25.0": "25-MOFOLO ART CENTRE",
+        "26.0": "26-TENT (OPPOSITE HOUSE 506C WHITE CITY JABAVU)",
+        "27.0": "27-ST. PIUS X CATHOLIC CHURCH",
+        "28.0": "28-BOXING ACADEMY 212",
+        "29.0": "29-THABISANG PRIMARY SCHOOL",
+        "30.0": "30-SIZANANI PRIMARY SCHOOL",
+        "31.0": "31-ORLANDO WEST SECONDARY SCHOOL 1484",
+        "32.0": "32-ANGLICAN CHURCH",
+        "33.0": "33-SAPEBUSO PRIMARY SCHOOL",
+        "34.0": "34-LAMULA JUBILEE SECONDARY SCHOOL",
+        "35.0": "35-NEW PHEFENI RECREATION CENTRE",
+        "36.0": "36-DZATA PRIMARY SCHOOL",
+        "37.0": "37-Lancaster Primary school",
+        "38.0": "38-South View high school",
+        "39.0": "39-Lenasia south hospital.",
+        "40.0": "40-ROODEPOORT CITY HALL 4207",
+        "41.0": "41-SOUTH WEST GAUTENG COLLEGE 1732",
+        "42.0": "42-DISCOVERY COMMUNITY CENTRE",
+        "43.0": "43-PARKHURST PRIMARY SCHOOL",
+        "44.0": "44-SAXONWOLD PRIMARY SCHOOL",
+        "45.0": "45-ROSEBANK PRIMARY SCHOOL",
+        "46.0": "46-Dinwiddie Prinary School",
+        "47.0": "47-Laerskool Elandia",
+        "48.0": "48-Bowan School",
+        "49.0": "49-Tlhokomelo Primary School",
+        "50.0": "50-Meadowlands Clinic",
+        "51.0": "51-Meadowlands high school",
+        "52.0": "52-EMDENI SENIOR SECONDARY SCHOOL",
+        "53.0": "53-EMSENI PRIMARY SCHOOL",
+        "54.0": "54-JOSIAH KHUMALO ADULT EDUCATION CENTR",
+        "155.0": "155-Klipspruit Secondary School",
+        "156.0": "156-Klipspruit Clinic",
+        "157.0": "157-Apostolic Church"
+      }
+    },
+    {
+      "name": "T_Q1",
+      "type": "multi",
+      "label": "Built-in kitchen sink",
+      "sub_variables": [
+        "T_Q1_1",
+        "T_Q1_2",
+        "T_Q1_3",
+        "T_Q1_4",
+        "T_Q1_5",
+        "T_Q1_6",
+        "T_Q1_7",
+        "T_Q1_8",
+        "T_Q1_9",
+        "T_Q1_10",
+        "T_Q1_11",
+        "T_Q1_12",
+        "T_Q1_13",
+        "T_Q1_14",
+        "T_Q1_15",
+        "T_Q1_16",
+        "T_Q1_17",
+        "T_Q1_18",
+        "T_Q1_19"
+      ],
+      "sub_variable_labels": {
+        "T_Q1_1": "Built-in kitchen sink",
+        "T_Q1_2": "Tap water inside your home, or store-bought water for use in your home",
+        "T_Q1_3": "Hot running water from a geyser",
+        "T_Q1_4": "Flush toilet inside the home",
+        "T_Q1_5": "Home security service",
+        "T_Q1_6": "Motorcar",
+        "T_Q1_7": "Fridge or combined fridge/freezer",
+        "T_Q1_8": "Side-by-side fridge and freezer",
+        "T_Q1_9": "Deep freezer which is free standing",
+        "T_Q1_10": " Microwave oven",
+        "T_Q1_11": " Floor polisher or vacuum cleaner",
+        "T_Q1_12": " Washing machine",
+        "T_Q1_13": " Roof tiles or concrete roofing",
+        "T_Q1_14": " None, earth or dung flooring",
+        "T_Q1_15": " Cement, concrete or raw wood flooring",
+        "T_Q1_16": " Finished floor with, parquet, carpet, tiles or ceramic flooring",
+        "T_Q1_17": " None or one sleeping room",
+        "T_Q1_18": " Two sleeping rooms",
+        "T_Q1_19": " Three or more sleeping rooms"
+      }
+    },
+    {
+      "name": "A_QBRANDmA_1",
+      "type": "multi",
+      "label": "As far as you are aware, which of the following ride-hailing companies are available where you live?  (Uber)",
+      "sub_variables": [
+        "A_QBRANDmA_1_1",
+        "A_QBRANDmA_1_2",
+        "A_QBRANDmA_1_3",
+        "A_QBRANDmA_1_4",
+        "A_QBRANDmA_1_5",
+        "A_QBRANDmA_1_6",
+        "A_QBRANDmA_1_7",
+        "A_QBRANDmA_1_8"
+      ],
+      "sub_variable_labels": {
+        "A_QBRANDmA_1_1": "Uber",
+        "A_QBRANDmA_1_2": "Bolt",
+        "A_QBRANDmA_1_3": "Indriver",
+        "A_QBRANDmA_1_4": "As far as you are aware, which of the following ride-hailing companies are available where you live?  (Uber Eats)",
+        "A_QBRANDmA_1_5": "As far as you are aware, which of the following ride-hailing companies are available where you live?  (Mr D Food)",
+        "A_QBRANDmA_1_6": "As far as you are aware, which of the following ride-hailing companies are available where you live?  (Coca Cola)",
+        "A_QBRANDmA_1_7": "As far as you are aware, which of the following ride-hailing companies are available where you live?  (MTN)",
+        "A_QBRANDmA_1_8": "As far as you are aware, which of the following ride-hailing companies are available where you live?  (None of the Above)"
+      }
+    }
+  ],
+  "filter_sets": {
+    "Male": {
+      "QGENDER": {
+        "eq": 1
+      }
+    }
+  }
+}

@@ -142,15 +142,23 @@ class WeightCalculator:
         total_unweighted = len(series)
         total_weighted = valid_weights.sum()
         
-        # Get unique values
-        unique_values = series.dropna().unique()
-        
-        # Build frequency table
+        # Build frequency table in value_labels order (questionnaire order).
+        # If value_labels provided, iterate its keys; otherwise fall back to
+        # sorted unique values so order is at least deterministic.
+        if value_labels:
+            ordered_values = [v for v in value_labels.keys() if v in series.values]
+            # Append any values present in data but not in value_labels (edge case)
+            labeled_set = set(value_labels.keys())
+            extras = [v for v in series.dropna().unique() if v not in labeled_set]
+            ordered_values = ordered_values + sorted(extras)
+        else:
+            ordered_values = sorted(series.dropna().unique())
+
         freq_table = []
         valid_unweighted = 0
         valid_weighted = 0.0
-        
-        for value in unique_values:
+
+        for value in ordered_values:
             # Unweighted count
             mask = (series == value)
             unweighted_count = mask.sum()
@@ -196,8 +204,8 @@ class WeightCalculator:
                 'is_missing': True
             })
         
-        # Sort: valid responses first, then missing
-        freq_table.sort(key=lambda x: (x['is_missing'], -x['weighted_count']))
+        # Missing row already appended last — order preserved from value_labels
+
         
         return {
             'total_unweighted': int(total_unweighted),
@@ -257,8 +265,8 @@ class WeightCalculator:
                 'percentage': float(percentage)
             })
         
-        # Sort by weighted count descending
-        freq_table.sort(key=lambda x: -x['weighted_count'])
+        # Order preserved from sub_data_dict (questionnaire order)
+
         
         return {
             'total_unweighted': int(total_unweighted),

@@ -13,7 +13,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 # Dash imports
-from dash import Dash, html, dcc, Input, Output, State, ctx
+from dash import Dash, html, dcc, Input, Output, State, ctx, MATCH, ALL
 import dash_bootstrap_components as dbc
 
 # Our modules
@@ -560,8 +560,10 @@ def _register_callbacks(app, reader, processor, visualizer, variables_list, filt
             
             # Process variable
             if var_type == 'single':
+                json_value_labels = var_config.get('value_labels', None)
                 result = _process_single_variable(
-                    reader, filtered_data, var_name, var_label, filter_info, config
+                    reader, filtered_data, var_name, var_label, filter_info, config,
+                    json_value_labels=json_value_labels
                 )
                 if result:
                     fig = theme_visualizer.create_single_punch_chart(result, 'bar')
@@ -573,7 +575,7 @@ def _register_callbacks(app, reader, processor, visualizer, variables_list, filt
                     fig = theme_visualizer.create_multi_punch_chart(result)
             else:
                 continue
-            
+
             if result:
                 chart_card = _create_chart_card(result, fig, var_idx)
                 chart_cards.append(chart_card)
@@ -590,34 +592,110 @@ def _register_callbacks(app, reader, processor, visualizer, variables_list, filt
         
         return chart_cards, status_msg
 
+    # ── Multi-punch per-chart sort callback ──────────────────────────────
+    @app.callback(
+        Output({'type': 'multi-chart', 'index': MATCH}, 'figure'),
+        Input({'type': 'multi-sort', 'index': MATCH}, 'value'),
+        State({'type': 'multi-result-store', 'index': MATCH}, 'data'),
+        State('store-theme', 'data'),
+        prevent_initial_call=True
+    )
+    def sort_multi_chart(sort_value, stored_result, theme_data):
+        """Re-render a multi-punch chart with the chosen sort order."""
+        if not stored_result:
+            from dash import no_update
+            return no_update
 
-def _process_single_variable(reader, data, var_name, var_label, filter_info, config):
-    """Process a single-punch variable"""
+        import copy
+        result = copy.deepcopy(stored_result)
+        freq_table = result['freq_table']
+        weighted = result.get('weighted', False)
+
+        if sort_value == 'count_desc':
+            key = 'weighted_count' if weighted else 'count'
+            freq_table.sort(key=lambda x: -x.get(key, 0))
+        elif sort_value == 'count_asc':
+            key = 'weighted_count' if weighted else 'count'
+            freq_table.sort(key=lambda x: x.get(key, 0))
+        # 'defined' — keep original order, no sort needed
+
+        result['freq_table'] = freq_table
+
+        selected_theme = theme_data.get('theme', 'corporate_blue') if theme_data else 'corporate_blue'
+        theme_visualizer = ChartVisualizer(theme=selected_theme)
+        return theme_visualizer.create_multi_punch_chart(result)
+
+
+def _build_single_freq_table(column_data, value_labels, total):
+    """Build an ordered single-punch freq_table. Missing always last.
+    value_labels defines both labels AND display order."""
+    import numpy as np
+    value_counts = column_data.value_counts(dropna=False)
+
+    if value_labels:
+        ordered_values = list(value_labels.keys())
+        labeled_set = set(value_labels.keys())
+        extras = sorted([v for v in value_counts.index if not pd.isna(v) and v not in labeled_set])
+        ordered_values = ordered_values + extras
+    else:
+        ordered_values = sorted([v for v in value_counts.index if not pd.isna(v)])
+
+    freq_table = []
+    valid_total = 0
+    for value in ordered_values:
+        count = value_counts.get(value, 0)
+        label = value_labels.get(value, str(value)) if value_labels else str(value)
+        percentage = (count / total) * 100 if total > 0 else 0
+        freq_table.append({
+            'value': value, 'label': label, 'count': count,
+            'percentage': percentage, 'is_missing': False
+        })
+        valid_total += count
+
+    # Append missing last
+    missing_count = 0
+    for k in value_counts.index:
+        if pd.isna(k):
+            missing_count = value_counts[k]
+            break
+    if missing_count > 0:
+        freq_table.append({
+            'value': None, 'label': 'Missing',
+            'count': missing_count,
+            'percentage': (missing_count / total) * 100 if total > 0 else 0,
+            'is_missing': True
+        })
+    return freq_table, valid_total
+
+
+def _process_single_variable(reader, data, var_name, var_label, filter_info, config, json_value_labels=None):
+    """Process a single-punch variable.
+    json_value_labels: optional dict from JSON config that overrides SPSS labels
+    and defines display order.
+    """
     weighting_config = config.get('weighting', {})
     weighting_enabled = weighting_config.get('enabled', False)
-    
+
     if var_name not in data.columns:
         return None
-    
+
     column_data = data[var_name]
-    value_labels = reader.get_value_labels(var_name)
-    
+    spss_value_labels = reader.get_value_labels(var_name)
+    # JSON labels take precedence — they also define display order
+    value_labels = json_value_labels if json_value_labels else spss_value_labels
+    total = len(column_data)
+
     if weighting_enabled:
         try:
             from weight_calculator import WeightCalculator
             temp_calc = WeightCalculator(data, weighting_config['weight_variable'])
-            valid_data, valid_weights = temp_calc.get_valid_data_and_weights()
-            
+            valid_data, _ = temp_calc.get_valid_data_and_weights()
             weighted_result = temp_calc.calculate_weighted_frequencies_single(
-                valid_data[var_name],
-                value_labels
+                valid_data[var_name], value_labels
             )
-            
             return {
-                'var_name': var_name,
-                'var_label': var_label,
-                'type': 'single',
-                'weighted': True,
+                'var_name': var_name, 'var_label': var_label,
+                'type': 'single', 'weighted': True,
                 'total_unweighted': weighted_result['total_unweighted'],
                 'total_weighted': weighted_result['total_weighted'],
                 'valid_unweighted': weighted_result['valid_unweighted'],
@@ -628,80 +706,24 @@ def _process_single_variable(reader, data, var_name, var_label, filter_info, con
                 'weighting_warning': None
             }
         except Exception as e:
-            # Weighting failed — fall back to unweighted and surface the error to the user
             print(f"  ⚠ Weighting failed for '{var_name}': {str(e)}. Falling back to unweighted.")
             weighting_warning = f"⚠ Weighting failed: {str(e)}. Showing unweighted data."
-            # Build unweighted result with warning attached
-            value_counts = column_data.value_counts(dropna=False)
-            total = len(column_data)
-            freq_table = []
-            valid_total = 0
-            for value, count in value_counts.items():
-                if pd.isna(value):
-                    label = "Missing"
-                elif value_labels and value in value_labels:
-                    label = value_labels[value]
-                else:
-                    label = str(value)
-                percentage = (count / total) * 100 if total > 0 else 0
-                freq_table.append({
-                    'value': value, 'label': label, 'count': count,
-                    'percentage': percentage, 'is_missing': pd.isna(value)
-                })
-                if not pd.isna(value):
-                    valid_total += count
-            freq_table.sort(key=lambda x: (x['is_missing'], -x['count']))
+            freq_table, valid_total = _build_single_freq_table(column_data, value_labels, total)
             return {
-                'var_name': var_name,
-                'var_label': var_label,
-                'type': 'single',
-                'weighted': False,
-                'total_responses': total,
-                'valid_responses': valid_total,
-                'freq_table': freq_table,
-                'filter_info': filter_info,
+                'var_name': var_name, 'var_label': var_label,
+                'type': 'single', 'weighted': False,
+                'total_responses': total, 'valid_responses': valid_total,
+                'freq_table': freq_table, 'filter_info': filter_info,
                 'weighting_warning': weighting_warning
             }
 
-    # Unweighted fallback
-    value_counts = column_data.value_counts(dropna=False)
-    total = len(column_data)
-    
-    freq_table = []
-    valid_total = 0
-    
-    for value, count in value_counts.items():
-        if pd.isna(value):
-            label = "Missing"
-        elif value_labels and value in value_labels:
-            label = value_labels[value]
-        else:
-            label = str(value)
-        
-        percentage = (count / total) * 100 if total > 0 else 0
-        
-        freq_table.append({
-            'value': value,
-            'label': label,
-            'count': count,
-            'percentage': percentage,
-            'is_missing': pd.isna(value)
-        })
-        
-        if not pd.isna(value):
-            valid_total += count
-    
-    freq_table.sort(key=lambda x: (x['is_missing'], -x['count']))
-    
+    # Unweighted
+    freq_table, valid_total = _build_single_freq_table(column_data, value_labels, total)
     return {
-        'var_name': var_name,
-        'var_label': var_label,
-        'type': 'single',
-        'weighted': False,
-        'total_responses': total,
-        'valid_responses': valid_total,
-        'freq_table': freq_table,
-        'filter_info': filter_info,
+        'var_name': var_name, 'var_label': var_label,
+        'type': 'single', 'weighted': False,
+        'total_responses': total, 'valid_responses': valid_total,
+        'freq_table': freq_table, 'filter_info': filter_info,
         'weighting_warning': None
     }
 
@@ -767,7 +789,7 @@ def _process_multi_variable(reader, data, var_name, var_label, sub_variables, fi
                 percentage = (count / base) * 100 if base > 0 else 0
                 freq_table.append({'sub_var': sub_var, 'label': label,
                                    'count': count, 'percentage': percentage})
-            freq_table.sort(key=lambda x: -x['count'])
+            # Order preserved from sub_variables list (questionnaire order)
             return {
                 'var_name': var_name,
                 'var_label': var_label,
@@ -798,7 +820,7 @@ def _process_multi_variable(reader, data, var_name, var_label, sub_variables, fi
             'percentage': percentage
         })
     
-    freq_table.sort(key=lambda x: -x['count'])
+    # Order preserved from sub_variables list (questionnaire order)
     
     return {
         'var_name': var_name,
@@ -820,11 +842,11 @@ def _create_chart_card(result, fig, var_idx):
     var_type = result['type']
     weighted = result.get('weighted', False)
     filter_info = result.get('filter_info')
-    
+
     # Build metadata badges
     badges = []
     badges.append(html.Span(f"Type: {var_type.upper()}", className="badge badge-type"))
-    
+
     if var_type == 'single':
         if weighted:
             base_val = result.get('valid_weighted', 0)
@@ -839,14 +861,51 @@ def _create_chart_card(result, fig, var_idx):
         else:
             base_val = result.get('base', 0)
             badges.append(html.Span(f"Base: {base_val}", className="badge badge-base"))
-    
+
     if weighted:
         badges.append(html.Span("⚖️ Weighted", className="badge badge-weighted"))
-    
+
     if filter_info:
         badges.append(html.Span(f"🔍 Filter: {filter_info['name']}", className="badge badge-filter"))
-    
+
+    # Sort control — only shown for multi-punch
+    sort_control = None
+    if var_type == 'multi':
+        sort_control = html.Div([
+            html.Label("Sort:", style={
+                'fontSize': '12px', 'color': '#718096',
+                'marginRight': '6px', 'fontWeight': '500'
+            }),
+            dcc.Dropdown(
+                id={'type': 'multi-sort', 'index': var_idx},
+                options=[
+                    {'label': 'As defined', 'value': 'defined'},
+                    {'label': 'Count ↓', 'value': 'count_desc'},
+                    {'label': 'Count ↑', 'value': 'count_asc'},
+                ],
+                value='defined',
+                clearable=False,
+                searchable=False,
+                style={
+                    'width': '140px', 'fontSize': '12px',
+                    'display': 'inline-block', 'verticalAlign': 'middle'
+                }
+            )
+        ], style={
+            'display': 'flex', 'alignItems': 'center',
+            'marginLeft': 'auto', 'paddingRight': '4px'
+        })
+
+    # Store original freq_table for re-sort (only needed for multi)
+    result_store = None
+    if var_type == 'multi':
+        result_store = dcc.Store(
+            id={'type': 'multi-result-store', 'index': var_idx},
+            data=result
+        )
+
     # Convert Plotly figure to dcc.Graph
+    graph_id = {'type': 'multi-chart', 'index': var_idx} if var_type == 'multi' else f'chart-{var_idx}'
     graph = dcc.Graph(
         figure=fig,
         config={
@@ -855,31 +914,31 @@ def _create_chart_card(result, fig, var_idx):
             'displaylogo': False
         },
         className="chart-graph",
-        id=f'chart-{var_idx}'
+        id=graph_id
     )
-    
+
+    header_right = html.Div(
+        [html.Div(badges, className="chart-badges"), sort_control] if sort_control
+        else [html.Div(badges, className="chart-badges")],
+        style={'display': 'flex', 'alignItems': 'center', 'gap': '12px', 'flexWrap': 'wrap'}
+    )
+
     return html.Div([
+        result_store,
         html.Div([
             html.H3(var_label, className="chart-title"),
-            html.Div(badges, className="chart-badges")
-        ], className="chart-header"),
-        # Show weighting fallback warning if present
+            header_right
+        ], className="chart-header", style={'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center', 'flexWrap': 'wrap', 'gap': '8px'}),
         html.Div(
             result['weighting_warning'],
             className="weighting-warning-banner",
             style={
-                'background': '#FFF3CD',
-                'border': '1px solid #FFCA28',
-                'borderRadius': '4px',
-                'padding': '8px 12px',
-                'margin': '8px 0',
-                'color': '#856404',
-                'fontSize': '13px'
+                'background': '#FFF3CD', 'border': '1px solid #FFCA28',
+                'borderRadius': '4px', 'padding': '8px 12px',
+                'margin': '8px 0', 'color': '#856404', 'fontSize': '13px'
             }
         ) if result.get('weighting_warning') else None,
-        html.Div([
-            graph
-        ], className="chart-body")
+        html.Div([graph], className="chart-body")
     ], className="chart-card", id=f'var-section-{var_idx}')
 
 

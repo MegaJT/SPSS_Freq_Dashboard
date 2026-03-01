@@ -124,7 +124,8 @@ class FrequencyProcessor:
             
             # Process based on type
             if var_type == 'single':
-                result = self.process_single_punch(var_name, var_label, filtered_data, filter_info)
+                json_value_labels = var_config.get('value_labels', None)
+                result = self.process_single_punch(var_name, var_label, filtered_data, filter_info, json_value_labels)
             elif var_type == 'multi':
                 sub_vars = var_config.get('sub_variables', [])
                 sub_var_labels = var_config.get('sub_variable_labels', {})
@@ -198,7 +199,7 @@ class FrequencyProcessor:
             print(f"  ⚠ {warning}")
             return self.reader.get_data(), None
     
-    def process_single_punch(self, var_name, var_label, data, filter_info=None):
+    def process_single_punch(self, var_name, var_label, data, filter_info=None, json_value_labels=None):
         """
         Process a single-punch (single choice) variable
         
@@ -218,20 +219,21 @@ class FrequencyProcessor:
             print(f"  ⚠ {warning}")
             return None
         
-        # Get data and value labels
+        # Get data and value labels.
+        # JSON value_labels (if present) override SPSS value labels and also
+        # define the display order (questionnaire order).
         column_data = data[var_name]
-        value_labels = self.reader.get_value_labels(var_name)
-        
+        spss_value_labels = self.reader.get_value_labels(var_name)
+        value_labels = json_value_labels if json_value_labels else spss_value_labels
+
         # Check if weighting is enabled
         if self.weighting_enabled:
             # Apply weighting
             try:
-                # Get valid data and weights for the filtered dataset
-                # Create a temporary weight calculator for this filtered data
                 temp_calc = WeightCalculator(data, self.weighting_config['weight_variable'])
                 valid_data, valid_weights = temp_calc.get_valid_data_and_weights()
-                
-                # Calculate weighted frequencies
+
+                # Pass merged value_labels so weighted calc respects the same order
                 weighted_result = temp_calc.calculate_weighted_frequencies_single(
                     valid_data[var_name],
                     value_labels
@@ -259,50 +261,69 @@ class FrequencyProcessor:
                 self.warnings.append(warning)
                 print(f"  ⚠ {warning}")
                 # Fall back to unweighted
-                return self._process_single_punch_unweighted(var_name, var_label, data, filter_info)
+                return self._process_single_punch_unweighted(var_name, var_label, data, filter_info, value_labels)
         else:
             # Unweighted calculation
-            result = self._process_single_punch_unweighted(var_name, var_label, data, filter_info)
+            result = self._process_single_punch_unweighted(var_name, var_label, data, filter_info, value_labels)
         
         return result
     
-    def _process_single_punch_unweighted(self, var_name, var_label, data, filter_info=None):
-        """Process single-punch without weighting (original logic)"""
+    def _process_single_punch_unweighted(self, var_name, var_label, data, filter_info=None, value_labels=None):
+        """Process single-punch without weighting.
+        value_labels defines both labels and display order (questionnaire order).
+        """
         column_data = data[var_name]
-        value_labels = self.reader.get_value_labels(var_name)
-        
-        # Calculate frequencies
+        if value_labels is None:
+            value_labels = self.reader.get_value_labels(var_name)
+
+        # Pre-compute counts once
         value_counts = column_data.value_counts(dropna=False)
         total = len(column_data)
-        
-        # Build frequency table
+
+        # Build frequency table in value_labels order, then append missing last.
         freq_table = []
         valid_total = 0
-        
-        for value, count in value_counts.items():
-            # Get label for this value
-            if pd.isna(value):
-                label = "Missing"
-            elif value_labels and value in value_labels:
-                label = value_labels[value]
-            else:
-                label = str(value)
-            
+
+        if value_labels:
+            ordered_values = list(value_labels.keys())
+            # Any values in data but not in labels (edge case)
+            labeled_set = set(value_labels.keys())
+            extras = sorted([v for v in value_counts.index if not pd.isna(v) and v not in labeled_set])
+            ordered_values = ordered_values + extras
+        else:
+            ordered_values = sorted([v for v in value_counts.index if not pd.isna(v)])
+
+        for value in ordered_values:
+            count = value_counts.get(value, 0)
+            label = value_labels.get(value, str(value)) if value_labels else str(value)
             percentage = (count / total) * 100 if total > 0 else 0
-            
             freq_table.append({
                 'value': value,
                 'label': label,
                 'count': count,
                 'percentage': percentage,
-                'is_missing': pd.isna(value)
+                'is_missing': False
             })
-            
-            if not pd.isna(value):
-                valid_total += count
-        
-        # Sort: valid responses first, then missing
-        freq_table.sort(key=lambda x: (x['is_missing'], -x['count']))
+            valid_total += count
+
+        # Always append missing last
+        missing_count = value_counts.get(float('nan'), 0)
+        if missing_count == 0:
+            # pandas NaN key — try the actual NaN
+            import numpy as np
+            for k in value_counts.index:
+                if pd.isna(k):
+                    missing_count = value_counts[k]
+                    break
+        if missing_count > 0:
+            percentage = (missing_count / total) * 100 if total > 0 else 0
+            freq_table.append({
+                'value': None,
+                'label': 'Missing',
+                'count': missing_count,
+                'percentage': percentage,
+                'is_missing': True
+            })
         
         result = {
             'var_name': var_name,
@@ -367,8 +388,12 @@ class FrequencyProcessor:
                 # Prepare sub-data dict
                 sub_data_dict = {sub_var: valid_data[sub_var] for sub_var in existing_vars}
                 
-                # Calculate weighted frequencies (called once, outside any loop)
-                weighted_result = temp_calc.calculate_weighted_frequencies_multi(sub_data_dict)
+                # Get labels for sub-variables
+                for sub_var in sub_data_dict.keys():
+                    # labels are retrieved later when building freq_table; nothing needed here
+                
+                    # Calculate weighted frequencies
+                    weighted_result = temp_calc.calculate_weighted_frequencies_multi(sub_data_dict)
                 
                 # Add labels to freq_table - use sub_variable_labels if available, else reader
                 for row in weighted_result['freq_table']:
@@ -461,8 +486,8 @@ class FrequencyProcessor:
                 'percentage': percentage
             })
         
-        # Sort by count descending
-        freq_table.sort(key=lambda x: -x['count'])
+        # Order preserved from sub_variables list (questionnaire order)
+
         
         result = {
             'var_name': var_name,
