@@ -48,7 +48,11 @@ class DashboardLauncher:
         self.dash_process = None
         self.dash_port = None
         self.is_running = False
-        self.title_label = None  # Will store reference to update title
+        self.title_label = None
+        # Config builder process state
+        self.config_builder_process = None
+        self.config_builder_port = None
+        self.config_builder_running = False
         
         # Configure style
         self._configure_style()
@@ -167,8 +171,9 @@ class DashboardLauncher:
             command=self._browse_spss
         ).pack(side=tk.RIGHT)
         
-        # Update title when SPSS file is selected
+        # Update title and button states when SPSS file changes
         self.spss_path.trace('w', self._update_title_with_spss_name)
+        self.spss_path.trace('w', self._update_config_btn_state)
         
         # Meta.json File Selection
         meta_frame = ttk.Frame(main_frame)
@@ -190,6 +195,9 @@ class DashboardLauncher:
             text="Browse...",
             command=self._browse_meta
         ).pack(side=tk.RIGHT)
+
+        # Trace meta path to update config builder button state
+        self.meta_path.trace('w', self._update_config_btn_state)
         
         # Separator
         ttk.Separator(main_frame, orient='horizontal').pack(fill=tk.X, pady=10)
@@ -215,6 +223,36 @@ class DashboardLauncher:
         # Separator
         ttk.Separator(main_frame, orient='horizontal').pack(fill=tk.X, pady=10)
         
+        # Config Builder Section
+        config_frame = ttk.LabelFrame(main_frame, text="Config Builder", padding="10")
+        config_frame.pack(fill=tk.X, pady=8)
+
+        config_btn_frame = ttk.Frame(config_frame)
+        config_btn_frame.pack(fill=tk.X)
+
+        self.config_btn = ttk.Button(
+            config_btn_frame,
+            text="🔧 Build / Edit Config",
+            command=self._launch_config_builder,
+            state=tk.DISABLED
+        )
+        self.config_btn.pack(side=tk.LEFT, padx=(0, 10))
+
+        self.stop_config_btn = ttk.Button(
+            config_btn_frame,
+            text="✖ Close Config Editor",
+            command=self._shutdown_config_builder,
+            state=tk.DISABLED
+        )
+        self.stop_config_btn.pack(side=tk.LEFT)
+
+        self.config_status_label = ttk.Label(
+            config_frame,
+            text="Select an SPSS file to enable the config builder",
+            style="Status.TLabel"
+        )
+        self.config_status_label.pack(anchor=tk.W, pady=(6, 0))
+
         # Action Buttons - Dashboard Controls
         dashboard_frame = ttk.LabelFrame(main_frame, text="Dashboard Controls", padding="10")
         dashboard_frame.pack(fill=tk.X, pady=8)
@@ -341,6 +379,14 @@ class DashboardLauncher:
     
     def _launch_dashboard(self):
         """Launch the Dash dashboard as subprocess"""
+        # Hard block if config editor is open — never allow both simultaneously
+        if self.config_builder_running:
+            messagebox.showwarning(
+                "Config Editor Open",
+                "Please close the config editor before launching the dashboard."
+            )
+            return
+
         # Validate file selections exist
         errors = self._validate_inputs()
         if errors:
@@ -417,17 +463,161 @@ class DashboardLauncher:
         else:
             messagebox.showinfo("Info", "No server is currently running")
     
+    def _update_config_btn_state(self, *args):
+        """
+        Enable config builder ONLY when:
+          - SPSS file is selected and exists
+          - No JSON config has been picked yet
+        Disable it if a JSON is already loaded (user should use it separately),
+        or if dashboard / editor is already running.
+        """
+        spss_ok = bool(self.spss_path.get() and os.path.exists(self.spss_path.get()))
+        json_loaded = bool(self.meta_path.get())
+
+        if self.config_builder_running or self.is_running:
+            return  # States already locked — do not touch
+
+        if spss_ok and not json_loaded:
+            # This is the target state: SPSS chosen, no JSON yet
+            self.config_btn.config(state=tk.NORMAL)
+            self.config_status_label.config(
+                text="No config selected — build one from your SPSS file"
+            )
+        elif spss_ok and json_loaded:
+            # JSON is already loaded: builder not needed, keep disabled
+            self.config_btn.config(state=tk.DISABLED)
+            self.config_status_label.config(
+                text="Config already loaded. Clear the JSON path to use the builder"
+            )
+        else:
+            self.config_btn.config(state=tk.DISABLED)
+            self.config_status_label.config(
+                text="Select an SPSS file to enable the config builder"
+            )
+
+    def _launch_config_builder(self):
+        """Launch the config builder as a subprocess"""
+        # Block if dashboard or export is running
+        if self.is_running:
+            messagebox.showwarning(
+                "Dashboard Running",
+                "Please stop the dashboard before opening the config editor."
+            )
+            return
+
+        if not self.spss_path.get() or not os.path.exists(self.spss_path.get()):
+            messagebox.showerror("Error", "Please select a valid SPSS file first.")
+            return
+
+        try:
+            self.config_builder_port = self._find_available_port()
+        except Exception as e:
+            messagebox.showerror("Port Error", f"Could not find available port: {e}")
+            return
+
+        try:
+            python_exe = sys.executable or 'python'
+            cmd = [
+                python_exe,
+                os.path.join(os.getcwd(), 'config_builder.py'),
+                '--spss-path', self.spss_path.get(),
+                '--port', str(self.config_builder_port)
+            ]
+            # Pass existing JSON path if one is loaded
+            if self.meta_path.get() and os.path.exists(self.meta_path.get()):
+                cmd += ['--meta-path', self.meta_path.get()]
+
+            self.config_builder_process = subprocess.Popen(cmd)
+            self.config_builder_running = True
+
+            # Update UI — lock out dashboard and export while editor is open
+            self.config_btn.config(state=tk.DISABLED)
+            self.stop_config_btn.config(state=tk.NORMAL)
+            self.launch_btn.config(state=tk.DISABLED)
+            self.export_btn.config(state=tk.DISABLED)
+            self.config_status_label.config(text="Config editor is open in browser...")
+            self._update_status("Config editor running", "running")
+
+            # Auto-open browser once ready
+            threading.Thread(
+                target=self._auto_open_config_builder, daemon=True
+            ).start()
+
+            # Monitor process — re-enable everything when it closes
+            threading.Thread(
+                target=self._monitor_config_builder, daemon=True
+            ).start()
+
+        except Exception as e:
+            messagebox.showerror("Launch Error", f"Failed to start config editor: {e}")
+
+    def _auto_open_config_builder(self):
+        """Open browser for config builder once server is ready"""
+        url = f"http://localhost:{self.config_builder_port}"
+        max_wait = 30
+        poll = 0.5
+        for _ in range(int(max_wait / poll)):
+            try:
+                with socket.create_connection(("127.0.0.1", self.config_builder_port), timeout=1):
+                    webbrowser.open(url)
+                    print(f"✓ Opened config builder at {url}")
+                    return
+            except (ConnectionRefusedError, OSError):
+                time.sleep(poll)
+        print(f"⚠ Config builder did not start within {max_wait}s")
+
+    def _monitor_config_builder(self):
+        """Watch the config builder subprocess and clean up when it ends"""
+        if self.config_builder_process:
+            self.config_builder_process.wait()
+            self.root.after(0, self._on_config_builder_ended)
+
+    def _on_config_builder_ended(self):
+        """Called on main thread when config builder process exits"""
+        self.config_builder_process = None
+        self.config_builder_running = False
+        self.config_builder_port = None
+        self.stop_config_btn.config(state=tk.DISABLED)
+        self._update_status("Config editor closed", "info")
+        # Re-evaluate all button states fresh
+        self._update_ui_state(running=self.is_running)
+        self._update_config_btn_state()
+
+    def _shutdown_config_builder(self):
+        """Manually stop the config builder from the launcher"""
+        if self.config_builder_process and self.config_builder_running:
+            try:
+                self.config_builder_process.terminate()
+                try:
+                    self.config_builder_process.wait(timeout=3)
+                except subprocess.TimeoutExpired:
+                    self.config_builder_process.kill()
+                    self.config_builder_process.wait(timeout=1)
+            except Exception as e:
+                messagebox.showwarning("Warning", f"Error closing config editor: {e}")
+            finally:
+                self._on_config_builder_ended()
+        else:
+            messagebox.showinfo("Info", "Config editor is not running")
+
     def _update_ui_state(self, running=False):
-        """Update button states based on running status"""
+        """Update button states based on dashboard running status"""
         if running:
             self.launch_btn.config(state=tk.DISABLED)
             self.shutdown_btn.config(state=tk.NORMAL)
-            # Export does not depend on the Dash server — keep it always available
             self.export_btn.config(state=tk.NORMAL)
+            # Lock config builder while dashboard is running
+            self.config_btn.config(state=tk.DISABLED)
+            self.stop_config_btn.config(state=tk.DISABLED)
+            self.config_status_label.config(
+                text="Stop the dashboard before using the config builder"
+            )
         else:
             self.launch_btn.config(state=tk.NORMAL)
             self.shutdown_btn.config(state=tk.DISABLED)
             self.export_btn.config(state=tk.NORMAL)
+            # Re-evaluate config builder button fresh from file state
+            self._update_config_btn_state()
     
     def _auto_open_browser(self):
         """Automatically open browser only after the server is confirmed ready"""
@@ -582,13 +772,23 @@ class DashboardLauncher:
     
     def _on_closing(self):
         """Handle window close event"""
+        running_items = []
         if self.is_running:
-            response = messagebox.askyesno(
-                "Confirm Exit",
-                "Dashboard is still running. Stop server and exit?"
-            )
-            if response:
-                self._shutdown_server()
+            running_items.append("Dashboard server")
+        if self.config_builder_running:
+            running_items.append("Config editor")
+
+        if running_items:
+            msg = ", ".join(running_items) + " is still running. Stop and exit?"
+            if messagebox.askyesno("Confirm Exit", msg):
+                if self.config_builder_running:
+                    try:
+                        self.config_builder_process.terminate()
+                        self.config_builder_process.wait(timeout=2)
+                    except Exception:
+                        pass
+                if self.is_running:
+                    self._shutdown_server()
                 self.root.destroy()
         else:
             self.root.destroy()
