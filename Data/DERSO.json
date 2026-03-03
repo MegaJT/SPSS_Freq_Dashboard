@@ -1,0 +1,69 @@
+{
+  "variables": [
+    {
+      "name": "S1",
+      "type": "single",
+      "label": "S1.     SURVEY AREA",
+      "value_labels": {
+        "1.0": "NCR",
+        "2.0": "Bulacan",
+        "3.0": "Rizal",
+        "4.0": "Cavite",
+        "5.0": "Laguna",
+        "6.0": "Quezon",
+        "7.0": "Pampanga",
+        "8.0": "Cebu",
+        "9.0": "Palawan",
+        "10.0": "Davao"
+      }
+    },
+    {
+      "name": "S2",
+      "type": "single",
+      "label": "S2.     GENDER  Record, do not ask:",
+      "value_labels": {
+        "1.0": "Male",
+        "2.0": "Female"
+      }
+    },
+    {
+      "name": "AGE_CAT",
+      "type": "single",
+      "label": "AGE CATEGORY",
+      "value_labels": {
+        "1.0": "Less than 25",
+        "2.0": "25-34",
+        "3.0": "35-44",
+        "4.0": "45-54",
+        "5.0": "55-65",
+        "6.0": "More than 65"
+      }
+    },
+    {
+      "name": "S4_CAT",
+      "type": "single",
+      "label": "  MONTHLY ELECTRICITY BILL",
+      "value_labels": {
+        "1.0": "Less than Php. 5,000",
+        "2.0": "5,000 - 11,600",
+        "3.0": "11,601 - 17,375",
+        "4.0": "17,376 - 28958",
+        "5.0": ">28,958"
+      }
+    }
+  ],
+  "filter_sets": {
+    "Intender": {
+      "RES_ID": {
+        "between": [
+          200,
+          422
+        ]
+      }
+    }
+  },
+  "weighting": {
+    "enabled": true,
+    "weight_variable": "WEIGHTS"
+  }
+}

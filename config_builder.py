@@ -19,7 +19,7 @@ import sys
 from datetime import datetime
 
 import pyreadstat
-from dash import Dash, html, dcc, Input, Output, State, ctx, ALL, no_update
+from dash import Dash, html, dcc, Input, Output, State, ctx, ALL, no_update, callback
 import dash_bootstrap_components as dbc
 
 
@@ -543,17 +543,8 @@ def create_app(spss_path, meta_path=None):
         f"{len(column_names)} numeric shown{excluded_note}"
     )
 
-    app = Dash(
-        __name__,
-        external_stylesheets=[
-            dbc.themes.BOOTSTRAP,
-            "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono&display=swap",
-        ],
-        suppress_callback_exceptions=True,
-    )
-
     # ── layout ──────────────────────────────────────────────────────────────
-    app.layout = html.Div(
+    _layout = html.Div(
         [
             # Stores
             dcc.Store(id="store-variables", data=detected),
@@ -1032,255 +1023,261 @@ def create_app(spss_path, meta_path=None):
         style={"background": "#F1F5F9", "minHeight": "100vh"},
     )
 
-    # ── callbacks ────────────────────────────────────────────────────────────
 
-    @app.callback(
-        Output("store-variables", "data"),
-        Output("global-select-all", "value"),
-        Input({"type": "var-include", "index": ALL}, "value"),
-        Input({"type": "var-label", "index": ALL}, "value"),
-        Input({"type": "sub-label", "var_idx": ALL, "sub_idx": ALL}, "value"),
-        Input({"type": "val-label", "var_idx": ALL, "val_code": ALL}, "value"),
-        State({"type": "var-meta", "index": ALL}, "data"),
-        State("store-variables", "data"),
-        prevent_initial_call=True,
-    )
-    def sync_variable_store(include_vals, label_vals, sub_label_vals, val_label_vals, meta_vals, current):
-        """Keep store-variables in sync with all UI edits."""
-        if not current:
-            return no_update, no_update
+    return _layout
 
-        updated = list(current)
 
-        # ── individual checkbox / label edits ────────────────────────────
-        for i, (inc, lbl, meta) in enumerate(zip(include_vals, label_vals, meta_vals)):
-            if i < len(updated):
-                updated[i]["included"] = bool(inc)  # [] or ["included"]
-                if lbl:
-                    updated[i]["label"] = lbl
+# ── Config Builder callbacks (module-level for shared Dash app) ──────────
 
-        # ── multi-punch sub-variable labels ──────────────────────────────
-        for item in ctx.inputs_list[2]:
-            v_idx = item["id"]["var_idx"]
-            s_idx = item["id"]["sub_idx"]
-            new_lbl = item.get("value")
-            if new_lbl is None:
-                continue
-            if v_idx < len(updated):
-                sv_list = updated[v_idx].get("sub_variables", [])
-                if s_idx < len(sv_list):
-                    sv_key = sv_list[s_idx]
-                    updated[v_idx]["sub_variable_labels"][sv_key] = new_lbl
+# ── callbacks ────────────────────────────────────────────────────────────
 
-        # ── single-punch value labels ─────────────────────────────────────
-        for item in ctx.inputs_list[3]:
-            v_idx = item["id"]["var_idx"]
-            val_code = item["id"]["val_code"]
-            new_lbl = item.get("value")
-            if new_lbl is None:
-                continue
-            if v_idx < len(updated):
-                if "value_labels" not in updated[v_idx]:
-                    updated[v_idx]["value_labels"] = {}
-                updated[v_idx]["value_labels"][val_code] = new_lbl
+@callback(
+    Output("store-variables", "data"),
+    Output("global-select-all", "value"),
+    Input({"type": "var-include", "index": ALL}, "value"),
+    Input({"type": "var-label", "index": ALL}, "value"),
+    Input({"type": "sub-label", "var_idx": ALL, "sub_idx": ALL}, "value"),
+    Input({"type": "val-label", "var_idx": ALL, "val_code": ALL}, "value"),
+    State({"type": "var-meta", "index": ALL}, "data"),
+    State("store-variables", "data"),
+    prevent_initial_call=True,
+)
+def sync_variable_store(include_vals, label_vals, sub_label_vals, val_label_vals, meta_vals, current):
+    """Keep store-variables in sync with all UI edits."""
+    if not current:
+        return no_update, no_update
 
-        # ── mirror global checkbox: all=checked, none=unchecked, mixed=leave ──
-        all_included = all(v.get("included", True) for v in updated)
-        none_included = not any(v.get("included", True) for v in updated)
-        if all_included:
-            new_global = ["all"]
-        elif none_included:
-            new_global = []
-        else:
-            new_global = no_update
+    updated = list(current)
 
-        return updated, new_global
+    # ── individual checkbox / label edits ────────────────────────────
+    for i, (inc, lbl, meta) in enumerate(zip(include_vals, label_vals, meta_vals)):
+        if i < len(updated):
+            updated[i]["included"] = bool(inc)  # [] or ["included"]
+            if lbl:
+                updated[i]["label"] = lbl
 
-    @app.callback(
-        Output({"type": "var-include", "index": ALL}, "value"),
-        Input("global-select-all", "value"),
-        State("store-variables", "data"),
-        prevent_initial_call=True,
-    )
-    def apply_global_select(global_sel, current):
-        """Push global select/deselect into every individual checkbox."""
-        if not current:
-            return no_update
-        target = ["included"] if bool(global_sel) else []
-        return [target] * len(current)
+    # ── multi-punch sub-variable labels ──────────────────────────────
+    for item in ctx.inputs_list[2]:
+        v_idx = item["id"]["var_idx"]
+        s_idx = item["id"]["sub_idx"]
+        new_lbl = item.get("value")
+        if new_lbl is None:
+            continue
+        if v_idx < len(updated):
+            sv_list = updated[v_idx].get("sub_variables", [])
+            if s_idx < len(sv_list):
+                sv_key = sv_list[s_idx]
+                updated[v_idx]["sub_variable_labels"][sv_key] = new_lbl
 
-    @app.callback(
-        Output("weight-variable", "disabled"),
-        Input("weight-enabled", "value"),
-        prevent_initial_call=True,
-    )
-    def toggle_weight_var(enabled_val):
-        """Enable/disable weight variable dropdown based on toggle."""
-        return not bool(enabled_val)
+    # ── single-punch value labels ─────────────────────────────────────
+    for item in ctx.inputs_list[3]:
+        v_idx = item["id"]["var_idx"]
+        val_code = item["id"]["val_code"]
+        new_lbl = item.get("value")
+        if new_lbl is None:
+            continue
+        if v_idx < len(updated):
+            if "value_labels" not in updated[v_idx]:
+                updated[v_idx]["value_labels"] = {}
+            updated[v_idx]["value_labels"][val_code] = new_lbl
 
-    @app.callback(
-        Output("store-filters", "data"),
-        Output("filter-list", "children"),
-        Output("filter-error", "children"),
-        Output("new-filter-name", "value"),
-        Output("new-filter-value", "value"),
-        Output("global-filter-select", "options"),
-        Input("add-filter-btn", "n_clicks"),
-        Input({"type": "remove-filter", "index": ALL}, "n_clicks"),
-        State("new-filter-name", "value"),
-        State("new-filter-var", "value"),
-        State("new-filter-op", "value"),
-        State("new-filter-value", "value"),
-        State("store-filters", "data"),
-        State({"type": "filter-meta", "index": ALL}, "data"),
-        prevent_initial_call=True,
-    )
-    def manage_filters(
-        add_clicks, remove_clicks,
-        fname, fvar, fop, fval,
-        current_filters, filter_metas,
-    ):
-        triggered = ctx.triggered_id
+    # ── mirror global checkbox: all=checked, none=unchecked, mixed=leave ──
+    all_included = all(v.get("included", True) for v in updated)
+    none_included = not any(v.get("included", True) for v in updated)
+    if all_included:
+        new_global = ["all"]
+    elif none_included:
+        new_global = []
+    else:
+        new_global = no_update
 
-        def _filter_options(filters):
-            return [{"label": n, "value": n} for n in (filters or {}).keys()]
+    return updated, new_global
 
-        # ── Remove a filter ──────────────────────────────────────────────────
-        if isinstance(triggered, dict) and triggered.get("type") == "remove-filter":
-            rm_idx = triggered["index"]
-            new_filters = {}
-            for i, meta in enumerate(filter_metas):
-                if i != rm_idx:
-                    new_filters[meta["name"]] = meta["conditions"]
-            cards = [
-                make_filter_card(n, c, i)
-                for i, (n, c) in enumerate(new_filters.items())
-            ]
-            return new_filters, cards, "", no_update, no_update, _filter_options(new_filters)
+@callback(
+    Output({"type": "var-include", "index": ALL}, "value"),
+    Input("global-select-all", "value"),
+    State("store-variables", "data"),
+    prevent_initial_call=True,
+)
+def apply_global_select(global_sel, current):
+    """Push global select/deselect into every individual checkbox."""
+    if not current:
+        return no_update
+    target = ["included"] if bool(global_sel) else []
+    return [target] * len(current)
 
-        # ── Add a filter ─────────────────────────────────────────────────────
-        if triggered == "add-filter-btn":
-            if not fname or not fname.strip():
-                return no_update, no_update, "⚠ Filter name is required.", no_update, no_update, no_update
-            if not fvar:
-                return no_update, no_update, "⚠ Please select a variable.", no_update, no_update, no_update
-            if not fop:
-                return no_update, no_update, "⚠ Please select an operator.", no_update, no_update, no_update
+@callback(
+    Output("weight-variable", "disabled"),
+    Input("weight-enabled", "value"),
+    prevent_initial_call=True,
+)
+def toggle_weight_var(enabled_val):
+    """Enable/disable weight variable dropdown based on toggle."""
+    return not bool(enabled_val)
 
-            fname = fname.strip()
+@callback(
+    Output("store-filters", "data"),
+    Output("filter-list", "children"),
+    Output("filter-error", "children"),
+    Output("new-filter-name", "value"),
+    Output("new-filter-value", "value"),
+    Output("global-filter-select", "options"),
+    Input("add-filter-btn", "n_clicks"),
+    Input({"type": "remove-filter", "index": ALL}, "n_clicks"),
+    State("new-filter-name", "value"),
+    State("new-filter-var", "value"),
+    State("new-filter-op", "value"),
+    State("new-filter-value", "value"),
+    State("store-filters", "data"),
+    State({"type": "filter-meta", "index": ALL}, "data"),
+    prevent_initial_call=True,
+)
+def manage_filters(
+    add_clicks, remove_clicks,
+    fname, fvar, fop, fval,
+    current_filters, filter_metas,
+):
+    triggered = ctx.triggered_id
 
-            try:
-                condition = _parse_filter_value(fop, fval)
-            except ValueError as e:
-                return no_update, no_update, f"⚠ {e}", no_update, no_update, no_update
+    def _filter_options(filters):
+        return [{"label": n, "value": n} for n in (filters or {}).keys()]
 
-            new_filters = dict(current_filters or {})
-            new_filters[fname] = {fvar: condition}
-            cards = [
-                make_filter_card(n, c, i)
-                for i, (n, c) in enumerate(new_filters.items())
-            ]
-            return new_filters, cards, "", "", "", _filter_options(new_filters)
+    # ── Remove a filter ──────────────────────────────────────────────────
+    if isinstance(triggered, dict) and triggered.get("type") == "remove-filter":
+        rm_idx = triggered["index"]
+        new_filters = {}
+        for i, meta in enumerate(filter_metas):
+            if i != rm_idx:
+                new_filters[meta["name"]] = meta["conditions"]
+        cards = [
+            make_filter_card(n, c, i)
+            for i, (n, c) in enumerate(new_filters.items())
+        ]
+        return new_filters, cards, "", no_update, no_update, _filter_options(new_filters)
 
-        return no_update, no_update, "", no_update, no_update, no_update
+    # ── Add a filter ─────────────────────────────────────────────────────
+    if triggered == "add-filter-btn":
+        if not fname or not fname.strip():
+            return no_update, no_update, "⚠ Filter name is required.", no_update, no_update, no_update
+        if not fvar:
+            return no_update, no_update, "⚠ Please select a variable.", no_update, no_update, no_update
+        if not fop:
+            return no_update, no_update, "⚠ Please select an operator.", no_update, no_update, no_update
 
-    @app.callback(
-        Output("store-save-path", "data"),
-        Input("save-path-input", "value"),
-        prevent_initial_call=True,
-    )
-    def update_save_path(path):
-        return path or default_save_path
-
-    @app.callback(
-        Output("save-status", "children"),
-        Output("save-status", "style"),
-        Input("save-btn", "n_clicks"),
-        State("store-variables", "data"),
-        State("store-filters", "data"),
-        State("store-save-path", "data"),
-        State("weight-enabled", "value"),
-        State("weight-variable", "value"),
-        State("global-filter-select", "value"),
-        State("store-passthrough", "data"),
-        prevent_initial_call=True,
-    )
-    def save_config(n_clicks, variables, filters, save_path,
-                    weight_enabled, weight_var, global_filter, passthrough):
-        if not n_clicks:
-            return "", {}
-
-        included = [v for v in (variables or []) if v.get("included", True)]
-
-        if not included:
-            return (
-                "⚠ No variables selected — nothing to save.",
-                {"color": "#EF4444", "fontSize": "13px", "textAlign": "center", "marginTop": "10px"},
-            )
-
-        # Build JSON structure
-        config_vars = []
-        for v in included:
-            entry = {"name": v["name"], "type": v["type"], "label": v["label"]}
-            if v["type"] == "multi":
-                entry["sub_variables"] = v["sub_variables"]
-                entry["sub_variable_labels"] = v["sub_variable_labels"]
-            elif v["type"] == "single":
-                vl = v.get("value_labels", {})
-                if vl:
-                    entry["value_labels"] = vl
-            config_vars.append(entry)
-
-        config = {"variables": config_vars}
-
-        # Filter sets
-        if filters:
-            config["filter_sets"] = filters
-
-        # Global filter
-        if global_filter:
-            config["global_filter"] = global_filter
-
-        # Weighting
-        w_on = bool(weight_enabled)
-        if w_on and weight_var:
-            config["weighting"] = {"enabled": True, "weight_variable": weight_var}
-        elif w_on and not weight_var:
-            # Enabled but no variable chosen — warn, don't write broken config
-            return (
-                "⚠ Weighting is enabled but no weight variable is selected.",
-                {"color": "#F59E0B", "fontSize": "13px", "textAlign": "center", "marginTop": "10px"},
-            )
-        else:
-            config["weighting"] = {"enabled": False}
-
-        # Preserve any other top-level fields from the original JSON
-        # (e.g. output_file) that we don't have UI for
-        pt = passthrough or {}
-        if "output_file" in pt and pt["output_file"]:
-            config["output_file"] = pt["output_file"]
-
-        # Ensure directory exists
-        save_dir = os.path.dirname(save_path)
-        if save_dir:
-            os.makedirs(save_dir, exist_ok=True)
+        fname = fname.strip()
 
         try:
-            with open(save_path, "w", encoding="utf-8") as f:
-                json.dump(config, f, indent=2, ensure_ascii=False)
-            ts = datetime.now().strftime("%H:%M:%S")
-            w_note = f" | Weighted: {weight_var}" if (w_on and weight_var) else " | Unweighted"
-            return (
-                f"✅ Saved {len(config_vars)} variable(s) to {os.path.basename(save_path)} at {ts}.{w_note}",
-                {"color": "#059669", "fontSize": "12px", "textAlign": "center", "marginTop": "10px"},
-            )
-        except Exception as e:
-            return (
-                f"❌ Save failed: {e}",
-                {"color": "#EF4444", "fontSize": "13px", "textAlign": "center", "marginTop": "10px"},
-            )
+            condition = _parse_filter_value(fop, fval)
+        except ValueError as e:
+            return no_update, no_update, f"⚠ {e}", no_update, no_update, no_update
 
-    return app
+        new_filters = dict(current_filters or {})
+        new_filters[fname] = {fvar: condition}
+        cards = [
+            make_filter_card(n, c, i)
+            for i, (n, c) in enumerate(new_filters.items())
+        ]
+        return new_filters, cards, "", "", "", _filter_options(new_filters)
+
+    return no_update, no_update, "", no_update, no_update, no_update
+
+@callback(
+    Output("store-save-path", "data"),
+    Input("save-path-input", "value"),
+    prevent_initial_call=True,
+)
+def update_save_path(path):
+    return path or default_save_path
+
+@callback(
+    Output("save-status", "children"),
+    Output("save-status", "style"),
+    Input("save-btn", "n_clicks"),
+    State("store-variables", "data"),
+    State("store-filters", "data"),
+    State("store-save-path", "data"),
+    State("weight-enabled", "value"),
+    State("weight-variable", "value"),
+    State("global-filter-select", "value"),
+    State("store-passthrough", "data"),
+    prevent_initial_call=True,
+)
+def save_config(n_clicks, variables, filters, save_path,
+                weight_enabled, weight_var, global_filter, passthrough):
+    if not n_clicks:
+        return "", {}
+
+    included = [v for v in (variables or []) if v.get("included", True)]
+
+    if not included:
+        return (
+            "⚠ No variables selected — nothing to save.",
+            {"color": "#EF4444", "fontSize": "13px", "textAlign": "center", "marginTop": "10px"},
+        )
+
+    # Build JSON structure
+    config_vars = []
+    for v in included:
+        entry = {"name": v["name"], "type": v["type"], "label": v["label"]}
+        if v["type"] == "multi":
+            entry["sub_variables"] = v["sub_variables"]
+            entry["sub_variable_labels"] = v["sub_variable_labels"]
+        elif v["type"] == "single":
+            vl = v.get("value_labels", {})
+            if vl:
+                entry["value_labels"] = vl
+        config_vars.append(entry)
+
+    config = {"variables": config_vars}
+
+    # Filter sets
+    if filters:
+        config["filter_sets"] = filters
+
+    # Global filter
+    if global_filter:
+        config["global_filter"] = global_filter
+
+    # Weighting
+    w_on = bool(weight_enabled)
+    if w_on and weight_var:
+        config["weighting"] = {"enabled": True, "weight_variable": weight_var}
+    elif w_on and not weight_var:
+        # Enabled but no variable chosen — warn, don't write broken config
+        return (
+            "⚠ Weighting is enabled but no weight variable is selected.",
+            {"color": "#F59E0B", "fontSize": "13px", "textAlign": "center", "marginTop": "10px"},
+        )
+    else:
+        config["weighting"] = {"enabled": False}
+
+    # Preserve any other top-level fields from the original JSON
+    # (e.g. output_file) that we don't have UI for
+    pt = passthrough or {}
+    if "output_file" in pt and pt["output_file"]:
+        config["output_file"] = pt["output_file"]
+
+    # Ensure directory exists
+    save_dir = os.path.dirname(save_path)
+    if save_dir:
+        os.makedirs(save_dir, exist_ok=True)
+
+    try:
+        with open(save_path, "w", encoding="utf-8") as f:
+            json.dump(config, f, indent=2, ensure_ascii=False)
+        ts = datetime.now().strftime("%H:%M:%S")
+        w_note = f" | Weighted: {weight_var}" if (w_on and weight_var) else " | Unweighted"
+        return (
+            f"✅ Saved {len(config_vars)} variable(s) to {os.path.basename(save_path)} at {ts}.{w_note}",
+            {"color": "#059669", "fontSize": "12px", "textAlign": "center", "marginTop": "10px"},
+        )
+    except Exception as e:
+        return (
+            f"❌ Save failed: {e}",
+            {"color": "#EF4444", "fontSize": "13px", "textAlign": "center", "marginTop": "10px"},
+        )
+
+
 
 
 # ─────────────────────────────────────────────
@@ -1344,34 +1341,6 @@ def _parse_filter_value(operator, raw):
 # Entry point
 # ─────────────────────────────────────────────
 
-def main():
-    print("=" * 60)
-    print("SPSS CONFIG BUILDER")
-    print("=" * 60)
-
-    args = parse_arguments()
-
-    if not os.path.exists(args.spss_path):
-        print(f"✗ SPSS file not found: {args.spss_path}")
-        sys.exit(1)
-
-    print(f"SPSS file : {args.spss_path}")
-    if args.meta_path:
-        print(f"Existing config: {args.meta_path}")
-    print(f"Port      : {args.port}")
-
-    app = create_app(args.spss_path, args.meta_path)
-
-    print(f"\n✓ Config builder ready → http://localhost:{args.port}")
-    print("Close this window or press Ctrl+C to stop.\n")
-
-    app.run(
-        host="127.0.0.1",
-        port=args.port,
-        debug=False,
-        dev_tools_hot_reload=False,
-    )
-
-
-if __name__ == "__main__":
-    main()
+# config_builder.py is now a module used by pages/config.py.
+# create_app(spss_path, meta_path) returns a layout (html.Div).
+# Callbacks are module-level and register on the shared Dash app at import time.

@@ -1,9 +1,24 @@
 ======================================================================
 FREQUENCY REPORT
-Generated: 2026-02-28 09:38:05
+Generated: 2026-03-03 16:33:59
 ======================================================================
 
-1. CITY
+1. whether the answers in the upcoming question will be straight or reversed? (Random generated )
+   Variable: HROTATION | Type: SINGLE
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Responses: 1325
+Valid Responses: 1325
+
+Value                                                   Count   Percentage
+--------------------------------------------------------------------------------
+Straight                                                  649        49.0%
+Reversed                                                  676        51.0%
+--------------------------------------------------------------------------------
+TOTAL                                                    1325       100.0%
+
+2. CITY
    Variable: QCITY | Type: SINGLE
    Weighting: DISABLED
    Filter: NONE (All respondents)
@@ -15,57 +30,151 @@ Value                                                   Count   Percentage
 --------------------------------------------------------------------------------
 Johannesburg                                              467        35.2%
 Cape Town                                                 393        29.7%
-Durban                                                    263        19.8%
 Pretoria                                                  202        15.2%
+Durban                                                    263        19.8%
 --------------------------------------------------------------------------------
 TOTAL                                                    1325       100.0%
 
-2. GENDER
-   Variable: QGENDER | Type: SINGLE
+3. Johannesburg Ward
+   Variable: QJBURG_WARD | Type: SINGLE
    Weighting: DISABLED
    Filter: NONE (All respondents)
 --------------------------------------------------------------------------------
 Total Responses: 1325
-Valid Responses: 1325
+Valid Responses: 467
 
 Value                                                   Count   Percentage
 --------------------------------------------------------------------------------
-Female                                                    690        52.1%
-Male                                                      635        47.9%
+9                                                          26         2.0%
+11                                                         23         1.7%
+13                                                         26         2.0%
+21                                                         31         2.3%
+22                                                         15         1.1%
+29                                                         25         1.9%
+33                                                         25         1.9%
+34                                                         26         2.0%
+35                                                         27         2.0%
+36                                                         25         1.9%
+38                                                          0         0.0%
+39                                                         34         2.6%
+41                                                         45         3.4%
+42                                                         24         1.8%
+84                                                         23         1.7%
+112                                                         0         0.0%
+117                                                        40         3.0%
+120                                                        37         2.8%
+130                                                        15         1.1%
+Missing                                                   858        64.8%
 --------------------------------------------------------------------------------
 TOTAL                                                    1325       100.0%
 
-3. Brand Usage - All Respondents
-   Variable: Q3 | Type: MULTI
+4. For what reasons, if any, have you never ordered food from a delivery app/service? You may select up to 5 reasons.   (The delivery cost (e.g. delivery fee, service fee, tip) is too expensive)
+   Variable: A_Q14 | Type: MULTI
    Weighting: DISABLED
    Filter: NONE (All respondents)
 --------------------------------------------------------------------------------
 Total Respondents: 1325
-Base (selected at least one): 1325
-Percentages calculated on base of 1325
+Base (selected at least one): 327
+Percentages calculated on base of 327
 
 Option                                                  Count   Percentage
 --------------------------------------------------------------------------------
-Which of the following have you ever used?                935        70.6%
-  Please select as many as apply.   (Uber)
-Which of the following have you ever used?                889        67.1%
-  Please select as many as apply.   (Private
-  Vehicle (my or someone else’s car))
-Which of the following have you ever used?                844        63.7%
-  Please select as many as apply.   (Minibus or
-  taxi)
-Which of the following have you ever used?                775        58.5%
-  Please select as many as apply.   (Bolt)
-Which of the following have you ever used?                252        19.0%
-  Please select as many as apply.   (inDriver)
-Which of the following have you ever used?                170        12.8%
-  Please select as many as apply.   (Meter taxi or
-  cab)
-Which of the following have you ever used?                 19         1.4%
-  Please select as many as apply.   (None of the
-  above)
+For what reasons, if any, have you never ordered           52        15.9%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (The delivery cost (e.g.
+  delivery fee, service fee, tip) is too
+  expensive)
+For what reasons, if any, have you never ordered           50        15.3%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (Restaurant food is too
+  expensive  )
+For what reasons, if any, have you never ordered           52        15.9%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (It takes too long to get my
+  order        )
+For what reasons, if any, have you never ordered           31         9.5%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (Delivery is not
+  environmentally friendly        )
+For what reasons, if any, have you never ordered           47        14.4%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (I prefer to eat at the
+  restaurant/food is better at the restaurant
+  )
+For what reasons, if any, have you never ordered           29         8.9%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (Delivery food options aren't
+  healthy        )
+For what reasons, if any, have you never ordered           37        11.3%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (The restaurants I want
+  aren't available for delivery               )
+For what reasons, if any, have you never ordered           47        14.4%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (Personal safety with people
+  delivering to my house/area )
+For what reasons, if any, have you never ordered           39        11.9%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (I prefer to order direct
+  from restaurants instead of using an
+  app/service)
+For what reasons, if any, have you never ordered           34        10.4%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (Food delivery brands don’t
+  deliver/have difficulties delivering to my area
+  )
+For what reasons, if any, have you never ordered           61        18.7%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (I don’t trust delivery
+  app/services )
+For what reasons, if any, have you never ordered           26         8.0%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (These apps/services don’t
+  accept my preferred payment method )
+For what reasons, if any, have you never ordered           28         8.6%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   ( The companies do not treat
+  couriers fairly       )
+For what reasons, if any, have you never ordered           17         5.2%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (The business model is not
+  fair to restaurants    )
+For what reasons, if any, have you never ordered           34        10.4%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   ( I just don’t want to use
+  restaurant food delivery apps / websites)
+For what reasons, if any, have you never ordered           18         5.5%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   ( Delivery apps don’t offer
+  sufficient customisation options for what I
+  would need)
+For what reasons, if any, have you never ordered           93        28.4%
+  food from a delivery app/service? You may select
+  up to 5 reasons.   (None of these)
+--------------------------------------------------------------------------------
+
+5. Which of the following companies have you ever used? Please select as many as apply. (Uber Eats )
+   Variable: A_Q15_1 | Type: MULTI
+   Weighting: DISABLED
+   Filter: NONE (All respondents)
+--------------------------------------------------------------------------------
+Total Respondents: 1325
+Base (selected at least one): 677
+Percentages calculated on base of 677
+
+Option                                                  Count   Percentage
+--------------------------------------------------------------------------------
+Which of the following companies have you ever            559        82.6%
+  used? Please select as many as apply. (Uber Eats
+  )
+Which of the following companies have you ever            306        45.2%
+  used? Please select as many as apply. (Mr D
+  Food)
+Which of the following companies have you ever             11         1.6%
+  used? Please select as many as apply. (None of
+  the above)
 --------------------------------------------------------------------------------
 
 ======================================================================
-End of Report - 3 variable(s) processed
+End of Report - 5 variable(s) processed
 ======================================================================
