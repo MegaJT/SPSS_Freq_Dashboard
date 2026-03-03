@@ -484,10 +484,10 @@ class DashboardLauncher:
                 text="No config selected — build one from your SPSS file"
             )
         elif spss_ok and json_loaded:
-            # JSON is already loaded: builder not needed, keep disabled
-            self.config_btn.config(state=tk.DISABLED)
+            # JSON loaded — enable builder in edit mode
+            self.config_btn.config(state=tk.NORMAL)
             self.config_status_label.config(
-                text="Config already loaded. Clear the JSON path to use the builder"
+                text="Click Build / Edit Config to modify the loaded config"
             )
         else:
             self.config_btn.config(state=tk.DISABLED)

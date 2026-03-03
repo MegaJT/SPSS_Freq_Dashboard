@@ -626,6 +626,33 @@ def _register_callbacks(app, reader, processor, visualizer, variables_list, filt
         return theme_visualizer.create_multi_punch_chart(result)
 
 
+def _coerce_value_label_keys(json_value_labels, column_data):
+    """
+    JSON forces all keys to strings ("1", "2.0" etc.).
+    SPSS data values are floats or ints (1.0, 2.0).
+    This function converts string keys to match the actual dtype in the data,
+    so lookups like value_labels.get(1.0) work correctly.
+    """
+    if not json_value_labels:
+        return json_value_labels
+
+    # Determine the dominant dtype from the column
+    sample = column_data.dropna()
+    coerced = {}
+    for k, v in json_value_labels.items():
+        try:
+            num = float(k)
+            # Use int if it's a whole number and the data is integer-like
+            if num == int(num) and (sample.dtype.kind in ('i', 'u') or
+                    (sample.dtype.kind == 'f' and (sample % 1 == 0).all())):
+                coerced[int(num)] = v
+            else:
+                coerced[num] = v
+        except (ValueError, TypeError):
+            coerced[k] = v  # keep as string if it can't be cast
+    return coerced
+
+
 def _build_single_freq_table(column_data, value_labels, total):
     """Build an ordered single-punch freq_table. Missing always last.
     value_labels defines both labels AND display order."""
@@ -682,6 +709,9 @@ def _process_single_variable(reader, data, var_name, var_label, filter_info, con
     column_data = data[var_name]
     spss_value_labels = reader.get_value_labels(var_name)
     # JSON labels take precedence — they also define display order
+    # Coerce JSON string keys ("1","2") to numeric to match SPSS data values (1.0, 2.0)
+    if json_value_labels:
+        json_value_labels = _coerce_value_label_keys(json_value_labels, column_data)
     value_labels = json_value_labels if json_value_labels else spss_value_labels
     total = len(column_data)
 

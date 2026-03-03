@@ -2,6 +2,25 @@ import pandas as pd
 import numpy as np
 
 
+def _coerce_value_label_keys(json_value_labels, column_data):
+    """Convert JSON string keys back to numeric to match SPSS data values."""
+    if not json_value_labels:
+        return json_value_labels
+    sample = column_data.dropna()
+    coerced = {}
+    for k, v in json_value_labels.items():
+        try:
+            num = float(k)
+            if num == int(num) and (sample.dtype.kind in ('i', 'u') or
+                    (sample.dtype.kind == 'f' and (sample % 1 == 0).all())):
+                coerced[int(num)] = v
+            else:
+                coerced[num] = v
+        except (ValueError, TypeError):
+            coerced[k] = v
+    return coerced
+
+
 class WeightCalculator:
     """Handles weighted frequency calculations and weight validation"""
     
@@ -145,9 +164,11 @@ class WeightCalculator:
         # Build frequency table in value_labels order (questionnaire order).
         # If value_labels provided, iterate its keys; otherwise fall back to
         # sorted unique values so order is at least deterministic.
+        # Coerce JSON string keys to numeric before matching
+        if value_labels:
+            value_labels = _coerce_value_label_keys(value_labels, series)
         if value_labels:
             ordered_values = [v for v in value_labels.keys() if v in series.values]
-            # Append any values present in data but not in value_labels (edge case)
             labeled_set = set(value_labels.keys())
             extras = [v for v in series.dropna().unique() if v not in labeled_set]
             ordered_values = ordered_values + sorted(extras)

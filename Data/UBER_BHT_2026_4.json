@@ -85,6 +85,110 @@
       }
     },
     {
+      "name": "QCAPETOWN_SP",
+      "type": "single",
+      "label": "Cape Town Sampling Point",
+      "value_labels": {
+        "55.0": "55-Wave Crest Primary",
+        "56.0": "56-Spineview Primary",
+        "57.0": "57-Hillside Primary",
+        "58.0": "58-Avondale Primary",
+        "59.0": "59-Westfluer Primary",
+        "60.0": "60-Saxon Sea Primary",
+        "61.0": "61-Goodwod Primary",
+        "62.0": "62-NG Kerkwood Park",
+        "63.0": "63-JG Meiring High School",
+        "64.0": "64-Caradale Primary",
+        "65.0": "65-Hazelde Primary",
+        "66.0": "66-Caravelle Primary",
+        "67.0": "67-View Church",
+        "68.0": "68-West Riding Primary school",
+        "69.0": "69-Little Phase Crech",
+        "70.0": "70-Harry Gwala Secondary",
+        "71.0": "71-Ilitha Park Community Library",
+        "72.0": "72-Chuma Primary School",
+        "73.0": "73-Mitchell's Hights Primary school",
+        "74.0": "74-Tafelsig community center",
+        "75.0": "75-New Apostlic Church",
+        "76.0": "76-Alicedale primary",
+        "77.0": "77-Ned Doman high",
+        "78.0": "78-Alexander Sinton High",
+        "79.0": "79-Bridgetown high",
+        "80.0": "80-Blossom primary",
+        "81.0": "81-Bridgeville primary",
+        "82.0": "82-Cbc primary",
+        "83.0": "83-Zuzuland Creche",
+        "84.0": "84-Parklands college",
+        "85.0": "85-Meway Hall",
+        "86.0": "86-Matthew Goniwe Memorial Park",
+        "87.0": "87-Site B Clinic",
+        "88.0": "88-Glendale Secondary School",
+        "89.0": "89-Caravelle Primary",
+        "90.0": "90-Christ The Mediator Aglican",
+        "91.0": "91-Westridge Civic",
+        "92.0": "92-Westville Primary",
+        "93.0": "93-Mandalay Primary",
+        "94.0": "94-Khayelitsha Special School",
+        "95.0": "95-Homba Primary School",
+        "96.0": "96-Bulumko Secondary School",
+        "97.0": "97-Harry Gwala Secondary",
+        "98.0": "98-Khul Nqolwazi Educare",
+        "99.0": "99-Nkazimlo Primary School",
+        "100.0": "100-Impendulo Primary School",
+        "101.0": "101-Thubalethu Pre-School",
+        "102.0": "102-Chris Hani Secondary School Khayelitsha",
+        "180.0": "180-Totuis PrimarySchool",
+        "181.0": "181-DF Malan High School",
+        "182.0": "182-Parow Civic Centre",
+        "183.0": "183-Abednigo Methodist Church of SA",
+        "184.0": "184-Litha Primary School",
+        "185.0": "185-Jl Zwane Centre",
+        "186.0": "186-Easter Peak Primary School",
+        "187.0": "187-Manenburg People's Centre",
+        "188.0": "188-Phoenix High School",
+        "189.0": "189-Milnerton Primary",
+        "190.0": "190-Milnerton Babtist Church",
+        "191.0": "191-De Grendel School",
+        "192.0": "192-HJ KRONEBERG PRIMARY SCHOOL",
+        "193.0": "193-WINDERMERE PRIMARY SCHOOL",
+        "194.0": "194-ST JOHNS AME CHURCH",
+        "240.0": "240-Tygerberg High School",
+        "241.0": "241-NG Kerk Bothasig",
+        "242.0": "242-Bellville",
+        "243.0": "243-Glendale Secondary School",
+        "244.0": "244-Caravelle Primary",
+        "245.0": "245-Christ The Mediator Aglican",
+        "270.0": "270-Senior Centre",
+        "271.0": "271-Community Health CARE",
+        "272.0": "272-Public Swimming Pool",
+        "273.0": "273-Sivuyiseni Primary SCHOOL",
+        "274.0": "274-Nomsa Mapangwane Primary",
+        "275.0": "275-Umtha Welanga Primary"
+      }
+    },
+    {
+      "name": "QURBANCODE",
+      "type": "single",
+      "label": "CODE AREA",
+      "value_labels": {
+        "1.0": "Urban",
+        "2.0": "Suburban",
+        "3.0": "Rural, less developed",
+        "4.0": "Rural"
+      }
+    },
+    {
+      "name": "QGENDER",
+      "type": "single",
+      "label": "What is your gender…?",
+      "value_labels": {
+        "1.0": "Male ",
+        "2.0": "Female ",
+        "3.0": "Other ",
+        "4.0": "Prefer not to respond  "
+      }
+    },
+    {
       "name": "T_Q1",
       "type": "multi",
       "label": "Built-in kitchen sink",
@@ -149,11 +253,53 @@
         "A_QBRANDmA_1_1": "Uber",
         "A_QBRANDmA_1_2": "Bolt",
         "A_QBRANDmA_1_3": "Indriver",
-        "A_QBRANDmA_1_4": "As far as you are aware, which of the following ride-hailing companies are available where you live?  (Uber Eats)",
-        "A_QBRANDmA_1_5": "As far as you are aware, which of the following ride-hailing companies are available where you live?  (Mr D Food)",
-        "A_QBRANDmA_1_6": "As far as you are aware, which of the following ride-hailing companies are available where you live?  (Coca Cola)",
-        "A_QBRANDmA_1_7": "As far as you are aware, which of the following ride-hailing companies are available where you live?  (MTN)",
-        "A_QBRANDmA_1_8": "As far as you are aware, which of the following ride-hailing companies are available where you live?  (None of the Above)"
+        "A_QBRANDmA_1_4": "Uber Eats",
+        "A_QBRANDmA_1_5": "Mr D Food",
+        "A_QBRANDmA_1_6": "Coca Cola",
+        "A_QBRANDmA_1_7": "MTN",
+        "A_QBRANDmA_1_8": "None of the Above"
+      }
+    },
+    {
+      "name": "A_QBRANDmA_2",
+      "type": "multi",
+      "label": "As far as you are aware, which of the following food ordering/delivery companies are you able to order from where you live?  (Uber)",
+      "sub_variables": [
+        "A_QBRANDmA_2_1",
+        "A_QBRANDmA_2_2",
+        "A_QBRANDmA_2_3",
+        "A_QBRANDmA_2_4",
+        "A_QBRANDmA_2_5",
+        "A_QBRANDmA_2_6",
+        "A_QBRANDmA_2_7",
+        "A_QBRANDmA_2_8"
+      ],
+      "sub_variable_labels": {
+        "A_QBRANDmA_2_1": "Uber",
+        "A_QBRANDmA_2_2": "Bolt",
+        "A_QBRANDmA_2_3": "InDriver",
+        "A_QBRANDmA_2_4": "Uber Eats",
+        "A_QBRANDmA_2_5": "Mr D Food",
+        "A_QBRANDmA_2_6": "Coca Cola",
+        "A_QBRANDmA_2_7": "MTN",
+        "A_QBRANDmA_2_8": "None of the Above"
+      }
+    },
+    {
+      "name": "I_1_T_QBRANDmC",
+      "type": "multi",
+      "label": "(Is a company that acts with integrity) InDriver",
+      "sub_variables": [
+        "I_1_T_QBRANDmC_3",
+        "I_1_T_QBRANDmC_6",
+        "I_1_T_QBRANDmC_7",
+        "I_1_T_QBRANDmC_8"
+      ],
+      "sub_variable_labels": {
+        "I_1_T_QBRANDmC_3": "InDriver",
+        "I_1_T_QBRANDmC_6": "Coca Cola",
+        "I_1_T_QBRANDmC_7": "MTN",
+        "I_1_T_QBRANDmC_8": "(Is a company that acts with integrity) None of the Above"
       }
     }
   ],
@@ -163,5 +309,8 @@
         "eq": 1
       }
     }
+  },
+  "weighting": {
+    "enabled": false
   }
 }

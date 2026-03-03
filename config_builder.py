@@ -220,7 +220,12 @@ def load_existing_config(meta_path, detected_vars):
             var["included"] = False
         merged.append(var)
 
-    return merged, filter_sets
+    passthrough = {
+        "weighting":     config.get("weighting", {}),
+        "global_filter": config.get("global_filter", None),
+        "output_file":   config.get("output_file", None),
+    }
+    return merged, filter_sets, passthrough
 
 
 # ─────────────────────────────────────────────
@@ -426,8 +431,8 @@ def make_variable_card(var, idx):
         style={
             "padding": "12px 16px",
             "borderBottom": "1px solid #F1F5F9",
-            "background": "white" if included else "#F8FAFC",
-            "opacity": "1" if included else "0.5",
+            "background": "white",
+            "opacity": "1",
             "transition": "background 0.15s",
         },
         id={"type": "var-row", "index": idx},
@@ -510,8 +515,15 @@ def create_app(spss_path, meta_path=None):
             print(f"    x {col}  ({reason})")
 
     initial_filters = {}
+    initial_passthrough = {"weighting": {}, "global_filter": None, "output_file": None}
     if meta_path and os.path.exists(meta_path):
-        detected, initial_filters = load_existing_config(meta_path, detected)
+        detected, initial_filters, initial_passthrough = load_existing_config(meta_path, detected)
+
+    # Unpack weighting for UI pre-population
+    init_w = initial_passthrough.get("weighting", {})
+    init_w_enabled = init_w.get("enabled", False)
+    init_w_var = init_w.get("weight_variable", None)
+    init_global_filter = initial_passthrough.get("global_filter", None)
 
     spss_name = os.path.splitext(os.path.basename(spss_path))[0]
 
@@ -545,6 +557,7 @@ def create_app(spss_path, meta_path=None):
         [
             # Stores
             dcc.Store(id="store-variables", data=detected),
+            dcc.Store(id="store-passthrough", data=initial_passthrough),
             dcc.Store(id="store-filters", data=initial_filters),
             dcc.Store(id="store-save-path", data=default_save_path),
             dcc.Store(id="store-removed-filters", data=[]),
@@ -847,6 +860,89 @@ def create_app(spss_path, meta_path=None):
                                 style={"padding": "0 16px", "color": "#EF4444", "fontSize": "12px"},
                             ),
 
+                            # ── Weighting section ─────────────────────────────
+                            html.Div(
+                                [
+                                    html.Div(
+                                        [
+                                            html.H2(
+                                                "Weighting",
+                                                style={"fontSize": "14px", "fontWeight": "600",
+                                                       "color": "#1E293B", "margin": "0"},
+                                            ),
+                                            dcc.Checklist(
+                                                id="weight-enabled",
+                                                options=[{"label": " Enable weighting", "value": "on"}],
+                                                value=["on"] if init_w_enabled else [],
+                                                inputStyle={"marginRight": "5px", "cursor": "pointer"},
+                                                labelStyle={"fontSize": "12px", "color": "#475569",
+                                                            "cursor": "pointer", "fontWeight": "500"},
+                                            ),
+                                        ],
+                                        style={"display": "flex", "justifyContent": "space-between",
+                                               "alignItems": "center", "marginBottom": "8px"},
+                                    ),
+                                    html.Div(
+                                        [
+                                            html.Label(
+                                                "Weight variable",
+                                                style={"fontSize": "11px", "fontWeight": "600",
+                                                       "color": "#64748B", "display": "block",
+                                                       "marginBottom": "4px"},
+                                            ),
+                                            dcc.Dropdown(
+                                                id="weight-variable",
+                                                options=[
+                                                    {"label": f"{c} — {column_labels.get(c, c)}", "value": c}
+                                                    for c in column_names
+                                                ],
+                                                value=init_w_var,
+                                                placeholder="Select weight variable…",
+                                                clearable=True,
+                                                disabled=not init_w_enabled,
+                                                style={"fontSize": "13px"},
+                                            ),
+                                        ],
+                                        id="weight-var-row",
+                                    ),
+                                ],
+                                style={
+                                    "padding": "14px 16px",
+                                    "borderTop": "2px solid #E2E8F0",
+                                },
+                            ),
+
+                            # ── Global filter section ──────────────────────────
+                            html.Div(
+                                [
+                                    html.H2(
+                                        "Global Filter (default)",
+                                        style={"fontSize": "14px", "fontWeight": "600",
+                                               "color": "#1E293B", "margin": "0 0 8px 0"},
+                                    ),
+                                    dcc.Dropdown(
+                                        id="global-filter-select",
+                                        options=[
+                                            {"label": n, "value": n}
+                                            for n in initial_filters.keys()
+                                        ],
+                                        value=init_global_filter,
+                                        placeholder="None (no default filter)",
+                                        clearable=True,
+                                        style={"fontSize": "13px"},
+                                    ),
+                                    html.Span(
+                                        "Applied automatically when the dashboard opens",
+                                        style={"fontSize": "11px", "color": "#94A3B8", "marginTop": "4px",
+                                               "display": "block"},
+                                    ),
+                                ],
+                                style={
+                                    "padding": "14px 16px",
+                                    "borderTop": "1px solid #F1F5F9",
+                                },
+                            ),
+
                             # Save section
                             html.Div(
                                 [
@@ -1014,11 +1110,21 @@ def create_app(spss_path, meta_path=None):
         return [target] * len(current)
 
     @app.callback(
+        Output("weight-variable", "disabled"),
+        Input("weight-enabled", "value"),
+        prevent_initial_call=True,
+    )
+    def toggle_weight_var(enabled_val):
+        """Enable/disable weight variable dropdown based on toggle."""
+        return not bool(enabled_val)
+
+    @app.callback(
         Output("store-filters", "data"),
         Output("filter-list", "children"),
         Output("filter-error", "children"),
         Output("new-filter-name", "value"),
         Output("new-filter-value", "value"),
+        Output("global-filter-select", "options"),
         Input("add-filter-btn", "n_clicks"),
         Input({"type": "remove-filter", "index": ALL}, "n_clicks"),
         State("new-filter-name", "value"),
@@ -1036,6 +1142,9 @@ def create_app(spss_path, meta_path=None):
     ):
         triggered = ctx.triggered_id
 
+        def _filter_options(filters):
+            return [{"label": n, "value": n} for n in (filters or {}).keys()]
+
         # ── Remove a filter ──────────────────────────────────────────────────
         if isinstance(triggered, dict) and triggered.get("type") == "remove-filter":
             rm_idx = triggered["index"]
@@ -1047,24 +1156,23 @@ def create_app(spss_path, meta_path=None):
                 make_filter_card(n, c, i)
                 for i, (n, c) in enumerate(new_filters.items())
             ]
-            return new_filters, cards, "", no_update, no_update
+            return new_filters, cards, "", no_update, no_update, _filter_options(new_filters)
 
         # ── Add a filter ─────────────────────────────────────────────────────
         if triggered == "add-filter-btn":
             if not fname or not fname.strip():
-                return no_update, no_update, "⚠ Filter name is required.", no_update, no_update
+                return no_update, no_update, "⚠ Filter name is required.", no_update, no_update, no_update
             if not fvar:
-                return no_update, no_update, "⚠ Please select a variable.", no_update, no_update
+                return no_update, no_update, "⚠ Please select a variable.", no_update, no_update, no_update
             if not fop:
-                return no_update, no_update, "⚠ Please select an operator.", no_update, no_update
+                return no_update, no_update, "⚠ Please select an operator.", no_update, no_update, no_update
 
             fname = fname.strip()
 
-            # Parse value
             try:
                 condition = _parse_filter_value(fop, fval)
             except ValueError as e:
-                return no_update, no_update, f"⚠ {e}", no_update, no_update
+                return no_update, no_update, f"⚠ {e}", no_update, no_update, no_update
 
             new_filters = dict(current_filters or {})
             new_filters[fname] = {fvar: condition}
@@ -1072,9 +1180,9 @@ def create_app(spss_path, meta_path=None):
                 make_filter_card(n, c, i)
                 for i, (n, c) in enumerate(new_filters.items())
             ]
-            return new_filters, cards, "", "", ""
+            return new_filters, cards, "", "", "", _filter_options(new_filters)
 
-        return no_update, no_update, "", no_update, no_update
+        return no_update, no_update, "", no_update, no_update, no_update
 
     @app.callback(
         Output("store-save-path", "data"),
@@ -1091,15 +1199,18 @@ def create_app(spss_path, meta_path=None):
         State("store-variables", "data"),
         State("store-filters", "data"),
         State("store-save-path", "data"),
+        State("weight-enabled", "value"),
+        State("weight-variable", "value"),
+        State("global-filter-select", "value"),
+        State("store-passthrough", "data"),
         prevent_initial_call=True,
     )
-    def save_config(n_clicks, variables, filters, save_path):
+    def save_config(n_clicks, variables, filters, save_path,
+                    weight_enabled, weight_var, global_filter, passthrough):
         if not n_clicks:
             return "", {}
 
-        included = [
-            v for v in (variables or []) if v.get("included", True)
-        ]
+        included = [v for v in (variables or []) if v.get("included", True)]
 
         if not included:
             return (
@@ -1110,24 +1221,44 @@ def create_app(spss_path, meta_path=None):
         # Build JSON structure
         config_vars = []
         for v in included:
-            entry = {
-                "name": v["name"],
-                "type": v["type"],
-                "label": v["label"],
-            }
+            entry = {"name": v["name"], "type": v["type"], "label": v["label"]}
             if v["type"] == "multi":
                 entry["sub_variables"] = v["sub_variables"]
                 entry["sub_variable_labels"] = v["sub_variable_labels"]
             elif v["type"] == "single":
-                # Only write value_labels if the variable has them
                 vl = v.get("value_labels", {})
                 if vl:
                     entry["value_labels"] = vl
             config_vars.append(entry)
 
         config = {"variables": config_vars}
+
+        # Filter sets
         if filters:
             config["filter_sets"] = filters
+
+        # Global filter
+        if global_filter:
+            config["global_filter"] = global_filter
+
+        # Weighting
+        w_on = bool(weight_enabled)
+        if w_on and weight_var:
+            config["weighting"] = {"enabled": True, "weight_variable": weight_var}
+        elif w_on and not weight_var:
+            # Enabled but no variable chosen — warn, don't write broken config
+            return (
+                "⚠ Weighting is enabled but no weight variable is selected.",
+                {"color": "#F59E0B", "fontSize": "13px", "textAlign": "center", "marginTop": "10px"},
+            )
+        else:
+            config["weighting"] = {"enabled": False}
+
+        # Preserve any other top-level fields from the original JSON
+        # (e.g. output_file) that we don't have UI for
+        pt = passthrough or {}
+        if "output_file" in pt and pt["output_file"]:
+            config["output_file"] = pt["output_file"]
 
         # Ensure directory exists
         save_dir = os.path.dirname(save_path)
@@ -1138,9 +1269,9 @@ def create_app(spss_path, meta_path=None):
             with open(save_path, "w", encoding="utf-8") as f:
                 json.dump(config, f, indent=2, ensure_ascii=False)
             ts = datetime.now().strftime("%H:%M:%S")
+            w_note = f" | Weighted: {weight_var}" if (w_on and weight_var) else " | Unweighted"
             return (
-                f"✅ Saved {len(config_vars)} variable(s) to {os.path.basename(save_path)} at {ts}. "
-                f"Load this file in the launcher to use it.",
+                f"✅ Saved {len(config_vars)} variable(s) to {os.path.basename(save_path)} at {ts}.{w_note}",
                 {"color": "#059669", "fontSize": "12px", "textAlign": "center", "marginTop": "10px"},
             )
         except Exception as e:

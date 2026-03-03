@@ -3,6 +3,25 @@ from filter_engine import FilterEngine
 from weight_calculator import WeightCalculator
 
 
+def _coerce_value_label_keys(json_value_labels, column_data):
+    """Convert JSON string keys back to numeric to match SPSS data values."""
+    if not json_value_labels:
+        return json_value_labels
+    sample = column_data.dropna()
+    coerced = {}
+    for k, v in json_value_labels.items():
+        try:
+            num = float(k)
+            if num == int(num) and (sample.dtype.kind in ('i', 'u') or
+                    (sample.dtype.kind == 'f' and (sample % 1 == 0).all())):
+                coerced[int(num)] = v
+            else:
+                coerced[num] = v
+        except (ValueError, TypeError):
+            coerced[k] = v
+    return coerced
+
+
 class FrequencyProcessor:
     """Processes variables and calculates frequencies with filter support"""
     
@@ -224,6 +243,9 @@ class FrequencyProcessor:
         # define the display order (questionnaire order).
         column_data = data[var_name]
         spss_value_labels = self.reader.get_value_labels(var_name)
+        # Coerce JSON string keys ("1","2") to numeric to match SPSS data values (1.0, 2.0)
+        if json_value_labels:
+            json_value_labels = _coerce_value_label_keys(json_value_labels, column_data)
         value_labels = json_value_labels if json_value_labels else spss_value_labels
 
         # Check if weighting is enabled
